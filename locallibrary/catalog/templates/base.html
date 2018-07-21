@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+  {% block title %}<title>Local Library</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                {% block sidebar %}
+                    <ul class="sidebar-nav">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'books' %}">All books</a></li>
+                        <li><a href="{% url 'authors' %}">All authors</a></li>
+                    </ul>
+                {% endblock %}
+            </div>
+            <div class="col-sm-8">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+        {% block pagination %}
+            {% if is_paginated %}
+                <div class="pagination">
+                    <div class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Previous</a>
+                        {% endif %}
+                        {% for i in "x"|rjust:page_obj.paginator.num_pages %}
+                            {% if page_obj.number == forloop.counter %}
+                                <span class="page-current">
+                                    {{ page_obj.number }}
+                                </span>
+                            {% else %}
+                                <a href="{{ request.path }}?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">Next</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock pagination %}
+    </div>
+</body>
+</html>
