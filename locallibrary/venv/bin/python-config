@@ -1,4 +1,4 @@
-#!/Users/Eduardo/Development/Python/locallibrary/venv/bin/python
+#!/usr/share/nginx/html/locallibrary/venv/bin/python
 
 import sys
 import getopt

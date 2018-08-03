@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/Eduardo/Development/Python/locallibrary/venv"
+VIRTUAL_ENV="/usr/share/nginx/html/locallibrary/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
