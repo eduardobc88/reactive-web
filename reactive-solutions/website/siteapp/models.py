@@ -116,7 +116,7 @@ class ArchiveService(models.Model):
         return '{0}'.format(self.service_slug)
 
     def get_absolute_url(self):
-        return reverse('services', kwargs={'slug': self.service_slug})
+        return reverse('service-detail', kwargs={'slug': self.service_slug})
 
     def class_name(self):
         return self.__class__.__name__
