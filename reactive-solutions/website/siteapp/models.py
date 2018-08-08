@@ -138,7 +138,7 @@ class ArchivePost(models.Model):
         return '{0}'.format(self.post_slug)
 
     def get_absolute_url(self):
-        return reverse('blog-detail', wargs={'slug': self.post_slug})
+        return reverse('blog-detail', kwargs={'slug': self.post_slug})
 
     def __str__(self):
         return '{0}'.format(self.post_title)
@@ -157,7 +157,7 @@ class Page(models.Model):
         return '{0}'.format(self.page_slug)
 
     def get_absolute_url(self):
-        return reverse(str(self.post_slug), wargs={'slug': self.post_slug})
+        return reverse(str(self.post_slug), kwargs={'slug': self.post_slug})
 
     def __str__(self):
         return '{0}'.format(self.page_title)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ArchiveProject, ArchiveService
+from .models import ArchiveProject, ArchiveService, ArchivePost
 from django.views import generic
 
 
@@ -42,3 +42,17 @@ class ArchiveServiceDetailView(generic.DetailView):
     model = ArchiveService
     context_object_name = 'service'
     slug_field = 'service_slug'
+
+
+class ArchivePostListView(generic.ListView):
+    template_name = 'archive-post/post-list.html'
+    model = ArchivePost
+    paginate_by = 2
+    context_object_name = 'posts'
+
+
+class ArchivePostDetailView(generic.DetailView):
+    template_name = 'archive-post/post-detail.html'
+    model = ArchivePost
+    context_object_name = 'post'
+    slug_field = 'post_slug'
