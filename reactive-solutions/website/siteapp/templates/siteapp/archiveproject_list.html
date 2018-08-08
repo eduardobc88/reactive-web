@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h2>Project Archive</h2>
+    <ul>
+    {% for project in projects %}
+    <li><a href="{{ project.get_absolute_url }}">{{ project.project_title }}</a></li>
+    {% empty %}
+    <li>No tasks</li>
+    {% endfor %}
+</ul>
+{% endblock %}
