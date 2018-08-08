@@ -15,4 +15,5 @@ urlpatterns = [
     url(r'^blog/$', views.ArchivePostListView.as_view(), name='blog-archive'),
     url(r'^blog/(?P<page>\d+)/$', views.ArchivePostListView.as_view(), name='blog-archive'),
     url(r'^blog/(?P<slug>[-\w]+)/$', views.ArchivePostDetailView.as_view(), name='blog-detail'),
+    url(r'^(?P<slug>[-\w]+)/$', views.PageDetailView.as_view(), name='page-detail')
 ]

@@ -7,7 +7,7 @@ from .models import ArchiveProject, HomeSlider, SiteOption, Banner, ArchiveServi
 
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('page_title', 'admin_display_page_slug')
+    list_display = ('page_title', 'admin_display_page_slug', 'page_template')
     readonly_fields = ['page_slug']
     pass
 

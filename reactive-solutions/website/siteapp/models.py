@@ -55,6 +55,14 @@ def upload_image_page(instance, filename):
     return os.path.join('siteapp/static/uploads/', str(instance.page_thumbnail))
 
 
+def get_template_list():
+    settings_dir = os.path.dirname(__file__)
+    PROJECT_ROOT = os.path.abspath(os.path.dirname(settings_dir))
+    path = '{0}/templates/page-template/'.format(str(settings_dir))
+    list = os.listdir(path)
+    choices = [ ('page-template/{0}'.format(template), template.split('.')[0]) for template in list ]
+    return choices
+
 
 class HomeSlider(models.Model):
     slide_title = models.CharField(max_length=60, help_text='Enter the title')
@@ -146,18 +154,19 @@ class ArchivePost(models.Model):
 
 class Page(models.Model):
     id = models.AutoField(primary_key=True)
-    page_title = models.CharField(max_length=500, help_text='Enter the page title')
+    page_title = models.CharField(unique=True, max_length=500, help_text='Enter the page title', null=False)
     page_content = HTMLField()
     page_thumbnail = models.ImageField(upload_to=upload_image_page, default='no-img.png')
     page_date = models.DateTimeField(auto_now_add=True)
     page_slug = models.SlugField(max_length=200, null=True)
+    page_template = models.CharField(max_length=1000, choices=get_template_list(), default='default.html', help_text='Page template')
 
 
     def admin_display_page_slug(self):
         return '{0}'.format(self.page_slug)
 
     def get_absolute_url(self):
-        return reverse(str(self.post_slug), kwargs={'slug': self.post_slug})
+        return reverse('page-detail', kwargs={'slug': self.post_slug})
 
     def __str__(self):
         return '{0}'.format(self.page_title)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ArchiveProject, ArchiveService, ArchivePost
+from .models import ArchiveProject, ArchiveService, ArchivePost, Page
 from django.views import generic
 
 
@@ -14,6 +14,17 @@ def index(request):
             'name': 'index'
         }
     )
+
+
+class PageDetailView(generic.DetailView):
+    template_name = ''
+    model = Page
+    context_object_name = 'page'
+    slug_field = 'page_slug'
+
+
+    def get_context_data(self, **kwargs):
+        self.template_name = self.object.page_template
 
 
 class ArchiveProjectListView(generic.ListView):
