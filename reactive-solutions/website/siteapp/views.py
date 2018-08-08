@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import ArchiveProject
 from django.views import generic
-from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -19,8 +18,9 @@ def index(request):
 
 class ArchiveProjectListView(generic.ListView):
     model = ArchiveProject
-    # paginate_by = 2
+    paginate_by = 2
     context_object_name = 'projects'
+    queryset = ArchiveProject.objects.all()
 
 
 class ArchiveProjectDetailView(generic.DetailView):
