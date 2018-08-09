@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ArchiveProject, ArchiveService, ArchivePost, Page
+from .models import ArchiveProject, ArchiveService, ArchivePost, Page, SiteOption
 from django.views import generic
 
 
@@ -30,8 +30,14 @@ class PageDetailView(generic.DetailView):
 class ArchiveProjectListView(generic.ListView):
     template_name = 'archive-project/project-list.html'
     model = ArchiveProject
-    paginate_by = 2
+    paginate_by = 10
     context_object_name = 'projects'
+
+
+    def get_paginate_by(self, queryset):
+        site_option = SiteOption.objects.filter(site_option_name='paginate_by')
+        self.paginate_by = int(site_option.values('site_option_value')[0]['site_option_value'])
+        return self.request.GET.get('paginate_by', self.paginate_by)
 
 
 class ArchiveProjectDetailView(generic.DetailView):
@@ -44,8 +50,15 @@ class ArchiveProjectDetailView(generic.DetailView):
 class ArchiveServiceListView(generic.ListView):
     template_name = 'archive-service/service-list.html'
     model = ArchiveService
-    paginate_by = 2
+    paginate_by = 10
     context_object_name = 'services'
+
+
+    def get_paginate_by(self, queryset):
+        # NOTE: the paginate_by property should to be created on admin site options section
+        site_option = SiteOption.objects.filter(site_option_name='paginate_by')
+        self.paginate_by = int(site_option.values('site_option_value')[0]['site_option_value'])
+        return self.request.GET.get('paginate_by', self.paginate_by)
 
 
 class ArchiveServiceDetailView(generic.DetailView):
@@ -58,8 +71,14 @@ class ArchiveServiceDetailView(generic.DetailView):
 class ArchivePostListView(generic.ListView):
     template_name = 'archive-post/post-list.html'
     model = ArchivePost
-    paginate_by = 2
+    paginate_by = 10
     context_object_name = 'posts'
+
+
+    def get_paginate_by(self, queryset):
+        site_option = SiteOption.objects.filter(site_option_name='paginate_by')
+        self.paginate_by = int(site_option.values('site_option_value')[0]['site_option_value'])
+        return self.request.GET.get('paginate_by', self.paginate_by)
 
 
 class ArchivePostDetailView(generic.DetailView):
