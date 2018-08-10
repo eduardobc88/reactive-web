@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ArchiveProject, ArchiveService, ArchivePost, Page, SiteOption
+from .models import ArchiveProject, ArchiveService, ArchivePost, Page, SiteOption, HomeSlider
 from django.views import generic
 
 
@@ -7,11 +7,13 @@ from django.views import generic
 
 
 def index(request):
+    home_slides = HomeSlider.objects.all()
     return render(
         request,
         'index.html',
         context = {
-            'name': 'index'
+            'name': 'index',
+            'home_slides': home_slides,
         }
     )
 
