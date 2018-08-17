@@ -6,11 +6,11 @@ from django.views import generic
 # Create your views here.
 
 
-def index(request):
+def home(request):
     home_slides = HomeSlider.objects.all()
     return render(
         request,
-        'index.html',
+        'home.html',
         context = {
             'name': 'index',
             'home_slides': home_slides,

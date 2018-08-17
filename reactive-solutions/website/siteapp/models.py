@@ -65,6 +65,7 @@ def get_template_list():
     return choices
 
 
+
 class HomeSlider(models.Model):
     slide_title = models.CharField(max_length=60, help_text='Enter the title')
     slide_content = models.TextField(max_length=150, help_text='Enter the descrition')
@@ -185,14 +186,14 @@ class SiteOption(models.Model):
         return '{0}'.format(self.site_option_name)
 
 
+
 @receiver(post_save, sender=HomeSlider)
 def home_slider_post_save(sender, instance, created, **kwargs):
     if created:
         instance.slide_image = str(instance.slide_image).replace('siteapp/', '')
         instance.save()
     else:
-        object_old = HomeSlider.objects.get(pk=instance.pk)
-        if object_old.slide_image != instance.slide_image:
+        if "siteapp" in str(instance.slide_image):
             instance.slide_image = str(instance.slide_image).replace('siteapp/', '')
             instance.save()
 
@@ -205,8 +206,7 @@ def archive_project_post_save(sender, instance, created, **kwargs):
         instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp/', '')
         instance.save()
     else:
-        object_old = ArchiveProject.objects.get(pk=instance.pk)
-        if object_old.project_thumbnail != instance.project_thumbnail:
+        if "siteapp" in str(instance.project_thumbnail):
             instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp/', '')
             instance.save()
 
@@ -221,10 +221,10 @@ def archive_service_post_save(sender, instance, created, **kwargs):
     else:
         object_old = ArchiveService.objects.get(pk=instance.pk)
         is_diff = False
-        if object_old.service_icon != instance.service_icon:
+        if "siteapp" in str(instance.service_icon):
             instance.service_icon = str(instance.service_icon).replace('siteapp/', '')
             is_diff = True
-        if object_old.service_thumbnail != instance.service_thumbnail:
+        if "siteapp" in str(instance.service_thumbnail):
             instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp/', '')
             is_diff = True
         if is_diff:
@@ -238,8 +238,7 @@ def archive_post_post_save(sender, instance, created, **kwargs):
         instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp/', '')
         instance.save()
     else:
-        object_old = ArchivePost.objects.get(pk=instance.pk)
-        if object_old.post_thumbnail != instance.post_thumbnail:
+        if "siteapp" in str(instance.post_thumbnail):
             instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp/', '')
             instance.save()
 
@@ -251,7 +250,6 @@ def page_post_save(sender, instance, created, **kwargs):
         instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp/', '')
         instance.save()
     else:
-        object_old = Page.objects.get(pk=instance.pk)
-        if object_old.page_thumbnail != instance.page_thumbnail:
+        if "siteapp" in str(instance.page_thumbnail):
             instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp/', '')
             instance.save()

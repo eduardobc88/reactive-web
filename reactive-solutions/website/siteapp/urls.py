@@ -4,7 +4,7 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.home, name='home'),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^projects/$', views.ArchiveProjectListView.as_view(), name='project-archive'),
     url(r'^projects/(?P<page>\d+)/$', views.ArchiveProjectListView.as_view(), name='project-archive'),

@@ -4,22 +4,54 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <script src="{% static 'js/global.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'css/global.css' %}">
+        <script src="http://localhost:35729/livereload.js"></script>
+        {% block page_css %}
+        {% endblock %}
+        {% block page_js %}
+        {% endblock %}
     </head>
-<body>
-    <div class="page-wrapper">
-        {% block page_header %}
-            <h2>HEADER</h2>
-        {% endblock %}
-        {% block page_content %}
-            <h2>CONTENT</h2>
-        {% endblock %}
-        {% block page_footer %}
-            <h2>FOOTER</h2>
-        {% endblock %}
-    </div>
-</body>
+    <body>
+        <div class="page-wrapper">
+            {% block page_header %}
+                <div class="menu-wrapper">
+                    <div class="container">
+                        <div class="menu-options">
+                            <a href="#" class="home-wrapper">
+                                <img class="logo" src="{% static 'img/rs-icon.png' %}">
+                                <label>REACTIVE SOLUTION</label>
+                            </a>
+                            <a class="option" href="#">PROYECTOS</a>
+                            <a class="option" href="#">SERVICIOS</a>
+                            <a class="option" href="#">QUIÉNES SOMOS</a>
+                            <a class="option" href="#">BLOG</a>
+                            <a class="option" href="#">CONTACTO</a>
+                            <img class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            {% block page_content %}
+            {% endblock %}
+            {% block page_footer %}
+                <h2>FOOTER</h2>
+            {% endblock %}
+        </div>
+        <div class="mobile-menu-wrapper">
+            <a href="#" class="home-wrapper">
+                <label>REACTIVE SOLUTION</label>
+            </a>
+            <img class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
+            <a class="option" href="#">PROYECTOS</a>
+            <a class="option" href="#">SERVICIOS</a>
+            <a class="option" href="#">QUIÉNES SOMOS</a>
+            <a class="option" href="#">BLOG</a>
+            <a class="option" href="#">CONTACTO</a>
+        </div>
+    </body>
 </html>
