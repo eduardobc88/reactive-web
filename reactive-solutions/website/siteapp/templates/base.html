@@ -38,9 +38,56 @@
             {% endblock %}
             {% block page_content %}
             {% endblock %}
-            {% block page_footer %}
-                <h2>FOOTER</h2>
-            {% endblock %}
+            <div class="footer-wrapper background-color-blue">
+                <div class="decor-top">
+                    <svg class="decor background-fill-blue" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+                    </svg>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4">
+                            <a href="#" class="home-wrapper">
+                                <img class="logo" src="{% static 'img/rs-icon.png' %}">
+                                <label>REACTIVE SOLUTION</label>
+                            </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-3">
+                            <a class="option" href="#">PROYECTOS</a>
+                            <a class="option" href="#">SERVICIOS</a>
+                            <a class="option" href="#">QUIÉNES SOMOS</a>
+                            <a class="option" href="#">BLOG</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-3">
+                            <a class="option" href="#">CONTACTO</a>
+                            <a class="option" href="#">AVISO DE PRIVACIDAD</a>
+                            <a class="option" href="#">TERMINOS Y CONDICIONES</a>
+                        </div>
+                        <div class="col-xs-12 col-sm-2">
+                            <a class="social-icon" href="#">
+                                <img src="{% static 'img/gp-icon.png' %}">
+                            </a>
+                            <a class="social-icon" href="#">
+                                <img src="{% static 'img/fb-icon.png' %}">
+                            </a>
+                            <a class="social-icon" href="#">
+                                <img src="{% static 'img/tw-icon.png' %}">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4 class="title">COMUNÍCATE Y HAGAMOS EQUIPO.</h4>
+                            <a href="tel:4431049977" class="phone">443-1049977</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="reserved">REACTIVE SOLUTION 2018 TODOS LOS DERECHOS RESERVADOS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="mobile-menu-wrapper">
             <a href="#" class="home-wrapper">

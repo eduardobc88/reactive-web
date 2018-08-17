@@ -1,21 +1,27 @@
 .slider-wrapper {
-    height: 400px;
-    position: relative;
-    overflow: hidden;
     background-image: url(/static/img/bkg-slider.gif);
+    background-position: center;
+    background-size: contain;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
     z-index: 0;
 }
 
+.slider-wrapper .container{
+    padding-top: 100px;
+}
+
 .slider-wrapper .slider-bkg-color {
-    z-index: 1;
-    background-color: rgb(27, 130, 204, 0.9);
-    position: absolute;
-    top: 0;
+    background-color: rgb(27, 130, 204, 0.8);
     bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
     height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .slider-wrapper #slides {
@@ -23,22 +29,23 @@
 }
 
 .slider-wrapper #slides .slides-container .icon {
-    max-width: 300px !important;
-    max-height: 300px !important;
-    top: auto !important;
     left: auto !important;
-    position: relative !important;
+    max-height: 300px !important;
+    max-width: 300px !important;
     padding: 10px !important;
+    position: relative !important;
+    top: auto !important;
 }
 
 .slider-wrapper #slides .slides-container h2 {
-    font-size: 45px;
+    font-size: 50px;
     color: black;
 }
 
 .slider-wrapper #slides .slides-container p {
     color: #222;
     font-size: 25px;
+    font-weight: 300;
 }
 
 .slider-wrapper #slides .slides-pagination a {

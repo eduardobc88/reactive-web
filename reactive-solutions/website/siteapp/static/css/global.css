@@ -1,11 +1,11 @@
 body {
     font-family: 'Roboto', sans-serif;
-    margin-top: 70px !important;
+    /* margin-top: 70px !important; */
     background: #f2f2f2;
 }
 
 .menu-wrapper {
-    background-color: #1b82cc;
+    background-color: rgb(27, 130, 204, 0.9);
     box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
     height: 70px;
     left: 0;
@@ -62,10 +62,10 @@ body {
 }
 
 .menu-wrapper .menu-options .menu-mobile {
-    height: 38px;
     align-self: center;
-    display: none;
     cursor: pointer;
+    display: none;
+    height: 38px;
 }
 
 
@@ -88,12 +88,12 @@ body {
 }
 
 .mobile-menu-wrapper .menu-mobile {
-    height: 38px;
-    right: -125px;
-    position: absolute;
-    top: 20px;
-    right: 15px;
     cursor: pointer;
+    height: 38px;
+    position: absolute;
+    right: -125px;
+    right: 15px;
+    top: 20px;
 }
 
 .mobile-menu-wrapper .home-wrapper label {
@@ -164,6 +164,77 @@ body {
 }
 
 
+.footer-wrapper .home-wrapper {
+    position: relative;
+    text-align: center;
+    top: 50px;
+}
+
+.footer-wrapper .home-wrapper .logo {
+    max-width: 60px;
+}
+
+.footer-wrapper .home-wrapper label {
+    color: black;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 24px;
+    padding-top: 2px;
+    text-align: left;
+    vertical-align: middle;
+    width: 115px;
+    word-wrap: break-word;
+}
+
+.footer-wrapper .option {
+    color: black;
+    display: block;
+    flex-grow: 1;
+    font-size: 16px;
+    margin-top: 15px;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 200ms;
+}
+
+.footer-wrapper .option:hover {
+    color: white;
+}
+
+.footer-wrapper .social-icon img {
+    display: block;
+    max-width: 45px;
+}
+
+.footer-wrapper .title {
+    color: black;
+    font-size: 24px;
+    margin-top: 50px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.footer-wrapper .phone {
+    color: black;
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.footer-wrapper .reserved {
+    color: #222;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-top: 30px;
+    text-align: center;
+}
+
 
 @media all and (max-width: 768px) {
     .menu-wrapper .menu-options .option {
@@ -172,5 +243,19 @@ body {
 
     .menu-wrapper .menu-options .menu-mobile {
         display: block;
+    }
+
+    .footer-wrapper .home-wrapper {
+        display: block;
+        text-align: center;
+        top: auto;
+    }
+
+    .footer-wrapper .option {
+        text-align: center;
+    }
+
+    .footer-wrapper .social-icon img {
+        margin: 20px auto auto auto;
     }
 }
