@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="custom-wrapper background-color-white">
+    <div class="custom-wrapper background-color-white blog-wrapper">
         <div class="decor-top">
             <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
@@ -42,17 +42,32 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2>BLOG</h2>
-                    <p>
+                    <p class="description">
                         Your bones don’t break, mine do. That’s clear. Your cells react to bacteria and viruses differently than mine. You don’t get sick, I do. That’s also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke.
                     </p>
                 </div>
             </div>
+            <div class="row">
+                {% for i in "xxx" %}
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="item">
+                            <img class="image" src="http://placehold.it/360x400/7b7b7b/DADADA/?text=360x400">
+                            <div class="cover">
+                                <div class="title-wrapper">
+                                    <h3>Hola mundo! con Node JS</h3>
+                                </div>
+                                <p>En este post vamos a crear nuestra primera App con Node JS...</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="#" class="more-button button-effect">Más</a>
+                </div>
+            </div>
         </div>
-        <!-- <div class="decor-bottom">
-            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 100 L0 0 L100 0" stroke-width="0"></path>
-            </svg>
-        </div> -->
     </div>
     <div class="custom-wrapper background-color-blue">
         <div class="decor-top">
@@ -70,11 +85,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="decor-bottom">
-            <svg class="decor background-fill-blue" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 100 L0 0 L100 0" stroke-width="0"></path>
-            </svg>
-        </div> -->
     </div>
     <div class="custom-wrapper background-color-white">
         <div class="decor-top">
