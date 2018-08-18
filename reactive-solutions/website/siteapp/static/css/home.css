@@ -1,6 +1,6 @@
 .slider-wrapper {
     background-image: url(/static/img/bkg-slider.gif);
-    background-position: center;
+    background-position: bottom;
     background-size: contain;
     height: 500px;
     overflow: hidden;
@@ -43,11 +43,11 @@
 
 .slider-wrapper #slides .slides-container h2 {
     font-size: 50px;
-    color: black;
+    color: #efefef;
 }
 
 .slider-wrapper #slides .slides-container p {
-    color: #222;
+    color: #efefef;
     font-size: 25px;
     font-weight: 300;
 }
@@ -57,6 +57,11 @@
     margin-right: 4px;
     width: 15px;
     height: 15px;
+    border: 2px solid #efefef !important;
+}
+
+.slides-pagination a.current {
+    background: #efefef !important;
 }
 
 
@@ -67,7 +72,7 @@
 .blog-wrapper h2 {
     color: black;
     font-size: 40px;
-    font-weight: 200;
+    font-weight: 300;
     position: relative;
     text-align: center;
     letter-spacing: 2px;
@@ -136,7 +141,6 @@
 .blog-wrapper .item .cover p {
     color: #888;
     font-size: 15px;
-    font-weight: 200;
     line-height: 17px;
     margin-top: 20px;
     text-align: center;
@@ -145,7 +149,6 @@
 .banner-wrapper {
     background-image: url(/static/img/nosotros-banner.png);
     background-position: bottom;
-    background-position: center;
     background-repeat: repeat-x;
     background-size: contain;
     overflow: hidden;
@@ -174,7 +177,7 @@
 .banner-wrapper h2 {
     color: white;
     font-size: 40px;
-    font-weight: 200;
+    font-weight: 300;
     letter-spacing: 2px;
     position: relative;
     text-align: center;
@@ -183,19 +186,20 @@
 .banner-wrapper p {
     color: white;
     font-size: 24px;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 36px;
 }
 
 
 .project-wrapper {
     position: relative;
+    padding-bottom: 60px;
 }
 
 .project-wrapper h2 {
     color: black;
     font-size: 40px;
-    font-weight: 200;
+    font-weight: 300;
     position: relative;
     text-align: center;
     letter-spacing: 2px;
@@ -244,6 +248,91 @@
 
 .project-wrapper .more-button {
     background-color: #1b82cc !important;
+}
+
+
+.services-wrapper {
+    position: relative;
+    padding-bottom: 0px;
+}
+
+.services-wrapper .container {
+    padding-bottom: 60px;
+}
+
+.services-wrapper h2 {
+    color: black;
+    font-size: 40px;
+    font-weight: 300;
+    position: relative;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.services-wrapper .description {
+    font-size: 16px;
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.services-wrapper a {
+    text-decoration: none;
+}
+
+.services-wrapper .item {
+    background-color: white;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    overflow: hidden;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    margin-top: 15px;
+}
+
+.services-wrapper .item .cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-image: url(/static/img/texture-bkg.png);
+}
+
+.services-wrapper .item h3 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.services-wrapper .item p {
+    color: #333;
+    font-size: 15px;
+    line-height: 17px;
+    margin-top: 20px;
+}
+
+.services-wrapper .item img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 0;
+}
+
+.services-wrapper .item .content {
+    position: relative;
+    z-index: 2;
+}
+
+.tools-bkg {
+    background-image: url(/static/img/tools-bkg.png)
 }
 
 

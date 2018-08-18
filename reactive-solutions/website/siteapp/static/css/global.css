@@ -26,10 +26,10 @@ body {
 }
 
 .menu-wrapper .menu-options .home-wrapper label {
-    color: black;
+    color: #efefef;
     cursor: pointer;
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 100;
     line-height: 24px;
     padding-top: 2px;
     vertical-align: middle;
@@ -43,21 +43,46 @@ body {
 
 .menu-wrapper .menu-options .home-wrapper {
     flex-grow: 4;
+    text-decoration: none;
 }
 
 .menu-wrapper .menu-options .option {
     align-self: center;
-    color: black;
+    color: #efefef;
     flex-grow: 1;
     font-size: 16px;
     position: relative;
     text-align: center;
     text-decoration: none;
+    font-weight: 300;
+}
+
+.menu-wrapper .menu-options .option:before {
+    content: "[";
+    position: absolute;
+    color: transparent;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    font-size: 20px;
+    line-height: 20px;
     transition-duration: 200ms;
 }
 
-.menu-wrapper .menu-options .option:hover {
-    color: white;
+.menu-wrapper .menu-options .option:after {
+    content: "]";
+    position: absolute;
+    color: transparent;
+    top: 0;
+    bottom: 0;
+    right: 15px;
+    font-size: 20px;
+    line-height: 20px;
+    transition-duration: 200ms;
+}
+
+.menu-wrapper .menu-options .option:hover:before, .menu-wrapper .menu-options .option:hover:after {
+    color: #efefef;
 }
 
 .menu-wrapper .menu-options .menu-mobile {
@@ -96,7 +121,7 @@ body {
 }
 
 .mobile-menu-wrapper .home-wrapper label {
-    color: black;
+    color: #efefef;
     cursor: pointer;
     font-size: 16px;
     font-weight: 400;
@@ -107,7 +132,7 @@ body {
 }
 
 .mobile-menu-wrapper .option {
-    color: black;
+    color: #efefef;
     display: block;
     font-size: 16px;
     line-height: 18px;
@@ -172,6 +197,31 @@ body {
 }
 
 
+.footer-wrapper {
+    background-image: url(/static/img/footer-bkg.png);
+    background-position: center;
+    position: relative;
+    padding-top: 100px;
+    background-size: cover;
+}
+
+.footer-wrapper .cover {
+    background-color: rgb(27, 130, 204, 0.7);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.footer-wrapper .container {
+    position: relative;
+    z-index: 1;
+}
+
 .footer-wrapper .home-wrapper {
     position: relative;
     text-align: center;
@@ -183,10 +233,10 @@ body {
 }
 
 .footer-wrapper .home-wrapper label {
-    color: black;
+    color: #efefef;
     cursor: pointer;
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 100;
     line-height: 24px;
     padding-top: 2px;
     text-align: left;
@@ -196,7 +246,7 @@ body {
 }
 
 .footer-wrapper .option {
-    color: black;
+    color: #efefef;
     display: block;
     flex-grow: 1;
     font-size: 16px;
@@ -204,10 +254,11 @@ body {
     position: relative;
     text-decoration: none;
     transition-duration: 200ms;
+    font-weight: 300;
 }
 
 .footer-wrapper .option:hover {
-    color: white;
+    color: #efefef;
 }
 
 .footer-wrapper .social-icon img {
@@ -216,7 +267,7 @@ body {
 }
 
 .footer-wrapper .title {
-    color: black;
+    color: #efefef;
     font-size: 24px;
     margin-top: 50px;
     text-align: center;
@@ -224,7 +275,7 @@ body {
 }
 
 .footer-wrapper .phone {
-    color: black;
+    color: #efefef;
     display: block;
     font-size: 24px;
     font-weight: 600;
@@ -235,7 +286,7 @@ body {
 }
 
 .footer-wrapper .reserved {
-    color: #222;
+    color: #efefef;
     font-size: 12px;
     font-weight: 600;
     margin-top: 15px;
@@ -282,6 +333,11 @@ body {
 .button-effect:hover:after {
     width: 350px;
     height: 350px;
+}
+
+.over-footer {
+    position: relative;
+    z-index: 2;
 }
 
 
