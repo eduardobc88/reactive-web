@@ -1,6 +1,5 @@
 body {
     font-family: 'Roboto', sans-serif;
-    /* margin-top: 70px !important; */
     background: #666;
 }
 
@@ -129,6 +128,15 @@ body {
     position: relative;
     top: -60px;
     width: 100%;
+}
+
+.decor-into-top {
+    height: 60px;
+    left: 0;
+    position: relative;
+    top: 0px;
+    width: 100%;
+    z-index: 2;
 }
 
 .decor-top .decor {
