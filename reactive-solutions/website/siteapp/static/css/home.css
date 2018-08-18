@@ -13,7 +13,7 @@
 }
 
 .slider-wrapper .slider-bkg-color {
-    background-color: rgb(27, 130, 204, 0.8);
+    background-color: rgb(27, 130, 204, 0.7);
     bottom: 0;
     height: 100%;
     left: 0;
@@ -109,7 +109,7 @@
     z-index: 1;
     transition-duration: 200ms;
     box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
-    padding: 10px;
+    padding: 20px;
 }
 
 .blog-wrapper .item:hover .cover {
@@ -127,7 +127,7 @@
 .blog-wrapper .item .cover h3 {
     color: #888;
     font-size: 20px;
-    font-weight: 200;
+    font-weight: 600;
     line-height: 20px;
     margin-top: 10px;
     text-align: center;
@@ -144,13 +144,13 @@
 
 .banner-wrapper {
     background-image: url(/static/img/nosotros-banner.png);
+    background-position: bottom;
     background-position: center;
+    background-repeat: repeat-x;
     background-size: contain;
     overflow: hidden;
     position: relative;
     z-index: 0;
-    background-position: bottom;
-    background-repeat: repeat-x;
 }
 
 .banner-wrapper .banner-bkg-color {
@@ -166,17 +166,18 @@
 }
 
 .banner-wrapper .container {
-    z-index: 1;
+    margin-top: 30px;
     position: relative;
+    z-index: 1;
 }
 
 .banner-wrapper h2 {
     color: white;
     font-size: 40px;
     font-weight: 200;
+    letter-spacing: 2px;
     position: relative;
     text-align: center;
-    letter-spacing: 2px;
 }
 
 .banner-wrapper p {
@@ -184,6 +185,65 @@
     font-size: 24px;
     font-weight: 200;
     line-height: 36px;
+}
+
+
+.project-wrapper {
+    position: relative;
+}
+
+.project-wrapper h2 {
+    color: black;
+    font-size: 40px;
+    font-weight: 200;
+    position: relative;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.project-wrapper .description {
+    font-size: 16px;
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.project-wrapper .item {
+    position: relative;
+    overflow: hidden;
+    max-width: 300px;
+    margin: auto;
+    cursor: pointer;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.project-wrapper .item .image {
+    max-width: 100%;
+}
+
+.project-wrapper .item .cover {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    padding: 20px;
+    text-align: center;
+    transition-duration: 200ms;
+}
+
+.project-wrapper .item .cover h3, .project-wrapper .item .cover p {
+    color: #ddd;
+}
+
+.project-wrapper .item:hover .cover {
+    background-color: rgb(27, 130, 204, 0.7)
+}
+
+.project-wrapper .more-button {
+    background-color: #1b82cc !important;
 }
 
 
