@@ -13,7 +13,8 @@
 }
 
 .slider-wrapper .slider-bkg-color {
-    background-color: rgb(27, 130, 204, 0.7);
+    background-color: rgb(255, 255, 255, 0.7);
+    background-image: url(/static/img/texture-bkg.png);
     bottom: 0;
     height: 100%;
     left: 0;
@@ -43,13 +44,13 @@
 
 .slider-wrapper #slides .slides-container h2 {
     font-size: 50px;
-    color: #efefef;
+    color: black;
 }
 
 .slider-wrapper #slides .slides-container p {
-    color: #efefef;
+    color: black;
     font-size: 25px;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .slider-wrapper #slides .slides-pagination a {
@@ -57,16 +58,20 @@
     margin-right: 4px;
     width: 15px;
     height: 15px;
-    border: 2px solid #efefef !important;
+    border: 2px solid black !important;
 }
 
 .slides-pagination a.current {
-    background: #efefef !important;
+    background: black !important;
 }
 
 
 .blog-wrapper {
     padding-bottom: 60px;
+}
+
+.blog-wrapper a {
+    text-decoration: none;
 }
 
 .blog-wrapper h2 {
@@ -109,7 +114,7 @@
     background-color: white;
     bottom: 0;
     left: 0;
-    position: absolute;
+    position: relative;
     right: 0;
     z-index: 1;
     transition-duration: 200ms;
@@ -146,6 +151,7 @@
     text-align: center;
 }
 
+
 .banner-wrapper {
     background-image: url(/static/img/nosotros-banner.png);
     background-position: bottom;
@@ -157,7 +163,8 @@
 }
 
 .banner-wrapper .banner-bkg-color {
-    background-color: rgb(27, 130, 204, 0.7);
+    background-color: rgb(255, 255, 255, 0.2);
+    background-image: url(/static/img/texture-bkg.png);
     bottom: 0;
     height: 100%;
     left: 0;

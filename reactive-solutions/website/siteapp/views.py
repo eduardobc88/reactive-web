@@ -71,7 +71,7 @@ class ArchiveServiceDetailView(generic.DetailView):
 
 
 class ArchivePostListView(generic.ListView):
-    template_name = 'archive-post/post-list.html'
+    template_name = 'archive-blog/archive.html'
     model = ArchivePost
     paginate_by = 10
     context_object_name = 'posts'
@@ -84,7 +84,7 @@ class ArchivePostListView(generic.ListView):
 
 
 class ArchivePostDetailView(generic.DetailView):
-    template_name = 'archive-post/post-detail.html'
+    template_name = 'archive-blog/single.html'
     model = ArchivePost
     context_object_name = 'post'
     slug_field = 'post_slug'
