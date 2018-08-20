@@ -7,7 +7,7 @@
 <script src="{% static 'js/single-blog.js' %}"></script>
 {% endblock %}
 {% block page_content %}
-    <div class="header-wrapper">
+    <div class="header-wrapper" style="background-image: url({{ post.post_thumbnail }}); background-size:cover;">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-1"></div>

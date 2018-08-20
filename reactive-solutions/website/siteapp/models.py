@@ -190,11 +190,11 @@ class SiteOption(models.Model):
 @receiver(post_save, sender=HomeSlider)
 def home_slider_post_save(sender, instance, created, **kwargs):
     if created:
-        instance.slide_image = str(instance.slide_image).replace('siteapp/', '')
+        instance.slide_image = str(instance.slide_image).replace('siteapp', '')
         instance.save()
     else:
         if "siteapp" in str(instance.slide_image):
-            instance.slide_image = str(instance.slide_image).replace('siteapp/', '')
+            instance.slide_image = str(instance.slide_image).replace('siteapp', '')
             instance.save()
 
 
@@ -203,11 +203,11 @@ def archive_project_post_save(sender, instance, created, **kwargs):
     if created:
         slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_title[:180], instance.id))
         instance.project_slug = '{0}'.format(slug)
-        instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp/', '')
+        instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp', '')
         instance.save()
     else:
         if "siteapp" in str(instance.project_thumbnail):
-            instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp/', '')
+            instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp', '')
             instance.save()
 
 
@@ -215,17 +215,17 @@ def archive_project_post_save(sender, instance, created, **kwargs):
 def archive_service_post_save(sender, instance, created, **kwargs):
     if created:
         instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
-        instance.service_icon = str(instance.service_icon).replace('siteapp/', '')
-        instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp/', '')
+        instance.service_icon = str(instance.service_icon).replace('siteapp', '')
+        instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp', '')
         instance.save()
     else:
         object_old = ArchiveService.objects.get(pk=instance.pk)
         is_diff = False
         if "siteapp" in str(instance.service_icon):
-            instance.service_icon = str(instance.service_icon).replace('siteapp/', '')
+            instance.service_icon = str(instance.service_icon).replace('siteapp', '')
             is_diff = True
         if "siteapp" in str(instance.service_thumbnail):
-            instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp/', '')
+            instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp', '')
             is_diff = True
         if is_diff:
             instance.save()
@@ -235,11 +235,11 @@ def archive_service_post_save(sender, instance, created, **kwargs):
 def archive_post_post_save(sender, instance, created, **kwargs):
     if created:
         instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
-        instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp/', '')
+        instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp', '')
         instance.save()
     else:
         if "siteapp" in str(instance.post_thumbnail):
-            instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp/', '')
+            instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp', '')
             instance.save()
 
 
@@ -247,9 +247,9 @@ def archive_post_post_save(sender, instance, created, **kwargs):
 def page_post_save(sender, instance, created, **kwargs):
     if created:
         instance.page_slug = defaultfilters.slugify('{0}'.format(instance.page_title[:180]))
-        instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp/', '')
+        instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp', '')
         instance.save()
     else:
         if "siteapp" in str(instance.page_thumbnail):
-            instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp/', '')
+            instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp', '')
             instance.save()

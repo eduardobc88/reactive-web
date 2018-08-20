@@ -2,7 +2,7 @@
     background-image: url(/static/img/blog-bkg.png);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom center;
 }
 
 .archive-blog-wrapper {
