@@ -463,6 +463,54 @@ body {
 
 
 
+.social-share-title {
+    border-top: 3px solid #1b82cc;
+    display: block;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-top: 60px;
+    padding-top: 60px;
+    text-align: center;
+}
+
+.social-buttons-wrapper {
+    display: flex;
+    margin: 30px auto auto auto;
+    position: relative;
+    width: 300px;
+}
+
+.social-buttons-wrapper .button {
+    background-image: url(/static/img/social-icons.png);
+    cursor: pointer;
+    height: 50px;
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 53px;
+}
+
+.social-buttons-wrapper .share-fb {
+    background-position: -1px;
+}
+
+.social-buttons-wrapper .share-gp {
+    background-position: -53px;
+}
+
+.social-buttons-wrapper .share-tw {
+    background-position: -104px;
+}
+
+.social-buttons-wrapper .share-wa {
+    background-position: -155px;
+}
+
+.social-buttons-wrapper .share-t {
+    background-position: -208px;
+}
+
+
 @media all and (max-width: 768px) {
     .menu-wrapper .menu-options .option {
         display: none;

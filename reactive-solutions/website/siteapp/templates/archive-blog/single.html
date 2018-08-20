@@ -1,5 +1,56 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/single-blog.css' %}">
+{% endblock %}
+{% block page_js %}
+<script src="{% static 'js/single-blog.js' %}"></script>
+{% endblock %}
 {% block page_content %}
-    <h2>Post Detail</h2>
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-1"></div>
+                <div class="col-xs-12 col-sm-10">
+                    <h1>{{ post.post_title }}</h1>
+                </div>
+                <div class="col-xs-12 col-sm-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white single-blog-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-2"></div>
+                <div class="col-xs-12 col-sm-8">
+                    <div>{{ post.post_content | safe }}</div>
+                </div>
+                <div class="col-xs-12 col-sm-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-2"></div>
+                <div class="col-xs-12 col-sm-8">
+                    <h3 class="social-share-title">COMPARTIR<h3>
+                    <div class="social-buttons-wrapper">
+                        <div class="button share-fb"></div>
+                        <div class="button share-gp"></div>
+                        <div class="button share-tw"></div>
+                        <div class="button share-wa"></div>
+                        <div class="button share-t"></div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2"></div>
+            </div>
+        </div>
+        <div class="decor-bottom over-footer">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+    </div>
 {% endblock %}
