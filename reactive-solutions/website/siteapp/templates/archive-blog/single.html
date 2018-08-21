@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'css/single-blog.css' %}">
 {% endblock %}
 {% block page_js %}
-<script src="{% static 'js/single-blog.js' %}"></script>
+<script src="{% static 'js/share-this.js' %}"></script>
 {% endblock %}
 {% block page_content %}
     <div class="header-wrapper" style="background-image: url({{ post.post_thumbnail }}); background-size:cover;">
@@ -37,11 +37,11 @@
                 <div class="col-xs-12 col-sm-8">
                     <h3 class="social-share-title">COMPARTIR<h3>
                     <div class="social-buttons-wrapper">
-                        <div class="button share-fb"></div>
-                        <div class="button share-gp"></div>
-                        <div class="button share-tw"></div>
-                        <div class="button share-wa"></div>
-                        <div class="button share-t"></div>
+                        <div class="button share-fb" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                        <div class="button share-gp" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                        <div class="button share-tw" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                        <div class="button share-wa" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                        <div class="button share-t" attr-permalink="{{ request.build_absolute_uri }}"></div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-2"></div>
