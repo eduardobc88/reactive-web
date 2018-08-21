@@ -13,8 +13,8 @@
 }
 
 .slider-wrapper .slider-bkg-color {
-    background-color: rgb(255, 255, 255, 0.7);
-    background-image: url(/static/img/texture-bkg.png);
+    background-color: rgba(36, 169, 225, 0.9);
+    /* background-image: url(/static/img/texture-bkg.png); */
     bottom: 0;
     height: 100%;
     left: 0;
@@ -92,7 +92,7 @@
 }
 
 .blog-wrapper .more-button {
-    background-color: #1b82cc !important;
+    background-color: #21a9f0 !important;
 }
 
 .blog-wrapper .item {
@@ -123,7 +123,7 @@
 }
 
 .blog-wrapper .item:hover .cover {
-    background-color: #1b82cc;
+    background-color: #21a9f0;
 }
 
 .blog-wrapper .item:hover .cover h3 {
@@ -250,11 +250,11 @@
 }
 
 .project-wrapper .item:hover .cover {
-    background-color: rgb(27, 130, 204, 0.7)
+    background-color: rgba(33, 169, 240, 0.9);
 }
 
 .project-wrapper .more-button {
-    background-color: #1b82cc !important;
+    background-color: #21a9f0 !important;
 }
 
 

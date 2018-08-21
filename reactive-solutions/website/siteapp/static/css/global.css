@@ -4,7 +4,7 @@ body {
 }
 
 .menu-wrapper {
-    background-color: rgb(27, 130, 204, 0.9);
+    background-color: rgba(36, 169, 225, 0.9);
     box-shadow: 0 0 2px rgba(0,0,0,.14), 0 2px 3px rgba(0,0,0,.18);
     height: 70px;
     left: 0;
@@ -26,14 +26,17 @@ body {
 }
 
 .menu-wrapper .menu-options .home-wrapper label {
-    color: #efefef;
+    color: #fff;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 100;
-    line-height: 24px;
+    left: -20px;
+    line-height: 20px;
     padding-top: 2px;
+    position: relative;
+    text-align: center;
     vertical-align: middle;
-    width: 170px;
+    width: 130px;
     word-wrap: break-word;
 }
 
@@ -48,7 +51,7 @@ body {
 
 .menu-wrapper .menu-options .option {
     align-self: center;
-    color: #efefef;
+    color: #fff;
     flex-grow: 1;
     font-size: 16px;
     position: relative;
@@ -63,7 +66,7 @@ body {
     color: transparent;
     top: 0;
     bottom: 0;
-    left: 15px;
+    left: 0px;
     font-size: 20px;
     line-height: 20px;
     transition-duration: 200ms;
@@ -75,14 +78,14 @@ body {
     color: transparent;
     top: 0;
     bottom: 0;
-    right: 15px;
+    right: 0px;
     font-size: 20px;
     line-height: 20px;
     transition-duration: 200ms;
 }
 
 .menu-wrapper .menu-options .option:hover:before, .menu-wrapper .menu-options .option:hover:after {
-    color: #efefef;
+    color: #fff;
 }
 
 .menu-wrapper .menu-options .menu-mobile {
@@ -94,7 +97,7 @@ body {
 
 
 .mobile-menu-wrapper {
-    background-color: #1b82cc;
+    background-color: #21a9f0;
     bottom: 0;
     box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
     height: 100%;
@@ -121,7 +124,7 @@ body {
 }
 
 .mobile-menu-wrapper .home-wrapper label {
-    color: #efefef;
+    color: #fff;
     cursor: pointer;
     font-size: 16px;
     font-weight: 400;
@@ -132,7 +135,7 @@ body {
 }
 
 .mobile-menu-wrapper .option {
-    color: #efefef;
+    color: #fff;
     display: block;
     font-size: 16px;
     line-height: 18px;
@@ -181,11 +184,11 @@ body {
 }
 
 .background-fill-blue {
-    fill: #1b82cc;
+    fill: #21a9f0;
 }
 
 .background-color-blue {
-    background-color: #1b82cc;
+    background-color: #21a9f0;
 }
 
 .background-fill-white {
@@ -206,7 +209,7 @@ body {
 }
 
 .footer-wrapper .cover {
-    /* background-color: rgb(27, 130, 204, 0.7); */
+    /* background-color: rgba(33, 169, 240, 0.9); */
     bottom: 0;
     height: 100%;
     left: 0;
@@ -233,20 +236,22 @@ body {
 }
 
 .footer-wrapper .home-wrapper label {
-    color: #efefef;
+    color: #fff;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 100;
-    line-height: 24px;
+    left: -20px;
+    line-height: 20px;
     padding-top: 2px;
-    text-align: left;
+    position: relative;
+    text-align: center;
     vertical-align: middle;
-    width: 115px;
+    width: 130px;
     word-wrap: break-word;
 }
 
 .footer-wrapper .option {
-    color: #efefef;
+    color: #fff;
     display: block;
     flex-grow: 1;
     font-size: 16px;
@@ -258,7 +263,7 @@ body {
 }
 
 .footer-wrapper .option:hover {
-    color: #efefef;
+    color: #fff;
 }
 
 .footer-wrapper .social-icon img {
@@ -267,7 +272,7 @@ body {
 }
 
 .footer-wrapper .title {
-    color: #efefef;
+    color: #fff;
     font-size: 24px;
     margin-top: 50px;
     text-align: center;
@@ -275,7 +280,7 @@ body {
 }
 
 .footer-wrapper .phone {
-    color: #efefef;
+    color: #fff;
     display: block;
     font-size: 24px;
     font-weight: 600;
@@ -286,7 +291,7 @@ body {
 }
 
 .footer-wrapper .reserved {
-    color: #efefef;
+    color: #fff;
     font-size: 12px;
     font-weight: 600;
     margin-top: 15px;
@@ -354,7 +359,7 @@ body {
 
 .archive-pagination li {
     align-self: center;
-    background-color: #1b82cc;
+    background-color: #21a9f0;
     font-size: 14px;
     font-weight: 400;
     line-height: 30px;
@@ -429,8 +434,8 @@ body {
 
 
 .header-wrapper {
-    height: 350px;
-    background-color: #1b82cc;
+    height: 450px;
+    background-color: #21a9f0;
     position: relative;
     overflow: hidden;
     background-position: center;
@@ -466,7 +471,7 @@ body {
 
 
 .social-share-title {
-    border-top: 3px solid #1b82cc;
+    border-top: 3px solid #21a9f0;
     display: block;
     font-size: 24px;
     font-weight: 400;
