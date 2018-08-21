@@ -6,6 +6,7 @@ from django.db.models.signals import post_save, pre_save
 import uuid
 import os
 from tinymce.models import HTMLField
+from colorful.fields import RGBColorField
 
 
 # Create your models here.
@@ -120,6 +121,7 @@ class ArchiveService(models.Model):
     service_thumbnail = models.ImageField(upload_to=upload_image_service, default='no-img.png')
     service_icon = models.ImageField(upload_to=upload_icon_service, default='no-img.png')
     service_slug = models.SlugField(max_length=200, null=True)
+    service_background_color = RGBColorField(default='#FFFFFF')
 
 
     def admin_display_service_slug(self):
