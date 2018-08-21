@@ -433,6 +433,8 @@ body {
     background-color: #1b82cc;
     position: relative;
     overflow: hidden;
+    background-position: center;
+    background-size: cover;
 }
 
 .header-wrapper .container {

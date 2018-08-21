@@ -30,7 +30,7 @@ class PageDetailView(generic.DetailView):
 
 
 class ArchiveProjectListView(generic.ListView):
-    template_name = 'archive-project/project-list.html'
+    template_name = 'archive-project/archive.html'
     model = ArchiveProject
     paginate_by = 10
     context_object_name = 'projects'
@@ -43,14 +43,14 @@ class ArchiveProjectListView(generic.ListView):
 
 
 class ArchiveProjectDetailView(generic.DetailView):
-    template_name = 'archive-project/project-detail.html'
+    template_name = 'archive-project/single.html'
     model = ArchiveProject
     context_object_name = 'project'
     slug_field = 'project_slug'
 
 
 class ArchiveServiceListView(generic.ListView):
-    template_name = 'archive-service/service-list.html'
+    template_name = 'archive-service/archive.html'
     model = ArchiveService
     paginate_by = 10
     context_object_name = 'services'
@@ -64,7 +64,7 @@ class ArchiveServiceListView(generic.ListView):
 
 
 class ArchiveServiceDetailView(generic.DetailView):
-    template_name = 'archive-service/service-detail.html'
+    template_name = 'archive-service/single.html'
     model = ArchiveService
     context_object_name = 'service'
     slug_field = 'service_slug'

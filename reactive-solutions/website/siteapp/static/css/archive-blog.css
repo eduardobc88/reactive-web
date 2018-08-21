@@ -1,8 +1,7 @@
 .header-wrapper {
     background-image: url(/static/img/blog-bkg.png);
-    background-size: contain;
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: center;
 }
 
 .archive-blog-wrapper {

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/archive-project.css' %}">
+{% endblock %}
+
+{% block page_content %}
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-1"></div>
+                <div class="col-xs-12 col-sm-10">
+                    <h1>PROYECTOS</h1>
+                </div>
+                <div class="col-xs-12 col-sm-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white archive-project-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-xs-12 col-sm-4">
+                        <a href="{{ project.get_absolute_url }}">
+                            <div class="item">
+                                <img class="image" src="http://placehold.it/360x400/7b7b7b/DADADA/?text=360x400">
+                                <div class="cover">
+                                    <h3>{{ project.project_title }}</h3>
+                                    <p>WordPress</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    {% if is_paginated %}
+                        <div class="archive-pagination">
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                  <li><a href="{% url 'project-archive' %}{{ page_obj.previous_page_number }}/">‹</a></li>
+                                {% else %}
+                                  <li class="disabled"><span>‹</span></li>
+                                {% endif %}
+                                {% for i in paginator.page_range %}
+                                  {% if page_obj.number == i %}
+                                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                  {% else %}
+                                    <li><a href="{% url 'project-archive' %}{{ i }}/">{{ i }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if page_obj.has_next %}
+                                  <li><a href="{% url 'project-archive' %}{{ page_obj.next_page_number }}/">›</a></li>
+                                {% else %}
+                                  <li class="disabled"><span>›</span></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="decor-bottom over-footer">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+    </div>
+{% endblock %}
