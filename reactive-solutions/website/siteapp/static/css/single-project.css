@@ -1,0 +1,14 @@
+.header-wrapper {
+    background-image: url(/static/img/blog-bkg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.single-project-wrapper {
+    padding-bottom: 0px;
+    padding-top: 60px;
+}
+
+.single-project-wrapper .decor-top {
+    position: absolute;
+}
