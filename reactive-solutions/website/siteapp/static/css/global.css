@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background: #666;
     height: 100%;
+    margin: 0px;
 }
 
 .menu-wrapper {
@@ -476,7 +477,12 @@ body {
 }
 
 .header-wrapper .container {
-    margin-top: 120px;
+    height: 100%;
+    display: flex;
+}
+
+.header-wrapper .container .max-width-720 {
+    align-self: center;
 }
 
 .header-wrapper .container h1 {
@@ -570,6 +576,20 @@ body {
 
 .max-width-320 {
     max-width: 320px;
+    margin: auto;
+    flex-grow: 1;
+    display: block;
+}
+
+.max-width-480 {
+    max-width: 480px;
+    margin: auto;
+    flex-grow: 1;
+    display: block;
+}
+
+.max-width-640 {
+    max-width: 640px;
     margin: auto;
     flex-grow: 1;
     display: block;
