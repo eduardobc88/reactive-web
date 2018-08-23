@@ -15,13 +15,19 @@ body {
     z-index: 10;
 }
 
+.menu-wrapper .container {
+    height: 100%;
+}
+
 .menu-wrapper .menu-options {
     position: relative;
+    height: 100%;
 }
 
 .menu-wrapper .menu-options .logo {
-    height: 100%;
+    height: 60px;
     position: relative;
+    align-self: center;
 }
 
 .menu-wrapper .menu-options .home-wrapper label {
@@ -58,7 +64,7 @@ body {
     position: relative;
     text-align: center;
     text-decoration: none;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .menu-wrapper .menu-options .option:before {
@@ -280,7 +286,7 @@ body {
     position: relative;
     text-decoration: none;
     transition-duration: 200ms;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .footer-wrapper .option:hover {
