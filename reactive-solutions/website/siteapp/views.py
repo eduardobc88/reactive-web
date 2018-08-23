@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import ArchiveProject, ArchiveService, ArchivePost, Page, SiteOption, HomeSlider, Prospect
 from django.views import generic
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -18,22 +19,31 @@ def home(request):
     )
 
 def thanks(request):
-    prospect = Prospect(
-        prospect_name = request.POST.get('contact_name', ''),
-        prospect_last_name = request.POST.get('contact_lastname', ''),
-        prospect_email = request.POST.get('contact_email', ''),
-        prospect_phone = request.POST.get('contact_phone', ''),
-        prospect_website = request.POST.get('contact_website', ''),
-        prospect_message = request.POST.get('contact_message', ''),
-        )
-    prospect.save()
+    page = Page.objects.filter(page_slug='gracias')
+    page_data = {
+        'page_title':page.values('page_title')[0]['page_title'],
+        'page_content':page.values('page_content')[0]['page_content'],
+        'page_thumbnail':page.values('page_thumbnail')[0]['page_thumbnail'],
+        }
+
+    if request.POST:
+        prospect = Prospect(
+            prospect_name = request.POST.get('contact_name', ''),
+            prospect_last_name = request.POST.get('contact_lastname', ''),
+            prospect_email = request.POST.get('contact_email', ''),
+            prospect_phone = request.POST.get('contact_phone', ''),
+            prospect_website = request.POST.get('contact_website', ''),
+            prospect_message = request.POST.get('contact_message', ''),
+            )
+        prospect.save()
+        page_slug = page.values('page_slug')[0]['page_slug']
+        return HttpResponseRedirect('/{0}/'.format(page_slug))
 
     return render(
         request,
-        'page-template/default.html',
+        page.values('page_template')[0]['page_template'],
         context = {
-            'page_title': 'Gracias por tu mensaje!',
-            'page_content': 'Pronto nos pondremos en contácto.',
+            'page': page_data,
         }
     )
 
@@ -43,6 +53,7 @@ class PageDetailView(generic.DetailView):
     model = Page
     context_object_name = 'page'
     slug_field = 'page_slug'
+
 
 
     def get_queryset(self):

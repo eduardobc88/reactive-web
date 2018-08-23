@@ -24,8 +24,8 @@
     margin: auto;
     cursor: pointer;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 10px 20px 20px;
+    border-radius: 5px;
 }
 
 .archive-project-wrapper .item .image {
@@ -33,14 +33,15 @@
 }
 
 .archive-project-wrapper .item .cover {
-    position: absolute;
-    bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
-    top: 0;
+    bottom: 0;
+    left: 0;
     padding: 20px;
+    position: absolute;
+    right: 0;
     text-align: center;
+    top: 0;
     transition-duration: 200ms;
-    width: 100%;
 }
 
 .archive-project-wrapper .item h3, .archive-project-wrapper .item p {

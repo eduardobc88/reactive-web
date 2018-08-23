@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'css/thankyou.css' %}">
+<link rel="stylesheet" href="{% static 'css/default.css' %}">
 {% endblock %}
 {% block page_js %}
+<script src="{% static 'js/share-this.js' %}"></script>
 {% endblock %}
 {% block page_content %}
     <div class="header-wrapper" style="background-image: url({{ page.page_thumbnail }}); background-size:cover;">
@@ -13,15 +14,25 @@
             </div>
         </div>
     </div>
-    <div class="custom-wrapper background-color-white thankyou-wrapper">
+    <div class="custom-wrapper background-color-white default-wrapper">
         <div class="decor-top">
             <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
             </svg>
         </div>
         <div class="container">
-            <div class="max-width-720 content">
+            <div class="max-width-720">
                 <div>{{ page.page_content | safe }}</div>
+            </div>
+            <div class="max-width-480">
+                <h3 class="social-share-title">COMPARTIR<h3>
+                <div class="social-buttons-wrapper">
+                    <div class="button share-fb" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-gp" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-tw" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-wa" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-t" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                </div>
             </div>
         </div>
         <div class="decor-bottom over-footer">

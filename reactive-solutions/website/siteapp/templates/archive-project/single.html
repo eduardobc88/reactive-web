@@ -9,12 +9,8 @@
 {% block page_content %}
     <div class="header-wrapper" style="background-image: url({{ project.project_thumbnail }}); background-size:cover;">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-1"></div>
-                <div class="col-xs-12 col-sm-10">
-                    <h1>{{ project.project_title }}</h1>
-                </div>
-                <div class="col-xs-12 col-sm-1"></div>
+            <div class="max-width-720">
+                <h1>{{ project.project_title }}</h1>
             </div>
         </div>
     </div>
@@ -25,26 +21,18 @@
             </svg>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-2"></div>
-                <div class="col-xs-12 col-sm-8">
-                    <div>{{ project.project_content | safe }}</div>
-                </div>
-                <div class="col-xs-12 col-sm-2"></div>
+            <div class="max-width-720">
+                <div>{{ project.project_content | safe }}</div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-2"></div>
-                <div class="col-xs-12 col-sm-8">
-                    <h3 class="social-share-title">COMPARTIR<h3>
-                    <div class="social-buttons-wrapper">
-                        <div class="button share-fb" attr-permalink="{{ request.build_absolute_uri }}"></div>
-                        <div class="button share-gp" attr-permalink="{{ request.build_absolute_uri }}"></div>
-                        <div class="button share-tw" attr-permalink="{{ request.build_absolute_uri }}"></div>
-                        <div class="button share-wa" attr-permalink="{{ request.build_absolute_uri }}"></div>
-                        <div class="button share-t" attr-permalink="{{ request.build_absolute_uri }}"></div>
-                    </div>
+            <div class="max-width-480">
+                <h3 class="social-share-title">COMPARTIR<h3>
+                <div class="social-buttons-wrapper">
+                    <div class="button share-fb" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-gp" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-tw" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-wa" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-t" attr-permalink="{{ request.build_absolute_uri }}"></div>
                 </div>
-                <div class="col-xs-12 col-sm-2"></div>
             </div>
         </div>
         <div class="decor-bottom over-footer">

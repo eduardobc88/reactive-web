@@ -10,12 +10,8 @@
 {% block page_content %}
     <div class="header-wrapper" style="background-image: url({{ page.page_thumbnail }}); background-size:cover;">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-1"></div>
-                <div class="col-xs-12 col-sm-10">
-                    <h1>{{ page.page_title }}</h1>
-                </div>
-                <div class="col-xs-12 col-sm-1"></div>
+            <div class="max-width-720">
+                <h1>{{ page.page_title }}</h1>
             </div>
         </div>
         <div id="map">
@@ -29,16 +25,13 @@
             </svg>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-2"></div>
-                <div class="col-xs-12 col-sm-8">
+            <div class="container">
+                <div class="max-width-480">
                     <div>{{ page.page_content | safe }}</div>
                 </div>
-                <div class="col-xs-12 col-sm-2"></div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-3"></div>
-                <div class="col-xs-12 col-sm-6">
+            <div class="container">
+                <div class="max-width-480">
                     <form action="{% url 'thankyou-page' %}" method="post" class="form-wrapper">
                         {% csrf_token %}
                         <div class="input-wrapper">
@@ -68,11 +61,9 @@
                         <button type="submit"></button>
                     </form>
                 </div>
-                <div class="col-xs-12 col-sm-3"></div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-2"></div>
-                <div class="col-xs-12 col-sm-8">
+            <div class="container">
+                <div class="max-width-480">
                     <div class="we">
                         <img src="{% static 'img/nosotros-banner.png' %}">
                     </div>
@@ -85,7 +76,6 @@
                         <div class="button share-t" attr-permalink="{{ request.build_absolute_uri }}"></div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-2"></div>
             </div>
         </div>
         <div class="decor-bottom over-footer">
