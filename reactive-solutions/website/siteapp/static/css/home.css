@@ -2,14 +2,10 @@
     background-image: url(/static/img/bkg-slider.gif);
     background-position: bottom;
     background-size: contain;
-    height: 500px;
+    height: 450px;
     overflow: hidden;
     position: relative;
     z-index: 0;
-}
-
-.slider-wrapper .container{
-    padding-top: 100px;
 }
 
 .slider-wrapper .slider-bkg-color {
@@ -26,7 +22,8 @@
 }
 
 .slider-wrapper #slides {
-    height: 300px !important;
+    height: 400px !important;
+    margin-top: 100px !important;
 }
 
 .slider-wrapper #slides .slides-container .icon {
@@ -51,6 +48,20 @@
     color: black;
     font-size: 25px;
     font-weight: 400;
+}
+
+.slider-wrapper #slides .slides-container .left {
+    flex-grow: 0;
+    padding: 15px;
+}
+
+.slider-wrapper #slides .slides-container .right {
+    flex-grow: 1;
+    padding: 15px;
+}
+
+.slider-wrapper #slides .slides-pagination {
+    margin-top: 60px;
 }
 
 .slider-wrapper #slides .slides-pagination a {
@@ -78,13 +89,14 @@
     color: black;
     font-size: 40px;
     font-weight: 300;
+    letter-spacing: 2px;
+    margin-top: 0px;
     position: relative;
     text-align: center;
-    letter-spacing: 2px;
 }
 
 .blog-wrapper .description {
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
     color: #666;
     margin-bottom: 30px;
@@ -102,8 +114,8 @@
     margin: auto;
     cursor: pointer;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
+    border-radius: 5px;
 }
 
 .blog-wrapper .item .image {
@@ -210,10 +222,11 @@
     position: relative;
     text-align: center;
     letter-spacing: 2px;
+    margin-top: 0px;
 }
 
 .project-wrapper .description {
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
     color: #666;
     margin-bottom: 30px;
@@ -227,8 +240,8 @@
     margin: auto;
     cursor: pointer;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
+    border-radius: 5px;
 }
 
 .project-wrapper .item .image {
@@ -236,12 +249,14 @@
 }
 
 .project-wrapper .item .cover {
-    position: absolute;
-    bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
-    top: 0;
+    bottom: 0;
+    left: 0;
     padding: 20px;
+    position: absolute;
+    right: 0;
     text-align: center;
+    top: 0;
     transition-duration: 200ms;
 }
 
@@ -263,25 +278,22 @@
     padding-bottom: 0px;
 }
 
-.services-wrapper .container {
-    padding-bottom: 60px;
-}
-
 .services-wrapper h2 {
     color: black;
     font-size: 40px;
     font-weight: 300;
+    letter-spacing: 2px;
+    margin-top: 0px;
     position: relative;
     text-align: center;
-    letter-spacing: 2px;
 }
 
 .services-wrapper .description {
-    font-size: 16px;
-    text-align: center;
     color: #666;
-    margin-bottom: 30px;
+    font-size: 16px;
     font-weight: 400;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .services-wrapper a {
@@ -291,21 +303,11 @@
 .services-wrapper .item {
     background-color: white;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    margin-bottom: 30px;
+    margin-top: 10px;
     overflow: hidden;
-    width: 100%;
     padding: 20px;
     position: relative;
-    margin-top: 15px;
-}
-
-.services-wrapper .item .cover {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    background-image: url(/static/img/texture-bkg.png);
 }
 
 .services-wrapper .item h3 {
@@ -325,11 +327,11 @@
 }
 
 .services-wrapper .item img {
+    bottom: 0;
+    margin: auto;
     position: absolute;
     right: 0;
     top: 0;
-    bottom: 0;
-    margin: auto;
     z-index: 0;
 }
 
@@ -345,10 +347,10 @@
 
 @media all and (max-width: 768px) {
     .slider-wrapper #slides .slides-container .icon {
-        max-width: 100px !important;
-        max-height: 100px !important;
-        margin: auto !important;
         display: block !important;
+        margin: auto !important;
+        max-height: 100px !important;
+        max-width: 100px !important;
     }
 
     .slider-wrapper #slides .slides-container h2 {
@@ -359,5 +361,10 @@
     .slider-wrapper #slides .slides-container p {
         font-size: 20px;
         text-align: center;
+    }
+
+
+    .services-wrapper .item img {
+        display: none;
     }
 }

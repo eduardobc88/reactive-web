@@ -1,6 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: #666;
+    height: 100%;
 }
 
 .menu-wrapper {
@@ -8,8 +9,6 @@ body {
     box-shadow: 0 0 2px rgba(0,0,0,.14), 0 2px 3px rgba(0,0,0,.18);
     height: 70px;
     left: 0;
-    padding-bottom: 10px;
-    padding-top: 10px;
     position: fixed;
     right: 0;
     top: 0;
@@ -38,6 +37,7 @@ body {
     vertical-align: middle;
     width: 130px;
     word-wrap: break-word;
+    align-self: center;
 }
 
 .menu-wrapper .menu-options {
@@ -47,6 +47,7 @@ body {
 .menu-wrapper .menu-options .home-wrapper {
     flex-grow: 4;
     text-decoration: none;
+    display: flex;
 }
 
 .menu-wrapper .menu-options .option {
@@ -121,6 +122,11 @@ body {
     right: -125px;
     right: 15px;
     top: 20px;
+}
+
+.mobile-menu-wrapper .home-wrapper {
+    text-decoration: none;
+    position: relative;
 }
 
 .mobile-menu-wrapper .home-wrapper label {
@@ -208,6 +214,18 @@ body {
     background-size: cover;
 }
 
+.footer-wrapper .left {
+    flex-grow: 1;
+}
+
+.footer-wrapper .mid {
+    flex-grow: 2;
+}
+
+.footer-wrapper .right {
+    flex-grow: 1;
+}
+
 .footer-wrapper .cover {
     /* background-color: rgba(33, 169, 240, 0.9); */
     bottom: 0;
@@ -226,13 +244,16 @@ body {
 }
 
 .footer-wrapper .home-wrapper {
+    display: flex;
+    flex-grow: 4;
     position: relative;
     text-align: center;
+    text-decoration: none;
     top: 50px;
 }
 
 .footer-wrapper .home-wrapper .logo {
-    max-width: 60px;
+    max-height: 80px;
 }
 
 .footer-wrapper .home-wrapper label {
@@ -242,12 +263,12 @@ body {
     font-weight: 100;
     left: -20px;
     line-height: 20px;
-    padding-top: 2px;
     position: relative;
     text-align: center;
     vertical-align: middle;
     width: 130px;
     word-wrap: break-word;
+    align-self: center;
 }
 
 .footer-wrapper .option {
@@ -277,6 +298,7 @@ body {
     margin-top: 50px;
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
 .footer-wrapper .phone {
@@ -294,9 +316,9 @@ body {
     color: #fff;
     font-size: 12px;
     font-weight: 600;
-    margin-top: 15px;
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
+    padding: 10px;
 }
 
 
@@ -311,11 +333,12 @@ body {
     margin: 30px auto auto auto;
     max-width: 150px;
     overflow: hidden;
-    padding: 4px 10px 4px 10px;
+    padding: 10px;
     position: relative;
     text-align: center;
     text-decoration: none !important;
     text-transform: uppercase;
+    border-radius: 5px;
 }
 
 .button-effect:after {
@@ -522,6 +545,53 @@ body {
 }
 
 
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1024px;
+    margin: auto;
+    position: relative;
+}
+
+.flex-container {
+    display: flex;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1024px;
+    margin: auto;
+    position: relative;
+}
+
+.max-width-320 {
+    max-width: 320px;
+    margin: auto;
+    flex-grow: 1;
+    display: block;
+}
+
+.max-width-720 {
+    max-width: 720px;
+    margin: auto;
+    flex-grow: 1;
+    display: block;
+}
+
+.max-width-992 {
+    max-width: 992px;
+    margin: auto;
+    flex-grow: 1;
+    display: block;
+}
+
+.max-width-1024 {
+    max-width: 1024px;
+    margin: auto;
+    flex-grow: 1;
+    display: block;
+}
+
+
+
 @media all and (max-width: 768px) {
     .menu-wrapper .menu-options .option {
         display: none;
@@ -543,5 +613,9 @@ body {
 
     .footer-wrapper .social-icon img {
         margin: 20px auto auto auto;
+    }
+
+    .flex-container {
+        display: block;
     }
 }

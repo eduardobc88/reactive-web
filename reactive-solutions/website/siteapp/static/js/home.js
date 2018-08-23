@@ -1,5 +1,5 @@
 var documentReady = function() {
-    console.log('index.js');
+    console.log('home.js');
 }
 
 
@@ -9,7 +9,7 @@ var windowLoad = function() {
 
 
 var initSlider = function() {
-    var miliseccondsBeforeNextSlide = 10000;
+    var miliseccondsBeforeNextSlide = 100000000;
     $('#slides').superslides({
         play: miliseccondsBeforeNextSlide
     });
