@@ -188,6 +188,18 @@ class SiteOption(models.Model):
         return '{0}'.format(self.site_option_name)
 
 
+class Prospect(models.Model):
+    prospect_name = models.CharField(max_length=200)
+    prospect_last_name = models.CharField(max_length=200)
+    prospect_email = models.CharField(max_length=200)
+    prospect_phone = models.CharField(max_length=15)
+    prospect_website = models.CharField(max_length=200)
+    prospect_message = models.TextField(max_length=5000)
+
+
+    def __str__(self):
+        return '{0} - {1}'.format(self.prospect_name, self.prospect_email, self.prospect_phone)
+
 
 @receiver(post_save, sender=HomeSlider)
 def home_slider_post_save(sender, instance, created, **kwargs):

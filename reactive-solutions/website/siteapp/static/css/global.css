@@ -442,6 +442,10 @@ body {
     background-size: cover;
 }
 
+.header-wrapper h1 {
+    text-transform: uppercase;
+}
+
 .header-wrapper .container {
     margin-top: 120px;
 }

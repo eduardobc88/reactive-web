@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ArchiveProject, HomeSlider, SiteOption, Banner, ArchiveService, ArchivePost, Page
+from .models import ArchiveProject, HomeSlider, SiteOption, Banner, ArchiveService, ArchivePost, Page, Prospect
 
 
 # Register your models here.
@@ -48,4 +48,11 @@ class HomeSliderAdmin(admin.ModelAdmin):
 class ArchiveProjectAdmin(admin.ModelAdmin):
     list_display = ('project_title', 'project_slug')
     readonly_fields = ['project_slug']
+    pass
+
+
+@admin.register(Prospect)
+class ProspectAdmin(admin.ModelAdmin):
+    list_display= ('prospect_name', 'prospect_email', 'prospect_phone')
+    readonly_fields = ['prospect_name', 'prospect_last_name', 'prospect_email', 'prospect_phone', 'prospect_website', 'prospect_message']
     pass

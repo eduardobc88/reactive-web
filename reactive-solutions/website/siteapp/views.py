@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ArchiveProject, ArchiveService, ArchivePost, Page, SiteOption, HomeSlider
+from .models import ArchiveProject, ArchiveService, ArchivePost, Page, SiteOption, HomeSlider, Prospect
 from django.views import generic
 
 
@@ -17,6 +17,26 @@ def home(request):
         }
     )
 
+def thanks(request):
+    prospect = Prospect(
+        prospect_name = request.POST.get('contact_name', ''),
+        prospect_last_name = request.POST.get('contact_lastname', ''),
+        prospect_email = request.POST.get('contact_email', ''),
+        prospect_phone = request.POST.get('contact_phone', ''),
+        prospect_website = request.POST.get('contact_website', ''),
+        prospect_message = request.POST.get('contact_message', ''),
+        )
+    prospect.save()
+
+    return render(
+        request,
+        'page-template/default.html',
+        context = {
+            'page_title': 'Gracias por tu mensaje!',
+            'page_content': 'Pronto nos pondremos en contácto.',
+        }
+    )
+
 
 class PageDetailView(generic.DetailView):
     template_name = ''
@@ -25,8 +45,14 @@ class PageDetailView(generic.DetailView):
     slug_field = 'page_slug'
 
 
+    def get_queryset(self):
+        self.model = Page.objects.filter(page_slug=self.kwargs.get('slug'))
+        return self.model
+
     def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         self.template_name = self.object.page_template
+        return context
 
 
 class ArchiveProjectListView(generic.ListView):

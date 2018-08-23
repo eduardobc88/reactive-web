@@ -1,0 +1,120 @@
+.header-wrapper {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header-wrapper #map {
+    height: 700px;
+    position: absolute;
+    top: -120px;
+    width: 100%;
+}
+
+.contact-wrapper {
+    padding-bottom: 0px;
+    padding-top: 60px;
+}
+
+.contact-wrapper .decor-top {
+    position: absolute;
+}
+
+.form-wrapper {
+    margin-top: 70px;
+    position: relative;
+}
+
+.form-wrapper .input-wrapper {
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.form-wrapper .input-wrapper label {
+    color: #8f8f8f;
+    display: block;
+    font-size: 16px;
+    left: 10px;
+    position: absolute;
+    top: 15px;
+    transition-duration: 200ms;
+}
+
+.form-wrapper .input-wrapper .input-text {
+    background-color: inherit;
+    border: none;
+    color: #8f8f8f;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-wrapper .input-wrapper:before {
+    background-color: #8f8f8f;
+    bottom: 0;
+    content: "";
+    height: 2px;
+    position: absolute;
+    transition-duration: 200ms;
+    width: 100%;
+    z-index: 1;
+}
+
+.form-wrapper .input-wrapper .input-text:focus {
+    transition-duration: 200ms;
+}
+
+.form-wrapper .input-wrapper.active:before {
+    background-color: #21a9f0;
+}
+
+.form-wrapper .input-wrapper.active label {
+    top: -10px;
+    color: #21a9f0;
+}
+
+.form-wrapper button {
+    background-color: #21a9f0;
+    background-image: url(/static/img/sent-icon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    border-radius: 100%;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    height: 75px;
+    margin-top: 30px;
+    outline: none;
+    position: absolute;
+    right: 0;
+    width: 75px;
+    z-index: 2;
+}
+
+.form-wrapper .input-wrapper.required:before {
+    background-color: red;
+}
+
+.form-wrapper button.required {
+    background-color: #d82121;
+}
+.form-wrapper .input-wrapper.required label {
+    color: #d82121;
+}
+
+
+.we {
+    bottom: -70px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.we img {
+    bottom: 10px;
+    display: flex;
+    height: 200px;
+    margin: auto;
+    position: relative;
+}
