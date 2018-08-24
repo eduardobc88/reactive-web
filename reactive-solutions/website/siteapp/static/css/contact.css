@@ -19,6 +19,12 @@
     position: absolute;
 }
 
+.contact-wrapper .content {
+    font-size: 22px;
+    text-align: center;
+    color: #333;
+}
+
 .form-wrapper {
     margin-top: 70px;
     position: relative;
@@ -38,6 +44,7 @@
     position: absolute;
     top: 15px;
     transition-duration: 200ms;
+    pointer-events: none;
 }
 
 .form-wrapper .input-wrapper .input-text {
@@ -83,6 +90,7 @@
     background-size: 40px;
     border-radius: 100%;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    cursor: pointer;
     height: 75px;
     margin-top: 30px;
     outline: none;

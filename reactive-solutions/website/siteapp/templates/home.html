@@ -9,12 +9,16 @@
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}
 
+{% load options %}
+
 {% block page_content %}
+    {% get_contact_banner_data as contact_banner %}
+    {% get_who_banner_data as who_banner %}
     <div class="slider-wrapper custom-wrapper background-color-blue">
         <div class="slider-bkg-color"></div>
         <div id="slides">
             <ul class="slides-container">
-                {% for slide in home_slides %}
+                {% for slide in slides %}
                     <li>
                         <div class="flex-container">
                             <div class="left">
@@ -45,15 +49,16 @@
             </div>
         </div>
         <div class="flex-container">
-            {% for i in "xxx" %}
-                <a href="#" class="max-width-320">
+            {% for post in posts %}
+                <a href="{{ post.get_absolute_url }}" class="max-width-320">
                     <div class="item">
-                        <img class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450">
+                        <!-- <img class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450"> -->
+                        <img class="image" src="{{ post.post_thumbnail }}">
                         <div class="cover">
                             <div class="title-wrapper">
-                                <h3>Hola mundo! con Node JS</h3>
+                                <h3>{{ post.post_title }}</h3>
                             </div>
-                            <p>En este post vamos a crear nuestra primera App con Node JS...</p>
+                            <p>{{ post.post_excerpt | safe }}</p>
                         </div>
                     </div>
                 </a>
@@ -61,7 +66,7 @@
         </div>
         <div class="container">
             <div class="max-width-320">
-                <a href="#" class="more-button button-effect">Más</a>
+                <a href="{% url 'blog-archive' %}" class="more-button button-effect">Más</a>
             </div>
         </div>
     </div>
@@ -74,15 +79,13 @@
         <div class="banner-bkg-color"></div>
         <div class="container">
             <div class="max-width-720">
-                <h2>BANNER</h2>
-                <p>
-                    Your bones don’t break, mine do. That’s clear. Your cells react to bacteria and viruses differently than mine. You don’t get sick, I do. That’s also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke.
-                </p>
+                <h2>{{ contact_banner.banner_title }}</h2>
+                {{ contact_banner.banner_content | safe }}
             </div>
         </div>
         <div class="container">
             <div class="max-width-320">
-                <a href="#" class="more-button button-effect">Ver</a>
+                <a href="{{ contact_banner.banner_button_url }}" class="more-button button-effect">{{ contact_banner.banner_button_name }}</a>
             </div>
         </div>
     </div>
@@ -101,21 +104,23 @@
             </div>
         </div>
         <div class="flex-container">
-            {% for i in "xxx" %}
+            {% for project in projects %}
                 <div class="max-width-320">
-                    <div class="item">
-                        <img class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450">
-                        <div class="cover">
-                            <h3>Hola mundo! con Node JS</h3>
-                            <p>WordPress</p>
+                    <a href="{{ project.get_absolute_url }}">
+                        <div class="item">
+                            <img class="image" src="{{ project.project_thumbnail }}">
+                            <div class="cover">
+                                <h3>{{ project.project_title }}</h3>
+                                <p>{{ project.project_excerpt }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
         <div class="container">
-            <div class="col-xs-12">
-                <a href="#" class="more-button button-effect">Más</a>
+            <div class="max-width-320">
+                <a href="{% url 'project-archive' %}" class="more-button button-effect">Más</a>
             </div>
         </div>
     </div>
@@ -128,15 +133,13 @@
         <div class="banner-bkg-color"></div>
         <div class="container">
             <div class="max-width-720">
-                <h2>BANNER</h2>
-                <p>
-                    Your bones don’t break, mine do. That’s clear. Your cells react to bacteria and viruses differently than mine. You don’t get sick, I do. That’s also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke.
-                </p>
+                <h2>{{ who_banner.banner_title }}</h2>
+                {{ who_banner.banner_content | safe }}
             </div>
         </div>
         <div class="container">
             <div class="max-width-320">
-                <a href="#" class="more-button button-effect">Ver</a>
+                <a href="{{ who_banner.banner_button_url }}" class="more-button button-effect">{{ who_banner.banner_button_name }}</a>
             </div>
         </div>
     </div>
@@ -156,42 +159,22 @@
         </div>
         <div class="flex-container">
             <div class="max-width-720">
-                <a href="#">
-                    <div class="item" style="background-color: #fdd835">
-                        <div class="content">
-                            <h3>Diseño Web</h3>
-                            <p>Lorem ipsumn itset ammet</p>
+                {% for service in services %}
+                    <a href="{{ service.get_absolute_url }}">
+                        <div class="item" style="background-color: {{ service.service_background_color }}">
+                            <div class="content">
+                                <h3>{{ service.service_title }}</h3>
+                                <p>{{ service.service_excerpt | safe }}</p>
+                            </div>
+                            <img src="{{ service.service_icon }}">
                         </div>
-                        <img src="http://placehold.it/200x200/7b7b7b/DADADA/?text=200x200">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item" style="background-color: #1e88e5">
-                        <div class="content">
-                            <h3>Desarrollo Web</h3>
-                            <p>Lorem ipsumn itset ammet</p>
-                        </div>
-                        <img src="http://placehold.it/200x200/7b7b7b/DADADA/?text=200x200">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item" style="background-color: #22b94c">
-                        <div class="content">
-                            <h3>Marketing Online</h3>
-                            <p>Lorem ipsumn itset ammet</p>
-                        </div>
-                        <img src="http://placehold.it/200x200/7b7b7b/DADADA/?text=200x200">
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="item" style="background-color: #f4511e">
-                        <div class="content">
-                            <h3>Soporte</h3>
-                            <p>Lorem ipsumn itset ammet</p>
-                        </div>
-                        <img src="http://placehold.it/200x200/7b7b7b/DADADA/?text=200x200">
-                    </div>
-                </a>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="max-width-320">
+                <a href="{% url 'service-archive' %}" class="more-button button-effect">Más</a>
             </div>
         </div>
         <div class="decor-bottom over-footer">

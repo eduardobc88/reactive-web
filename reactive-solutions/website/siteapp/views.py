@@ -8,13 +8,19 @@ from django.http import HttpResponseRedirect
 
 
 def home(request):
-    home_slides = HomeSlider.objects.all()
+    slides = HomeSlider.objects.all()
+    posts = ArchivePost.objects.all().order_by('-id')[:3]
+    projects = ArchiveProject.objects.all().order_by('-id')[:3]
+    services = ArchiveService.objects.all().order_by('-id')
+
     return render(
         request,
         'home.html',
         context = {
-            'name': 'index',
-            'home_slides': home_slides,
+            'slides': slides,
+            'posts': posts,
+            'projects': projects,
+            'services': services,
         }
     )
 

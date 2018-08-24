@@ -15,20 +15,21 @@
         {% endblock %}
     </head>
     <body>
+        {% load options %}
         <div class="page-wrapper">
             {% block page_header %}
                 <div class="menu-wrapper">
                     <div class="container">
                         <div class="menu-options">
-                            <a href="#" class="home-wrapper">
+                            <a href="{% url 'home' %}" class="home-wrapper">
                                 <img class="logo" src="{% static 'img/rw-icon.png' %}">
                                 <label>REACTIVE WEB</label>
                             </a>
-                            <a class="option" href="#">PROYECTOS</a>
-                            <a class="option" href="#">SERVICIOS</a>
-                            <a class="option" href="#">QUIÉNES SOMOS</a>
-                            <a class="option" href="#">BLOG</a>
-                            <a class="option" href="#">CONTACTO</a>
+                            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
+                            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+                            <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+                            <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
+                            <a class="option" href="{% contact_slug %}">CONTACTO</a>
                             <img class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
                         </div>
                     </div>
@@ -39,30 +40,30 @@
             <div class="footer-wrapper background-color-blue">
                 <div class="flex-container">
                     <div class="left">
-                        <a href="#" class="home-wrapper">
+                        <a href="{% url 'home' %}" class="home-wrapper">
                             <img class="logo" src="{% static 'img/rw-icon.png' %}">
                             <label>REACTIVE WEB</label>
                         </a>
                     </div>
                     <div class="mid">
-                        <a class="option" href="#">PROYECTOS</a>
-                        <a class="option" href="#">SERVICIOS</a>
-                        <a class="option" href="#">QUIÉNES SOMOS</a>
-                        <a class="option" href="#">BLOG</a>
+                        <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
+                        <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+                        <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+                        <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
                     </div>
                     <div class="mid">
-                        <a class="option" href="#">CONTACTO</a>
-                        <a class="option" href="#">AVISO DE PRIVACIDAD</a>
-                        <a class="option" href="#">TERMINOS Y CONDICIONES</a>
+                        <a class="option" href="{% contact_slug %}">CONTACTO</a>
+                        <a class="option" href="{% privacy_slug %}">AVISO DE PRIVACIDAD</a>
+                        <a class="option" href="{% terms_conditions_slug %}">TERMINOS Y CONDICIONES</a>
                     </div>
                     <div class="right">
-                        <a class="social-icon" href="#">
+                        <a class="social-icon" href="{% gp_url %}">
                             <img src="{% static 'img/gp-icon.png' %}">
                         </a>
-                        <a class="social-icon" href="#">
+                        <a class="social-icon" href="{% fb_url %}">
                             <img src="{% static 'img/fb-icon.png' %}">
                         </a>
-                        <a class="social-icon" href="#">
+                        <a class="social-icon" href="{% tw_url %}">
                             <img src="{% static 'img/tw-icon.png' %}">
                         </a>
                     </div>
@@ -85,11 +86,11 @@
                 <label>REACTIVE WEB</label>
             </a>
             <img class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
-            <a class="option" href="#">PROYECTOS</a>
-            <a class="option" href="#">SERVICIOS</a>
-            <a class="option" href="#">QUIÉNES SOMOS</a>
-            <a class="option" href="#">BLOG</a>
-            <a class="option" href="#">CONTACTO</a>
+            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
+            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+            <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+            <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
+            <a class="option" href="{% contact_slug %}">CONTACTO</a>
         </div>
     </body>
 </html>

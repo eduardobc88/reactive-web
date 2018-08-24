@@ -153,6 +153,7 @@
     line-height: 20px;
     margin-top: 10px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .blog-wrapper .item .cover p {
@@ -207,6 +208,7 @@
     font-size: 24px;
     font-weight: 300;
     line-height: 36px;
+    text-align: center;
 }
 
 
@@ -260,6 +262,15 @@
     transition-duration: 200ms;
 }
 
+.project-wrapper .item .cover h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .project-wrapper .item .cover h3, .project-wrapper .item .cover p {
     color: #ddd;
 }
@@ -311,6 +322,29 @@
     position: relative;
 }
 
+.services-wrapper .item:after {
+    background-color: rgba(255, 255, 255, 0.8);
+    bottom: 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 200ms;
+    width: 100%;
+    z-index: 0;
+}
+
+.services-wrapper .item:hover:after {
+    background-color: #21a9f0;
+}
+
+.services-wrapper .item .content {
+    z-index: 1;
+    position: relative;
+}
+
 .services-wrapper .item h3 {
     color: #333;
     font-size: 20px;
@@ -318,11 +352,12 @@
     line-height: 20px;
     margin-top: 10px;
     text-align: left;
+    text-transform: uppercase;
 }
 
 .services-wrapper .item p {
     color: #333;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 17px;
     margin-top: 20px;
 }
@@ -331,14 +366,19 @@
     bottom: 0;
     margin: auto;
     position: absolute;
-    right: 0;
+    right: -10%;
     top: 0;
     z-index: 0;
+    max-width: 50%
 }
 
 .services-wrapper .item .content {
     position: relative;
     z-index: 2;
+}
+
+.services-wrapper .more-button {
+    background-color: #21a9f0 !important;
 }
 
 .tools-bkg {
@@ -362,10 +402,5 @@
     .slider-wrapper #slides .slides-container p {
         font-size: 20px;
         text-align: center;
-    }
-
-
-    .services-wrapper .item img {
-        display: none;
     }
 }

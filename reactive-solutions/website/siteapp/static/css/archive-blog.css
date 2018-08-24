@@ -62,6 +62,7 @@
     line-height: 20px;
     margin-top: 10px;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .archive-blog-wrapper .item .cover p {
