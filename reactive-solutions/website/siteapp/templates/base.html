@@ -1,11 +1,12 @@
 <html lang="en">
     <head>
+        {% load static %}
         {% block title %}<title>REACTIVE WEB</title>{% endblock %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{% static 'img/rw-icon.png' %}">
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,400i,500,700" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        {% load static %}
         <script src="{% static 'js/global.js' %}"></script>
         <link rel="stylesheet" href="{% static 'css/global.css' %}">
         <script src="http://localhost:35729/livereload.js"></script>

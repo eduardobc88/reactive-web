@@ -66,6 +66,7 @@ def get_template_list():
     return choices
 
 
+# NOTE: start class models
 
 class HomeSlider(models.Model):
     slide_title = models.CharField(max_length=60, help_text='Enter the title')
@@ -98,10 +99,10 @@ class Banner(models.Model):
 
 class ArchiveProject(models.Model):
     id = models.AutoField(primary_key=True)
-    project_title = models.CharField(max_length=150, help_text='Enter the project title')
+    project_title = models.CharField(unique=True, max_length=150, help_text='Enter the project title')
     project_content = HTMLField()
     project_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the project excerpt')
-    project_thumbnail = models.ImageField(upload_to=upload_image_project, default='http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450')
+    project_thumbnail = models.ImageField(upload_to=upload_image_project, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
     project_slug = models.SlugField(max_length=200, null=True)
 
 
@@ -117,10 +118,10 @@ class ArchiveProject(models.Model):
 
 class ArchiveService(models.Model):
     id = models.AutoField(primary_key=True)
-    service_title = models.CharField(max_length=200, help_text='Enter the service title')
+    service_title = models.CharField(unique=True, max_length=200, help_text='Enter the service title')
     service_content = HTMLField()
     service_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the service excerpt')
-    service_thumbnail = models.ImageField(upload_to=upload_image_service, default='no-img.png')
+    service_thumbnail = models.ImageField(upload_to=upload_image_service, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
     service_icon = models.ImageField(upload_to=upload_icon_service, default='no-img.png')
     service_slug = models.SlugField(max_length=200, null=True)
     service_background_color = RGBColorField(default='#FFFFFF')
@@ -141,10 +142,10 @@ class ArchiveService(models.Model):
 
 class ArchivePost(models.Model):
     id = models.AutoField(primary_key=True)
-    post_title = models.CharField(max_length=500, help_text='Enter the post title')
+    post_title = models.CharField(unique=True, max_length=500, help_text='Enter the post title')
     post_content = HTMLField()
     post_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the post excerpt')
-    post_thumbnail = models.ImageField(upload_to=upload_image_post, default='http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450')
+    post_thumbnail = models.ImageField(upload_to=upload_image_post, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
     post_date = models.DateTimeField(auto_now_add=True)
     post_slug = models.SlugField(max_length=200, null=True)
 
@@ -164,7 +165,7 @@ class Page(models.Model):
     page_title = models.CharField(unique=True, max_length=500, help_text='Enter the page title', null=False)
     page_content = HTMLField()
     page_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the page excerpt')
-    page_thumbnail = models.ImageField(upload_to=upload_image_page, default='http://placehold.it/1000x600/7b7b7b/DADADA/?text=1000x600')
+    page_thumbnail = models.ImageField(upload_to=upload_image_page, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
     page_date = models.DateTimeField(auto_now_add=True)
     page_slug = models.SlugField(max_length=200, null=True)
     page_template = models.CharField(max_length=1000, choices=get_template_list(), default='default.html', help_text='Page template')
@@ -205,69 +206,86 @@ class Prospect(models.Model):
         return '{0} - {1}'.format(self.prospect_name, self.prospect_email, self.prospect_phone)
 
 
+# NOTE: start pre save
+
+@receiver(pre_save, sender=ArchivePost)
+def archive_post_pre_save(sender, instance, **kwargs):
+    pretend_post_slug = defaultfilters.slugify('{0}'.format(instance.post_title[:180]))
+    slug_exists = ArchivePost.objects.filter(post_slug=str(pretend_post_slug))
+    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+        instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
+    else:
+        instance.post_slug = pretend_post_slug
+
+
+@receiver(pre_save, sender=ArchiveProject)
+def archive_project_pre_save(sender, instance, **kwargs):
+    pretend_project_slug = defaultfilters.slugify('{0}'.format(instance.project_title[:180]))
+    slug_exists = ArchiveProject.objects.filter(project_slug=str(pretend_project_slug))
+    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+        instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_slug[:180], instance.id))
+    else:
+        instance.project_slug = pretend_project_slug
+
+
+@receiver(pre_save, sender=ArchiveService)
+def archive_service_pre_save(sender, instance, **kwargs):
+    pretend_service_slug = defaultfilters.slugify('{0}'.format(instance.service_title[:180]))
+    slug_exists = ArchiveService.objects.filter(service_slug=str(pretend_service_slug))
+    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+        instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
+    else:
+        instance.service_slug = pretend_service_slug
+
+
+@receiver(pre_save, sender=Page)
+def page_pre_save(sender, instance, **kwargs):
+    pretend_page_slug = defaultfilters.slugify('{0}'.format(instance.page_title[:180]))
+    slug_exists = Page.objects.filter(page_slug=str(pretend_page_slug))
+    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+        instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
+    else:
+        instance.page_slug = pretend_page_slug
+
+
+# NOTE: start post save
+
 @receiver(post_save, sender=HomeSlider)
 def home_slider_post_save(sender, instance, created, **kwargs):
-    if created:
+    if "siteapp" in str(instance.slide_image):
         instance.slide_image = str(instance.slide_image).replace('siteapp', '')
         instance.save()
-    else:
-        if "siteapp" in str(instance.slide_image):
-            instance.slide_image = str(instance.slide_image).replace('siteapp', '')
-            instance.save()
 
 
 @receiver(post_save, sender=ArchiveProject)
 def archive_project_post_save(sender, instance, created, **kwargs):
-    if created:
-        slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_title[:180], instance.id))
-        instance.project_slug = '{0}'.format(slug)
+    if "siteapp" in str(instance.project_thumbnail):
         instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp', '')
         instance.save()
-    else:
-        if "siteapp" in str(instance.project_thumbnail):
-            instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp', '')
-            instance.save()
 
 
 @receiver(post_save, sender=ArchiveService)
 def archive_service_post_save(sender, instance, created, **kwargs):
-    if created:
-        instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
+    is_diff = False
+    if "siteapp" in str(instance.service_icon):
         instance.service_icon = str(instance.service_icon).replace('siteapp', '')
+        is_diff = True
+    if "siteapp" in str(instance.service_thumbnail):
         instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp', '')
+        is_diff = True
+    if is_diff:
         instance.save()
-    else:
-        object_old = ArchiveService.objects.get(pk=instance.pk)
-        is_diff = False
-        if "siteapp" in str(instance.service_icon):
-            instance.service_icon = str(instance.service_icon).replace('siteapp', '')
-            is_diff = True
-        if "siteapp" in str(instance.service_thumbnail):
-            instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp', '')
-            is_diff = True
-        if is_diff:
-            instance.save()
 
 
 @receiver(post_save, sender=ArchivePost)
 def archive_post_post_save(sender, instance, created, **kwargs):
-    if created:
-        instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
+    if "siteapp" in str(instance.post_thumbnail):
         instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp', '')
         instance.save()
-    else:
-        if "siteapp" in str(instance.post_thumbnail):
-            instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp', '')
-            instance.save()
 
 
 @receiver(post_save, sender=Page)
 def page_post_save(sender, instance, created, **kwargs):
-    if created:
-        instance.page_slug = defaultfilters.slugify('{0}'.format(instance.page_title[:180]))
+    if "siteapp" in str(instance.page_thumbnail):
         instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp', '')
         instance.save()
-    else:
-        if "siteapp" in str(instance.page_thumbnail):
-            instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp', '')
-            instance.save()

@@ -210,6 +210,8 @@ body {
 
 .background-color-white {
     background-color: #f6f6f6;
+    background-image: url(/static/img/general-texture-bkg.png);
+    background-position: center;
 }
 
 
