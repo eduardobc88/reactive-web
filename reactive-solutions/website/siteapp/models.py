@@ -122,7 +122,7 @@ class ArchiveService(models.Model):
     service_content = HTMLField()
     service_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the service excerpt')
     service_thumbnail = models.ImageField(upload_to=upload_image_service, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
-    service_icon = models.ImageField(upload_to=upload_icon_service, default='no-img.png')
+    service_icon = models.ImageField(upload_to=upload_icon_service, default='http://placehold.it/500x500/bfbfbf/ffffff/?text=RW')
     service_slug = models.SlugField(max_length=200, null=True)
     service_background_color = RGBColorField(default='#FFFFFF')
 
@@ -210,42 +210,34 @@ class Prospect(models.Model):
 
 @receiver(pre_save, sender=ArchivePost)
 def archive_post_pre_save(sender, instance, **kwargs):
-    pretend_post_slug = defaultfilters.slugify('{0}'.format(instance.post_title[:180]))
-    slug_exists = ArchivePost.objects.filter(post_slug=str(pretend_post_slug))
-    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+    instance.post_slug = defaultfilters.slugify('{0}'.format(instance.post_title[:180]))
+    slug_exists = ArchivePost.objects.filter(post_slug=str(instance.post_slug))
+    if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
-    else:
-        instance.post_slug = pretend_post_slug
 
 
 @receiver(pre_save, sender=ArchiveProject)
 def archive_project_pre_save(sender, instance, **kwargs):
-    pretend_project_slug = defaultfilters.slugify('{0}'.format(instance.project_title[:180]))
-    slug_exists = ArchiveProject.objects.filter(project_slug=str(pretend_project_slug))
-    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+    instance.project_slug = defaultfilters.slugify('{0}'.format(instance.project_title[:180]))
+    slug_exists = ArchiveProject.objects.filter(project_slug=str(instance.project_slug))
+    if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_slug[:180], instance.id))
-    else:
-        instance.project_slug = pretend_project_slug
 
 
 @receiver(pre_save, sender=ArchiveService)
 def archive_service_pre_save(sender, instance, **kwargs):
-    pretend_service_slug = defaultfilters.slugify('{0}'.format(instance.service_title[:180]))
-    slug_exists = ArchiveService.objects.filter(service_slug=str(pretend_service_slug))
-    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+    instance.service_slug = defaultfilters.slugify('{0}'.format(instance.service_title[:180]))
+    slug_exists = ArchiveService.objects.filter(service_slug=str(instance.service_slug))
+    if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
-    else:
-        instance.service_slug = pretend_service_slug
 
 
 @receiver(pre_save, sender=Page)
 def page_pre_save(sender, instance, **kwargs):
-    pretend_page_slug = defaultfilters.slugify('{0}'.format(instance.page_title[:180]))
-    slug_exists = Page.objects.filter(page_slug=str(pretend_page_slug))
-    if slug_exists.count() and instance.id and slug_exists.values_list('id', flat=True)[0] != instance.id:
+    instance.page_slug = defaultfilters.slugify('{0}'.format(instance.page_title[:180]))
+    slug_exists = Page.objects.filter(page_slug=str(instance.page_slug))
+    if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
-    else:
-        instance.page_slug = pretend_page_slug
 
 
 # NOTE: start post save
@@ -259,33 +251,66 @@ def home_slider_post_save(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=ArchiveProject)
 def archive_project_post_save(sender, instance, created, **kwargs):
+    save = False
+    if created:
+        instance.project_slug = defaultfilters.slugify('{0}'.format(instance.project_title[:180]))
+        slug_exists = ArchiveProject.objects.filter(project_slug=str(instance.project_slug))
+        if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
+            instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_title[:180], instance.id))
+            save = True
     if "siteapp" in str(instance.project_thumbnail):
         instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp', '')
+        save = True
+    if save:
         instance.save()
 
 
 @receiver(post_save, sender=ArchiveService)
 def archive_service_post_save(sender, instance, created, **kwargs):
-    is_diff = False
+    save = False
+    if created:
+        instance.service_slug = defaultfilters.slugify('{0}'.format(instance.service_title[:180]))
+        slug_exists = ArchiveService.objects.filter(service_slug=str(instance.service_slug))
+        if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
+            instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
+            save = True
     if "siteapp" in str(instance.service_icon):
         instance.service_icon = str(instance.service_icon).replace('siteapp', '')
-        is_diff = True
+        save = True
     if "siteapp" in str(instance.service_thumbnail):
         instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp', '')
-        is_diff = True
-    if is_diff:
+        save = True
+    if save:
         instance.save()
 
 
 @receiver(post_save, sender=ArchivePost)
 def archive_post_post_save(sender, instance, created, **kwargs):
+    save = False
+    if created:
+        instance.post_slug = defaultfilters.slugify('{0}'.format(instance.post_title[:180]))
+        slug_exists = ArchivePost.objects.filter(post_slug=str(instance.post_slug))
+        if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
+            instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
+            save = True
     if "siteapp" in str(instance.post_thumbnail):
         instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp', '')
+        save = True
+    if save:
         instance.save()
 
 
 @receiver(post_save, sender=Page)
 def page_post_save(sender, instance, created, **kwargs):
+    save = False
+    if created:
+        instance.page_slug = defaultfilters.slugify('{0}'.format(instance.page_title[:180]))
+        slug_exists = Page.objects.filter(page_slug=str(instance.page_slug))
+        if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
+            instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
+            save = True
     if "siteapp" in str(instance.page_thumbnail):
         instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp', '')
+        save = True
+    if save:
         instance.save()
