@@ -1,34 +1,48 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from .models import ArchiveProject, HomeSlider, SiteOption, Banner, ArchiveService, ArchivePost, Page, Prospect
 
 
-# Register your models here.
+# Register your admin models here.
 
 
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('page_title', 'admin_display_page_slug', 'page_template')
-    readonly_fields = ['page_slug']
+    list_display = ('page_title', 'admin_display_page_slug', 'page_template', 'thumbnail_preview')
+    readonly_fields = ['page_slug', 'thumbnail_preview']
+
+    def thumbnail_preview(self, obj):
+        return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.page_thumbnail))
     pass
 
 
 @admin.register(ArchivePost)
 class ArchivePostAdmin(admin.ModelAdmin):
-    list_display = ('post_title', 'admin_display_post_slug')
-    readonly_fields = ['post_slug']
+    list_display = ('post_title', 'admin_display_post_slug', 'thumbnail_preview')
+    readonly_fields = ['post_slug', 'thumbnail_preview']
+
+    def thumbnail_preview(self, obj):
+        return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.post_thumbnail))
     pass
 
 
 @admin.register(ArchiveService)
 class ArchiveServiceAdmin(admin.ModelAdmin):
-    list_display = ('service_title', 'admin_display_service_slug')
-    readonly_fields = ['service_slug']
+    list_display = ('service_title', 'admin_display_service_slug', 'thumbnail_preview')
+    readonly_fields = ['service_slug', 'thumbnail_preview']
+
+    def thumbnail_preview(self, obj):
+        return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.service_thumbnail))
     pass
 
 
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
-    list_display = ('banner_name', 'admin_display_banner_content')
+    list_display = ('banner_name', 'admin_display_banner_content', 'thumbnail_preview')
+    readonly_fields = ['thumbnail_preview']
+
+    def thumbnail_preview(self, obj):
+        return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.banner_thumbnail))
     pass
 
 
@@ -40,14 +54,21 @@ class SiteOptionAdmin(admin.ModelAdmin):
 
 @admin.register(HomeSlider)
 class HomeSliderAdmin(admin.ModelAdmin):
-    list_display = ('slide_title', 'slide_content')
+    list_display = ('slide_title', 'slide_content', 'thumbnail_preview')
+    readonly_fields = ['thumbnail_preview']
+
+    def thumbnail_preview(self, obj):
+        return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.slide_image))
     pass
 
 
 @admin.register(ArchiveProject)
 class ArchiveProjectAdmin(admin.ModelAdmin):
-    list_display = ('project_title', 'project_slug')
-    readonly_fields = ['project_slug']
+    list_display = ('project_title', 'project_slug', 'thumbnail_preview')
+    readonly_fields = ['project_slug', 'thumbnail_preview']
+
+    def thumbnail_preview(self, obj):
+        return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.project_thumbnail))
     pass
 
 

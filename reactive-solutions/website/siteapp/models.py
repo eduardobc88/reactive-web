@@ -263,10 +263,12 @@ def banner_pre_save(sender, instance, **kwargs):
 
 
 def delete_file_uploaded(instance, attrname):
-    if hasattr(instance, attrname):
-        old_file_path = 'siteapp{0}'.format(getattr(instance, attrname))
-        if os.path.isfile(old_file_path):
-            os.remove(old_file_path)
+    if not hasattr(instance, attrname):
+        return
+
+    old_file_path = 'siteapp{0}'.format(getattr(instance, attrname))
+    if os.path.isfile(old_file_path):
+        os.remove(old_file_path)
 
 
 @receiver(post_save, sender=HomeSlider)
