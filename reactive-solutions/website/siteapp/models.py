@@ -214,6 +214,9 @@ def archive_post_pre_save(sender, instance, **kwargs):
     slug_exists = ArchivePost.objects.filter(post_slug=str(instance.post_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
+    if instance.id:
+        original_post = slug_exists = ArchivePost.objects.filter(id=instance.id)
+        instance.post_thumbnail_remove = original_post.values_list('post_thumbnail', flat=True)[0]
 
 
 @receiver(pre_save, sender=ArchiveProject)
@@ -222,6 +225,9 @@ def archive_project_pre_save(sender, instance, **kwargs):
     slug_exists = ArchiveProject.objects.filter(project_slug=str(instance.project_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_slug[:180], instance.id))
+    if instance.id:
+        original_project = slug_exists = ArchiveProject.objects.filter(id=instance.id)
+        instance.project_thumbnail_remove = original_project.values_list('project_thumbnail', flat=True)[0]
 
 
 @receiver(pre_save, sender=ArchiveService)
@@ -230,6 +236,10 @@ def archive_service_pre_save(sender, instance, **kwargs):
     slug_exists = ArchiveService.objects.filter(service_slug=str(instance.service_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
+    if instance.id:
+        original_service = slug_exists = ArchiveService.objects.filter(id=instance.id)
+        instance.service_thumbnail_remove = original_service.values_list('service_thumbnail', flat=True)[0]
+        instance.service_icon_remove = original_service.values_list('service_icon', flat=True)[0]
 
 
 @receiver(pre_save, sender=Page)
@@ -238,13 +248,30 @@ def page_pre_save(sender, instance, **kwargs):
     slug_exists = Page.objects.filter(page_slug=str(instance.page_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
+    if instance.id:
+        original_page = slug_exists = Page.objects.filter(id=instance.id)
+        instance.page_thumbnail_remove = original_page.values_list('page_thumbnail', flat=True)[0]
+
+
+@receiver(pre_save, sender=Banner)
+def banner_pre_save(sender, instance, **kwargs):
+    original_banner = slug_exists = Banner.objects.filter(banner_name=instance.banner_name)
+    instance.banner_thumbnail_remove = original_banner.values_list('banner_thumbnail', flat=True)[0]
 
 
 # NOTE: start post save
 
+
+def delete_file_uploaded(instance, attrname):
+    if hasattr(instance, attrname):
+        old_file_path = 'siteapp{0}'.format(getattr(instance, attrname))
+        if os.path.isfile(old_file_path):
+            os.remove(old_file_path)
+
+
 @receiver(post_save, sender=HomeSlider)
 def home_slider_post_save(sender, instance, created, **kwargs):
-    if "siteapp" in str(instance.slide_image):
+    if 'siteapp' in str(instance.slide_image):
         instance.slide_image = str(instance.slide_image).replace('siteapp', '')
         instance.save()
 
@@ -258,7 +285,8 @@ def archive_project_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_title[:180], instance.id))
             save = True
-    if "siteapp" in str(instance.project_thumbnail):
+    if 'siteapp' in str(instance.project_thumbnail):
+        delete_file_uploaded(instance, 'project_thumbnail_remove')
         instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp', '')
         save = True
     if save:
@@ -274,10 +302,12 @@ def archive_service_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
             save = True
-    if "siteapp" in str(instance.service_icon):
+    if 'siteapp' in str(instance.service_icon):
+        delete_file_uploaded(instance, 'service_icon_remove')
         instance.service_icon = str(instance.service_icon).replace('siteapp', '')
         save = True
-    if "siteapp" in str(instance.service_thumbnail):
+    if 'siteapp' in str(instance.service_thumbnail):
+        delete_file_uploaded(instance, 'service_thumbnail_remove')
         instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp', '')
         save = True
     if save:
@@ -293,7 +323,8 @@ def archive_post_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
             save = True
-    if "siteapp" in str(instance.post_thumbnail):
+    if 'siteapp' in str(instance.post_thumbnail):
+        delete_file_uploaded(instance, 'post_thumbnail_remove')
         instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp', '')
         save = True
     if save:
@@ -309,8 +340,20 @@ def page_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
             save = True
-    if "siteapp" in str(instance.page_thumbnail):
+    if 'siteapp' in str(instance.page_thumbnail):
+        delete_file_uploaded(instance, 'page_thumbnail_remove')
         instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp', '')
+        save = True
+    if save:
+        instance.save()
+
+
+@receiver(post_save, sender=Banner)
+def banner_post_save(sender, instance, created, **kwargs):
+    save = False
+    if 'siteapp' in str(instance.banner_thumbnail):
+        delete_file_uploaded(instance, 'banner_thumbnail_remove')
+        instance.banner_thumbnail = str(instance.banner_thumbnail).replace('siteapp', '')
         save = True
     if save:
         instance.save()
