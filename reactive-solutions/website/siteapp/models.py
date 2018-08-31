@@ -215,7 +215,7 @@ def archive_post_pre_save(sender, instance, **kwargs):
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
     if instance.id:
-        original_post = slug_exists = ArchivePost.objects.filter(id=instance.id)
+        original_post = ArchivePost.objects.filter(id=instance.id)
         instance.post_thumbnail_remove = original_post.values_list('post_thumbnail', flat=True)[0]
 
 
@@ -226,7 +226,7 @@ def archive_project_pre_save(sender, instance, **kwargs):
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_slug[:180], instance.id))
     if instance.id:
-        original_project = slug_exists = ArchiveProject.objects.filter(id=instance.id)
+        original_project = ArchiveProject.objects.filter(id=instance.id)
         instance.project_thumbnail_remove = original_project.values_list('project_thumbnail', flat=True)[0]
 
 
@@ -237,7 +237,7 @@ def archive_service_pre_save(sender, instance, **kwargs):
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
     if instance.id:
-        original_service = slug_exists = ArchiveService.objects.filter(id=instance.id)
+        original_service = ArchiveService.objects.filter(id=instance.id)
         instance.service_thumbnail_remove = original_service.values_list('service_thumbnail', flat=True)[0]
         instance.service_icon_remove = original_service.values_list('service_icon', flat=True)[0]
 
@@ -249,13 +249,13 @@ def page_pre_save(sender, instance, **kwargs):
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
     if instance.id:
-        original_page = slug_exists = Page.objects.filter(id=instance.id)
+        original_page = Page.objects.filter(id=instance.id)
         instance.page_thumbnail_remove = original_page.values_list('page_thumbnail', flat=True)[0]
 
 
 @receiver(pre_save, sender=Banner)
 def banner_pre_save(sender, instance, **kwargs):
-    original_banner = slug_exists = Banner.objects.filter(banner_name=instance.banner_name)
+    original_banner = Banner.objects.filter(banner_name=instance.banner_name)
     instance.banner_thumbnail_remove = original_banner.values_list('banner_thumbnail', flat=True)[0]
 
 
