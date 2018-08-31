@@ -1,8 +1,10 @@
 var mobileMenuElement = null;
+var menuWapperElement = null;
 
 var documentReady = function() {
     console.log('global.js');
     mobileMenuElement = $('.mobile-menu-wrapper');
+    menuWapperElement = $('.menu-wrapper');
 }
 
 
@@ -16,6 +18,14 @@ var openMenuMobile = function(element) {
         mobileMenuElement.removeClass('visible');
     else
         mobileMenuElement.addClass('visible');
+}
+
+var onScroll = function(element) {
+    if( $(element).scrollTop() > 80 ) {
+        menuWapperElement.addClass('page-scroll');
+    } else {
+        menuWapperElement.removeClass('page-scroll');
+    }
 }
 
 

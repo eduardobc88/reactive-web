@@ -6,14 +6,18 @@ body {
 }
 
 .menu-wrapper {
-    background-color: rgba(36, 169, 225, 0.85);
-    box-shadow: 0 0 2px rgba(0,0,0,.14), 0 2px 3px rgba(0,0,0,.18);
     height: 70px;
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
     z-index: 10;
+    transition-duration: 200ms;
+}
+
+.menu-wrapper.page-scroll {
+    background-color: rgba(36, 169, 225, 0.85);
+    box-shadow: 0 0 2px rgba(0,0,0,.14), 0 2px 3px rgba(0,0,0,.18);
 }
 
 .menu-wrapper .container {
@@ -105,7 +109,7 @@ body {
 
 
 .mobile-menu-wrapper {
-    background-color: #21a9f0;
+    background-color: #24a9e1;
     bottom: 0;
     box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
     height: 100%;
@@ -197,11 +201,11 @@ body {
 }
 
 .background-fill-blue {
-    fill: #21a9f0;
+    fill: #24a9e1;
 }
 
 .background-color-blue {
-    background-color: #21a9f0;
+    background-color: #24a9e1;
 }
 
 .background-fill-white {
@@ -210,7 +214,7 @@ body {
 
 .background-color-white {
     background-color: #f6f6f6;
-    background-image: url(/static/img/general-texture-bkg.png);
+    /* background-image: url(/static/img/general-texture-bkg.png); */
     background-position: center;
 }
 
@@ -391,7 +395,7 @@ body {
 
 .archive-pagination li {
     align-self: center;
-    background-color: #21a9f0;
+    background-color: #24a9e1;
     font-size: 14px;
     font-weight: 400;
     line-height: 30px;
@@ -467,7 +471,7 @@ body {
 
 .header-wrapper {
     height: 450px;
-    background-color: #21a9f0;
+    background-color: #24a9e1;
     position: relative;
     overflow: hidden;
     background-position: center;
@@ -505,14 +509,14 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgb(255, 255, 255, 0.2);
+    /* background-color: rgb(255, 255, 255, 0.2); */
     background-image: url(/static/img/texture-bkg.png);
 }
 
 
 
 .social-share-title {
-    border-top: 3px solid #21a9f0;
+    border-top: 3px solid #24a9e1;
     display: block;
     font-size: 24px;
     font-weight: 400;

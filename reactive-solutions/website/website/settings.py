@@ -26,10 +26,10 @@ SECRET_KEY = 'y#vt!)0)^bz9rh&dc8t4%ohlq!txjaku2gn3*5gz5(x%yvuyxl'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '192.168.1.69',
+    'localhost', # lookup
+    '192.168.1.69', # local machine ip
     '185.166.213.7', # server ip
-    'www.reactive-web.com', # domain google
+    'reactive-web.com', # domain google
 ]
 
 

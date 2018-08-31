@@ -1,24 +1,25 @@
+@-webkit-keyframes MOVE-BG {
+	from {
+        background-position-x: 0px;
+	}
+	to {
+		background-position-x: -949px;
+	}
+}
+
 .slider-wrapper {
-    background-image: url(/static/img/bkg-slider.gif);
+    background-image: url(/static/img/bkg-slider.png);
     background-position: bottom;
-    background-size: contain;
-    height: 450px;
+    background-repeat: repeat no-repeat;
+    background-size: 950px 500px;
+    height: 500px;
     overflow: hidden;
     position: relative;
     z-index: 0;
-}
-
-.slider-wrapper .slider-bkg-color {
-    background-color: rgba(36, 169, 225, 0.9);
-    /* background-image: url(/static/img/texture-bkg.png); */
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 1;
+    -webkit-animation-name: MOVE-BG;
+    -webkit-animation-duration: 30s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
 }
 
 .slider-wrapper #slides {
@@ -34,14 +35,15 @@
     padding: 10px !important;
     position: relative !important;
     top: auto !important;
-    width: 100% !important;
     display: block;
     margin: auto;
+    min-height: 300px;
 }
 
 .slider-wrapper #slides .slides-container h2 {
-    font-size: 50px;
     color: black;
+    font-size: 50px;
+    font-weight: 400;
 }
 
 .slider-wrapper #slides .slides-container p {
@@ -104,7 +106,7 @@
 }
 
 .blog-wrapper .more-button {
-    background-color: #21a9f0 !important;
+    background-color: #24a9e1 !important;
 }
 
 .blog-wrapper .item {
@@ -135,7 +137,7 @@
 }
 
 .blog-wrapper .item:hover .cover {
-    background-color: #21a9f0;
+    background-color: #24a9e1;
 }
 
 .blog-wrapper .item:hover .cover h3 {
@@ -176,7 +178,7 @@
 }
 
 .banner-wrapper .banner-bkg-color {
-    background-color: rgb(255, 255, 255, 0.2);
+    /* background-color: rgb(255, 255, 255, 0.2); */
     background-image: url(/static/img/texture-bkg.png);
     bottom: 0;
     height: 100%;
@@ -280,7 +282,7 @@
 }
 
 .project-wrapper .more-button {
-    background-color: #21a9f0 !important;
+    background-color: #24a9e1 !important;
 }
 
 
@@ -337,7 +339,7 @@
 }
 
 .services-wrapper .item:hover:after {
-    background-color: #21a9f0;
+    background-color: #24a9e1;
 }
 
 .services-wrapper .item .content {
@@ -379,7 +381,7 @@
 }
 
 .services-wrapper .more-button {
-    background-color: #21a9f0 !important;
+    background-color: #24a9e1 !important;
 }
 
 .tools-bkg {
@@ -391,8 +393,10 @@
     .slider-wrapper #slides .slides-container .icon {
         display: block !important;
         margin: auto !important;
-        max-height: 100px !important;
-        max-width: 100px !important;
+        max-height: 150px !important;
+        max-width: 150px !important;
+        min-height: auto;
+
     }
 
     .slider-wrapper #slides .slides-container h2 {

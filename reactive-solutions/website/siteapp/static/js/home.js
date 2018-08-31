@@ -9,7 +9,7 @@ var windowLoad = function() {
 
 
 var initSlider = function() {
-    var miliseccondsBeforeNextSlide = 100000000;
+    var miliseccondsBeforeNextSlide = 10000;
     $('#slides').superslides({
         play: miliseccondsBeforeNextSlide
     });
