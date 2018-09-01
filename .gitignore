@@ -87,5 +87,7 @@ local_settings.py
 db.sqlite3
 
 
-/venv
-/reactive-solutions/website/website/static
+venv/
+venv/**/*
+reactive-solutions/website/website/static/
+reactive-solutions/website/website/static/**/*
