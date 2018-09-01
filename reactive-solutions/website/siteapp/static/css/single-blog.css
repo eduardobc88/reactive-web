@@ -12,3 +12,7 @@
 .single-blog-wrapper .decor-top {
     position: absolute;
 }
+
+.single-blog-wrapper div p span {
+    font-size: 18px !important;
+}

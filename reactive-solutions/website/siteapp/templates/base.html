@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
         {% load static %}
-        {% block title %}<title>REACTIVE WEB</title>{% endblock %}
+        {% block title %}<title>{{ page_head_title }}</title>{% endblock %}
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="{% static 'img/rw-icon.png' %}">
@@ -83,7 +83,7 @@
             </div>
         </div>
         <div class="mobile-menu-wrapper">
-            <a href="#" class="home-wrapper">
+            <a href="{% url 'home' %}" class="home-wrapper">
                 <label>REACTIVE WEB</label>
             </a>
             <img class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">

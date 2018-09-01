@@ -12,3 +12,7 @@
 .default-wrapper .decor-top {
     position: absolute;
 }
+
+.default-wrapper div p span {
+    font-size: 18px !important;
+}
