@@ -2,7 +2,6 @@ var mobileMenuElement = null;
 var menuWapperElement = null;
 
 var documentReady = function() {
-    console.log('global.js');
     mobileMenuElement = $('.mobile-menu-wrapper');
     menuWapperElement = $('.menu-wrapper');
 }

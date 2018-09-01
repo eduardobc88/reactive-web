@@ -1,5 +1,4 @@
 var documentReady = function() {
-    console.log('home.js');
 }
 
 

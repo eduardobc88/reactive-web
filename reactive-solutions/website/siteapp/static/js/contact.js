@@ -55,7 +55,6 @@ var formValidation = function(event) {
 
 
 var documentReady = function() {
-    console.log('contact.js');
     formElement = $('.form-wrapper');
     initForm();
     $('.form-wrapper').submit(formValidation)
