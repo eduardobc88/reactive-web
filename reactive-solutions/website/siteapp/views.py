@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import ArchiveProject, ArchiveService, ArchivePost, Page, SiteOption, HomeSlider, Prospect
 from django.views import generic
 from django.http import HttpResponseRedirect
+from django.conf import settings
 
 
 # Create your views here.

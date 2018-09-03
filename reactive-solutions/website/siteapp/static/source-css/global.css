@@ -224,7 +224,6 @@ body {
 
 
 .footer-wrapper {
-    /* background-image: url(/static/img/footer-bkg.png); */
     background-position: center;
     position: relative;
     padding-top: 100px;
@@ -244,7 +243,6 @@ body {
 }
 
 .footer-wrapper .cover {
-    /* background-color: rgba(33, 169, 240, 0.9); */
     bottom: 0;
     height: 100%;
     left: 0;
