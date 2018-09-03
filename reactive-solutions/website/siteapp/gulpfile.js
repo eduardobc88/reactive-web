@@ -1,11 +1,11 @@
 const gulp = require('gulp');
-const minify = require('gulp-minify');
 const uglifycss = require('gulp-uglifycss');
+const uglify = require('gulp-uglify');
 
 
 gulp.task('compress-js', function() {
-  gulp.src(['static/source-js/*.js', 'static/mjs/*.mjs'])
-    .pipe(minify())
+  gulp.src(['static/source-js/*.js'])
+    .pipe(uglify())
     .pipe(gulp.dest('static/js'))
 });
 
@@ -30,4 +30,4 @@ gulp.task('watch-css', function() {
 });
 
 
-gulp.task('default', ['compress-js', 'compress-css', 'watch-js', 'watch-css']);
+gulp.task('default', ['compress-css', 'compress-js', 'watch-css', 'watch-js']);
