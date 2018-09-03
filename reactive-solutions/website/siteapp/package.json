@@ -1,0 +1,17 @@
+{
+  "name": "siteapp",
+  "version": "1.0.0",
+  "description": "website",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-uglifycss": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "RW",
+  "license": "ISC"
+}
