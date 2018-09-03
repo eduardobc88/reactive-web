@@ -3,6 +3,8 @@ body {
     background: #666;
     height: 100%;
     margin: 0px;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .menu-wrapper {
@@ -36,19 +38,18 @@ body {
 }
 
 .menu-wrapper .menu-options .home-wrapper label {
-    color: #fff;
+    color: #000;
     cursor: pointer;
     font-size: 20px;
-    font-weight: 100;
-    left: -20px;
+    font-weight: 400;
     line-height: 20px;
     padding-top: 2px;
     position: relative;
     text-align: center;
     vertical-align: middle;
-    width: 130px;
     word-wrap: break-word;
     align-self: center;
+    display: inline-block;
 }
 
 .menu-wrapper .menu-options {
@@ -63,13 +64,15 @@ body {
 
 .menu-wrapper .menu-options .option {
     align-self: center;
-    color: #fff;
+    color: #000;
     flex-grow: 1;
     font-size: 16px;
     position: relative;
     text-align: center;
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 500;
+    transition-duration: 200ms;
+    letter-spacing: 2px;
 }
 
 .menu-wrapper .menu-options .option:before {
@@ -97,7 +100,7 @@ body {
 }
 
 .menu-wrapper .menu-options .option:hover:before, .menu-wrapper .menu-options .option:hover:after {
-    color: #fff;
+    color: #000;
 }
 
 .menu-wrapper .menu-options .menu-mobile {
@@ -209,13 +212,14 @@ body {
 }
 
 .background-fill-white {
-    fill: #f6f6f6;
+    fill: #f4f4f4;
 }
 
 .background-color-white {
-    background-color: #f6f6f6;
+    background-color: #f4f4f4;
     /* background-image: url(/static/img/general-texture-bkg.png); */
     background-position: center;
+    /* opacity: 1; */
 }
 
 
@@ -266,38 +270,34 @@ body {
 }
 
 .footer-wrapper .home-wrapper .logo {
-    max-height: 80px;
+    max-height: 60px;
 }
 
 .footer-wrapper .home-wrapper label {
-    color: #fff;
+    color: #000;
     cursor: pointer;
     font-size: 20px;
-    font-weight: 100;
-    left: -20px;
+    font-weight: 400;
     line-height: 20px;
+    padding-top: 2px;
     position: relative;
     text-align: center;
     vertical-align: middle;
-    width: 130px;
     word-wrap: break-word;
     align-self: center;
+    display: inline-block;
 }
 
 .footer-wrapper .option {
-    color: #fff;
+    color: #000;
     display: block;
     flex-grow: 1;
     font-size: 16px;
     margin-top: 15px;
     position: relative;
     text-decoration: none;
-    transition-duration: 200ms;
-    font-weight: 400;
-}
-
-.footer-wrapper .option:hover {
-    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .footer-wrapper .social-icon img {
@@ -306,16 +306,17 @@ body {
 }
 
 .footer-wrapper .title {
-    color: #fff;
+    color: #000;
     font-size: 24px;
     margin-top: 50px;
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 .footer-wrapper .phone {
-    color: #fff;
+    color: #000;
     display: block;
     font-size: 24px;
     font-weight: 600;
@@ -323,15 +324,17 @@ body {
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .footer-wrapper .reserved {
-    color: #fff;
+    color: #000;
     font-size: 12px;
     font-weight: 600;
     margin-top: 20px;
     text-align: center;
     padding: 10px;
+    letter-spacing: 1px;
 }
 
 
@@ -445,7 +448,7 @@ body {
 }
 
 .archive-pagination li:first-child:before {
-    background-color: #f6f6f6;
+    background-color: #f4f4f4;
     content: "";
     height: 20px;
     left: -25px;
@@ -457,7 +460,7 @@ body {
 }
 
 .archive-pagination li:last-child:before {
-    background-color: #f6f6f6;
+    background-color: #f4f4f4;
     content: "";
     height: 20px;
     position: absolute;
@@ -492,9 +495,9 @@ body {
 }
 
 .header-wrapper .container h1 {
-    color: white;
+    color: #000;
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 400;
     position: relative;
     text-align: center;
     letter-spacing: 2px;
@@ -509,10 +512,9 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    /* background-color: rgb(255, 255, 255, 0.2); */
+    background-color: rgba(255, 255, 255, 0.3);
     background-image: url(/static/img/texture-bkg.png);
 }
-
 
 
 .social-share-title {
@@ -649,5 +651,9 @@ body {
 
     .flex-container {
         display: block;
+    }
+
+    .footer-wrapper .home-wrapper label {
+        height: 90px;
     }
 }

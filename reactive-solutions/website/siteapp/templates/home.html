@@ -15,6 +15,9 @@
     {% get_contact_banner_data as contact_banner %}
     {% get_who_banner_data as who_banner %}
     <div class="slider-wrapper custom-wrapper background-color-blue">
+        <div class="clouds-1 clouds"></div>
+        <div class="clouds-2 clouds"></div>
+        <div class="clouds-3 clouds"></div>
         <div id="slides">
             <ul class="slides-container">
                 {% for slide in slides %}
@@ -34,11 +37,11 @@
         </div>
     </div>
     <div class="custom-wrapper background-color-white blog-wrapper">
-        <div class="decor-top">
+        <!-- <div class="decor-top over-slider">
             <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
             </svg>
-        </div>
+        </div> -->
         <div class="container">
             <div class="max-width-720">
                 <h2>BLOG</h2>
@@ -96,7 +99,7 @@
         </div>
         <div class="container">
             <div class="max-width-720">
-                <h2>PROJECTOS</h2>
+                <h2>PROYECTOS</h2>
                 <p class="description">
                     {% get_projects_description %}
                 </p>

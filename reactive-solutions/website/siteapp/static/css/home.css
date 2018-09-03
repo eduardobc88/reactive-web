@@ -8,23 +8,55 @@
 }
 
 .slider-wrapper {
-    background-image: url(/static/img/bkg-slider.png);
-    background-position: bottom;
-    background-repeat: repeat no-repeat;
-    background-size: 950px 500px;
     height: 500px;
     overflow: hidden;
     position: relative;
-    z-index: 0;
-    -webkit-animation-name: MOVE-BG;
-    -webkit-animation-duration: 30s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
 }
+
+.over-slider {
+	z-index: 4;
+}
+
+.clouds {
+	background-position: bottom;
+	background-repeat: repeat no-repeat;
+	background-size: 950px 500px;
+	bottom: 0;
+	height: 500px;
+	left: 0;
+	opacity: 0.9;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	-webkit-animation-name: MOVE-BG;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-iteration-count: infinite;
+}
+
+.clouds-1 {
+	background-image: url(/static/img/clouds-1.png);
+	-webkit-animation-duration: 75s;
+	z-index: 1;
+}
+
+.clouds-2 {
+	background-image: url(/static/img/clouds-2.png);
+	-webkit-animation-duration: 30s;
+	z-index: 2;
+}
+
+.clouds-3 {
+	background-image: url(/static/img/clouds-3.png);
+	-webkit-animation-duration: 10s;
+	z-index: 2;
+}
+
+
 
 .slider-wrapper #slides {
     height: 400px !important;
     margin-top: 100px !important;
+	z-index: 4 !important;
 }
 
 .slider-wrapper #slides .slides-container .icon {
@@ -88,9 +120,10 @@
 }
 
 .blog-wrapper h2 {
+	padding-top: 60px;
     color: black;
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 2px;
     margin-top: 0px;
     position: relative;
@@ -199,7 +232,7 @@
 .banner-wrapper h2 {
     color: white;
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 2px;
     position: relative;
     text-align: center;
@@ -222,7 +255,7 @@
 .project-wrapper h2 {
     color: black;
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 400;
     position: relative;
     text-align: center;
     letter-spacing: 2px;
@@ -294,7 +327,7 @@
 .services-wrapper h2 {
     color: black;
     font-size: 40px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 2px;
     margin-top: 0px;
     position: relative;
