@@ -1,0 +1,18 @@
+.header-wrapper {
+    background-image: url(/static/img/blog-bkg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.single-blog-wrapper {
+    padding-bottom: 0px;
+    padding-top: 60px;
+}
+
+.single-blog-wrapper .decor-top {
+    position: absolute;
+}
+
+.single-blog-wrapper div p span {
+    font-size: 18px !important;
+}

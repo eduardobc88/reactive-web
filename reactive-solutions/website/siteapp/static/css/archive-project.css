@@ -1,70 +1,7 @@
-.header-wrapper {
-    background-image: url(/static/img/project-bkg.png);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.archive-project-wrapper {
-    padding-top: 60px;
-    padding-bottom: 0px;
-}
-
-.archive-project-wrapper a {
-    text-decoration: none;
-}
-
-.archive-project-wrapper .decor-top {
-    position: absolute;
-}
-
-.archive-project-wrapper .item {
-    position: relative;
-    overflow: hidden;
-    max-width: 300px;
-    margin: auto;
-    cursor: pointer;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    margin: 10px 10px 20px 20px;
-    border-radius: 5px;
-}
-
-.archive-project-wrapper .item .image {
-    max-width: 100%;
-}
-
-.archive-project-wrapper .item .cover {
-    background-color: rgba(0, 0, 0, 0.6);
-    bottom: 0;
-    left: 0;
-    padding: 20px;
-    position: absolute;
-    right: 0;
-    text-align: center;
-    top: 0;
-    transition-duration: 200ms;
-}
-
-.archive-project-wrapper .item h3 {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 20px;
-    margin-top: 10px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.archive-project-wrapper .item h3, .archive-project-wrapper .item p {
-    color: #ddd;
-}
-
-.archive-project-wrapper .item:hover .cover {
-    background-color: #24a9e1;
-}
-
-.archive-project-wrapper .item:hover .cover h3 {
-    color: #ddd;
-}
-
-.archive-project-wrapper .item:hover .cover p {
-    color: #ddd;
-}
+.header-wrapper{background-image:url(/static/img/project-bkg.png);background-repeat:no-repeat;background-position:center}
+.archive-project-wrapper{padding-top:60px;padding-bottom:0}.archive-project-wrapper a{text-decoration:none}
+.archive-project-wrapper .decor-top{position:absolute}.archive-project-wrapper .item{position:relative;overflow:hidden;max-width:300px;margin:auto;cursor:pointer;box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);margin:10px 10px 20px 20px;border-radius:5px}
+.archive-project-wrapper .item .image{max-width:100%}.archive-project-wrapper .item .cover{background-color:rgba(0,0,0,0.6);bottom:0;left:0;padding:20px;position:absolute;right:0;text-align:center;top:0;transition-duration:200ms}
+.archive-project-wrapper .item h3{font-size:20px;font-weight:600;line-height:20px;margin-top:10px;text-align:center;text-transform:uppercase}
+.archive-project-wrapper .item h3,.archive-project-wrapper .item p{color:#ddd}.archive-project-wrapper .item:hover .cover{background-color:#24a9e1}
+.archive-project-wrapper .item:hover .cover h3{color:#ddd}.archive-project-wrapper .item:hover .cover p{color:#ddd}

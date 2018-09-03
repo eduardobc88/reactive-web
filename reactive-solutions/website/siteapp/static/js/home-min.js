@@ -1,0 +1,1 @@
+var documentReady=function(){},windowLoad=function(){initSlider()},initSlider=function(){$("#slides").superslides({play:1e4})};$(document).ready(documentReady),$(window).on("load",windowLoad);
