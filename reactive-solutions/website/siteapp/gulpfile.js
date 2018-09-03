@@ -13,7 +13,7 @@ gulp.task('compress-js', function() {
 gulp.task('compress-css', function () {
   gulp.src('static/source-css/*.css')
     .pipe(uglifycss({
-      "maxLineLen": 80,
+      // "maxLineLen": 80,
       "uglyComments": true
     }))
     .pipe(gulp.dest('static/css'));
