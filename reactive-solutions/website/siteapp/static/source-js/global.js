@@ -1,14 +1,17 @@
 var mobileMenuElement = null;
 var menuWapperElement = null;
-
+var windowElement = null;
 
 var documentReady = function() {
-    mobileMenuElement = $('.mobile-menu-wrapper');
-    menuWapperElement = $('.menu-wrapper');
+
 }
 
 var windowLoad = function() {
-
+    mobileMenuElement = $('.mobile-menu-wrapper');
+    menuWapperElement = $('.menu-wrapper');
+    windowElement = $(window);
+    setMenuBkgColor();
+    windowOnScroll();
 }
 
 var openMenuMobile = function(element) {
@@ -18,8 +21,15 @@ var openMenuMobile = function(element) {
         mobileMenuElement.addClass('visible');
 }
 
-var onScroll = function(element) {
-    if( $(element).scrollTop() > 80 ) {
+var windowOnScroll = function() {
+    $(windowElement).scroll(setMenuBkgColor);
+}
+
+var setMenuBkgColor = function() {
+    if(menuWapperElement == null) {
+        return false;
+    }
+    if($(windowElement).scrollTop() > 80) {
         menuWapperElement.addClass('page-scroll');
     } else {
         menuWapperElement.removeClass('page-scroll');

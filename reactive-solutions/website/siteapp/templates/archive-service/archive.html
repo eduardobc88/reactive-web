@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'css/archive-service.css' %}">
+<link rel="preload" as="style" href="{% static 'css/archive-service.css' %}" onload="this.onload=null;this.rel='stylesheet'">
 {% endblock %}
 {% block page_content %}
     <div class="header-wrapper">
@@ -22,7 +22,7 @@
                 {% if forloop.counter|divisibleby:2 %}
                     <div class="flex-container">
                         <div class="left">
-                            <img src="{{ service.service_icon }}">
+                            <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
                         </div>
                         <div class="right">
                             <h2>{{ service.service_title }}</h2>
@@ -38,7 +38,7 @@
                             <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
                         </div>
                         <div class="right">
-                            <img src="{{ service.service_icon }}">
+                            <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
                         </div>
                     </div>
                 {% endif %}

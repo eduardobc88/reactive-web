@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'css/single-blog.css' %}">
+<link rel="preload" as="style" href="{% static 'css/single-blog.css' %}" onload="this.onload=null;this.rel='stylesheet'">
 {% endblock %}
 {% block page_js %}
-<script src="{% static 'js/share-this.js' %}"></script>
+<script src="{% static 'js/share-this.js' %}" defer></script>
 {% endblock %}
 {% block page_content %}
     <div class="header-wrapper" style="background-image: url({{ post.post_thumbnail }}); background-size:cover;">

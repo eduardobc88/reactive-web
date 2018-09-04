@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'css/thankyou.css' %}">
+<link rel="preload" as="style" href="{% static 'css/thankyou.css' %}" onload="this.onload=null;this.rel='stylesheet'">
 {% endblock %}
 {% block page_js %}
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'css/archive-project.css' %}">
+<link rel="preload" as="style" href="{% static 'css/archive-project.css' %}" onload="this.onload=null;this.rel='stylesheet'">
 {% endblock %}
 
 {% block page_content %}
@@ -23,7 +23,7 @@
                 <div class="max-width-320">
                     <a href="{{ project.get_absolute_url }}">
                         <div class="item">
-                            <img class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450">
+                            <img alt="REACTIVE WEB" class="image" src="{{ project.project_thumbnail }}">
                             <div class="cover">
                                 <h3>{{ project.project_title }}</h3>
                                 <p>{{ project.project_excerpt }}</p>

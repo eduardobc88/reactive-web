@@ -55,14 +55,14 @@ var formValidation = function(event) {
 
 
 var documentReady = function() {
-    formElement = $('.form-wrapper');
-    initForm();
-    $('.form-wrapper').submit(formValidation)
+
 }
 
 
 var windowLoad = function() {
-
+    formElement = $('.form-wrapper');
+    initForm();
+    $('.form-wrapper').submit(formValidation);
 }
 
 $(document).ready(documentReady);

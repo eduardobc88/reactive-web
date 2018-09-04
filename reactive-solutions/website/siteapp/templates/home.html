@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'libs/superslides/superslides.css' %}">
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="preload" as="style" href="{% static 'libs/superslides/superslides.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="{% static 'css/home.css' %}" onload="this.onload=null;this.rel='stylesheet'">
 {% endblock %}
 {% block page_js %}
-<script src="{% static 'libs/superslides/superslides-min.js' %}"></script>
-<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'libs/superslides/superslides-min.js' %}" defer></script>
+<script src="{% static 'js/home.js' %}" defer></script>
 {% endblock %}
 
 {% load options %}
@@ -24,7 +24,7 @@
                     <li>
                         <div class="flex-container">
                             <div class="left">
-                                <img class="icon" src="{{ slide.slide_image }}">
+                                <img alt="REACTIVE WEB" class="icon" src="{{ slide.slide_image }}">
                             </div>
                             <div class="right">
                                 <h2>{{ slide.slide_title }}</h2>
@@ -54,8 +54,8 @@
             {% for post in posts %}
                 <a href="{{ post.get_absolute_url }}" class="max-width-320">
                     <div class="item">
-                        <!-- <img class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450"> -->
-                        <img class="image" src="{{ post.post_thumbnail }}">
+                        <!-- <img alt="REACTIVE WEB" class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450"> -->
+                        <img alt="REACTIVE WEB" class="image" src="{{ post.post_thumbnail }}">
                         <div class="cover">
                             <div class="title-wrapper">
                                 <h3>{{ post.post_title }}</h3>
@@ -110,7 +110,7 @@
                 <div class="max-width-320">
                     <a href="{{ project.get_absolute_url }}">
                         <div class="item">
-                            <img class="image" src="{{ project.project_thumbnail }}">
+                            <img alt="REACTIVE WEB" class="image" src="{{ project.project_thumbnail }}">
                             <div class="cover">
                                 <h3>{{ project.project_title }}</h3>
                                 <p>{{ project.project_excerpt }}</p>
@@ -168,7 +168,7 @@
                                 <h3>{{ service.service_title }}</h3>
                                 <p>{{ service.service_excerpt | safe }}</p>
                             </div>
-                            <img src="{{ service.service_icon }}">
+                            <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
                         </div>
                     </a>
                 {% endfor %}

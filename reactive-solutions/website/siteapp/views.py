@@ -23,6 +23,8 @@ def home(request):
             'projects': projects,
             'services': services,
             'page_head_title': 'REACTIVE WEB',
+            'page_head_description': 'REACTIVE WEB: Desarrollo y Diseño Web',
+            'page_head_bar_color': '#24a9e1',
         }
     )
 
@@ -34,6 +36,7 @@ def thanks(request):
         'page_thumbnail':page.values('page_thumbnail')[0]['page_thumbnail'],
         }
     page_head_title = page.values_list('page_title', flat=True)[0]
+    page_head_description = page.values_list('page_excerpt', flat=True)[0]
 
     if request.POST:
         prospect = Prospect(
@@ -54,6 +57,8 @@ def thanks(request):
         context = {
             'page': page_data,
             'page_head_title': 'RW - {0}'.format(page_head_title),
+            'page_head_description': page_head_description,
+            'page_head_bar_color': '#24a9e1',
         }
     )
 
@@ -73,6 +78,8 @@ class PageDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         self.template_name = self.object.page_template
         context['page_head_title'] = 'RW - {0}'.format(self.object.page_title)
+        context['page_head_description'] = self.object.page_excerpt
+        context['page_head_bar_color'] = '#24a9e1'
         return context
 
 
@@ -91,6 +98,8 @@ class ArchiveProjectListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = 'RW - Proyectos'
+        context['page_head_description'] = 'Proyectos que hemos realizado.',
+        context['page_head_bar_color'] = '#24a9e1'
         return context
 
 
@@ -104,6 +113,8 @@ class ArchiveProjectDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = 'RW - {0}'.format(self.object.project_title)
+        context['page_head_description'] = self.object.project_excerpt
+        context['page_head_bar_color'] = '#24a9e1'
         return context
 
 
@@ -123,6 +134,8 @@ class ArchiveServiceListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = 'RW - Services'
+        context['page_head_description'] = 'Nuestros servicios'
+        context['page_head_bar_color'] = '#24a9e1'
         return context
 
 
@@ -136,6 +149,8 @@ class ArchiveServiceDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = 'RW - {0}'.format(self.object.service_title)
+        context['page_head_description'] = self.object.service_excerpt
+        context['page_head_bar_color'] = '#24a9e1'
         return context
 
 
@@ -154,6 +169,8 @@ class ArchivePostListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = 'RW - Blog'
+        context['page_head_description'] = 'En nuestro blog podras encontrar desde noticias relevantes hasta tutoriales de desarrollo web.'
+        context['page_head_bar_color'] = '#24a9e1'
         return context
 
 
@@ -167,4 +184,6 @@ class ArchivePostDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = 'RW - {0}'.format(self.object.post_title)
+        context['page_head_description'] = self.object.post_excerpt
+        context['page_head_bar_color'] = '#24a9e1'
         return context

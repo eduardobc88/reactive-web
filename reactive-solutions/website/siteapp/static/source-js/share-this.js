@@ -1,4 +1,4 @@
-function shareThis() {
+var shareThis = function() {
     if($('.share-fb').length) {
         var shareFB = $('.share-fb');
         shareFB.on('click', function(){
@@ -56,5 +56,9 @@ function shareThis() {
     }
 }
 
+var windowLoad = function() {
+    shareThis()
+}
 
-$(document).ready(shareThis);
+
+$(window).on('load', windowLoad);

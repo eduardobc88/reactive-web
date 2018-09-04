@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'css/default.css' %}">
+<link rel="preload" as="style" href="{% static 'css/default.css' %}" onload="this.onload=null;this.rel='stylesheet'">
 {% endblock %}
 {% block page_content %}
     <div class="header-wrapper" style="background-image: url({{ page.page_thumbnail }}); background-size:cover;">
