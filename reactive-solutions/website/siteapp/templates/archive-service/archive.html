@@ -21,24 +21,28 @@
                 </div>
                 {% if forloop.counter|divisibleby:2 %}
                     <div class="flex-container">
-                        <div class="left">
-                            <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
-                        </div>
-                        <div class="right">
-                            <h2>{{ service.service_title }}</h2>
-                            <p>{{ service.service_excerpt }}</p>
-                            <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
+                        <div class="max-width-720">
+                            <div class="left">
+                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
+                            </div>
+                            <div class="right">
+                                <h2>{{ service.service_title }}</h2>
+                                <p>{{ service.service_excerpt }}</p>
+                                <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
+                            </div>
                         </div>
                     </div>
                 {% else %}
                     <div class="flex-container">
-                        <div class="left">
-                            <h2>{{ service.service_title }}</h2>
-                            <p>{{ service.service_excerpt }}</p>
-                            <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
-                        </div>
-                        <div class="right">
-                            <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
+                        <div class="max-width-720">
+                            <div class="left">
+                                <h2>{{ service.service_title }}</h2>
+                                <p>{{ service.service_excerpt }}</p>
+                                <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
+                            </div>
+                            <div class="right">
+                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
+                            </div>
                         </div>
                     </div>
                 {% endif %}

@@ -10,7 +10,9 @@ from django.conf import settings
 def get_site_option_value(option_name):
     site_options = SiteOption.objects.all()
     option = site_options.filter(site_option_name=option_name)
-    return option.values_list('site_option_value', flat=True)[0]
+    if not option:
+        return False
+    return option.values_list('site_option_value', flat=True).distinct()[0]
 
 
 def home(request):
@@ -98,18 +100,18 @@ class ArchiveProjectListView(generic.ListView):
     paginate_by = 10
     context_object_name = 'projects'
     website_head_title = get_site_option_value('page_head_title')
-    projects_title = get_site_option_value('projects_title')
-    projects_description = get_site_option_value('projects_description')
 
 
     def get_paginate_by(self, queryset):
         self.paginate_by = int(get_site_option_value('paginate_by'))
-        return self.request.GET.get('paginate_by', self.paginate_by)
+        return self.paginate_by
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, self.projects_title)
-        context['page_head_description'] = self.projects_description,
+        projects_title = get_site_option_value('projects_title')
+        projects_description = get_site_option_value('projects_description')
+        context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, projects_title)
+        context['page_head_description'] = projects_description
         context['page_head_bar_color'] = '#24a9e1'
         return context
 
@@ -136,8 +138,6 @@ class ArchiveServiceListView(generic.ListView):
     paginate_by = 10
     context_object_name = 'services'
     website_head_title = get_site_option_value('page_head_title')
-    services_title = get_site_option_value('services_title')
-    services_description = get_site_option_value('services_description')
 
 
     def get_paginate_by(self, queryset):
@@ -146,8 +146,10 @@ class ArchiveServiceListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, self.services_title)
-        context['page_head_description'] = self.services_description
+        services_title = get_site_option_value('services_title')
+        services_description = get_site_option_value('services_description')
+        context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, services_title)
+        context['page_head_description'] = services_description
         context['page_head_bar_color'] = '#24a9e1'
         return context
 
@@ -174,8 +176,6 @@ class ArchivePostListView(generic.ListView):
     paginate_by = 10
     context_object_name = 'posts'
     website_head_title = get_site_option_value('page_head_title')
-    blog_title = get_site_option_value('blog_title')
-    blog_description = get_site_option_value('blog_description')
 
 
     def get_paginate_by(self, queryset):
@@ -184,8 +184,10 @@ class ArchivePostListView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, self.blog_title)
-        context['page_head_description'] = self.blog_description
+        blog_title = get_site_option_value('blog_title')
+        blog_description = get_site_option_value('blog_description')
+        context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, blog_title)
+        context['page_head_description'] = blog_description
         context['page_head_bar_color'] = '#24a9e1'
         return context
 

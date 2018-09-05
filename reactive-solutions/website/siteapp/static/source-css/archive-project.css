@@ -17,6 +17,14 @@
     position: absolute;
 }
 
+.archive-project-wrapper .archive-description {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    text-align: center;
+}
+
 .archive-project-wrapper .item {
     position: relative;
     overflow: hidden;

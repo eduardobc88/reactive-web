@@ -8,6 +8,7 @@ import os
 from tinymce.models import HTMLField
 from colorful.fields import RGBColorField
 from django.utils import timezone
+from django.utils.safestring import mark_safe
 
 
 # NOTE: functions to populate the file uploads
@@ -66,7 +67,7 @@ class Banner(models.Model):
     banner_name = models.CharField(max_length=100, primary_key=True, help_text='Enter unique banner name')
     banner_title = models.CharField(max_length=500, help_text='Enter the title for banner')
     banner_content = HTMLField()
-    banner_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='no-img.png')
+    banner_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/450x350/bfbfbf/ffffff/?text=RW')
     banner_button_name = models.CharField(max_length=100, help_text='Enter the button name')
     banner_button_url = models.CharField(max_length=500, help_text='Enter the button URL')
 
@@ -75,7 +76,7 @@ class Banner(models.Model):
         return 'banner_thumbnail'
 
     def admin_display_banner_content(self):
-        return '{0}: {1}'.format(self.banner_title, self.banner_content)
+        return self.banner_title
 
     def __str__(self):
         return '{0}'.format(self.banner_name)
