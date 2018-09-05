@@ -376,7 +376,7 @@
     "fields": {
         "action_time": "2018-09-05T09:14:07.406Z",
         "user": 3,
-        "content_type": 74,
+        "content_type": 77,
         "object_id": "15",
         "object_repr": "Gracias",
         "action_flag": 1,
@@ -389,7 +389,7 @@
     "fields": {
         "action_time": "2018-09-05T09:14:28.422Z",
         "user": 3,
-        "content_type": 74,
+        "content_type": 77,
         "object_id": "16",
         "object_repr": "Terminos y Condiciones",
         "action_flag": 1,
@@ -402,7 +402,7 @@
     "fields": {
         "action_time": "2018-09-05T09:14:43.216Z",
         "user": 3,
-        "content_type": 74,
+        "content_type": 77,
         "object_id": "17",
         "object_repr": "Politicas de Privacidad",
         "action_flag": 1,
@@ -415,7 +415,7 @@
     "fields": {
         "action_time": "2018-09-05T09:14:52.267Z",
         "user": 3,
-        "content_type": 74,
+        "content_type": 77,
         "object_id": "18",
         "object_repr": "Contacto",
         "action_flag": 1,
@@ -428,7 +428,7 @@
     "fields": {
         "action_time": "2018-09-05T09:16:03.250Z",
         "user": 3,
-        "content_type": 74,
+        "content_type": 77,
         "object_id": "17",
         "object_repr": "Aviso de Privacidad",
         "action_flag": 2,
@@ -441,7 +441,7 @@
     "fields": {
         "action_time": "2018-09-05T09:17:20.009Z",
         "user": 3,
-        "content_type": 74,
+        "content_type": 77,
         "object_id": "19",
         "object_repr": "Qui\u00e9nes Somos",
         "action_flag": 1,
@@ -454,7 +454,7 @@
     "fields": {
         "action_time": "2018-09-05T09:17:49.527Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "facebook_url",
         "object_repr": "facebook_url",
         "action_flag": 1,
@@ -467,7 +467,7 @@
     "fields": {
         "action_time": "2018-09-05T09:17:57.150Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "twitter_url",
         "object_repr": "twitter_url",
         "action_flag": 1,
@@ -480,7 +480,7 @@
     "fields": {
         "action_time": "2018-09-05T09:18:03.725Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "google_plus_url",
         "object_repr": "google_plus_url",
         "action_flag": 1,
@@ -493,7 +493,7 @@
     "fields": {
         "action_time": "2018-09-05T09:18:21.801Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "banner_title",
         "object_repr": "banner_title",
         "action_flag": 1,
@@ -506,7 +506,7 @@
     "fields": {
         "action_time": "2018-09-05T09:18:37.696Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "banner_title",
         "object_repr": "banner_title",
         "action_flag": 3,
@@ -519,7 +519,7 @@
     "fields": {
         "action_time": "2018-09-05T09:18:59.031Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "services_description",
         "object_repr": "services_description",
         "action_flag": 1,
@@ -532,7 +532,7 @@
     "fields": {
         "action_time": "2018-09-05T09:19:20.741Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "projects_description",
         "object_repr": "projects_description",
         "action_flag": 1,
@@ -545,7 +545,7 @@
     "fields": {
         "action_time": "2018-09-05T09:19:32.778Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "blog_description",
         "object_repr": "blog_description",
         "action_flag": 1,
@@ -558,7 +558,7 @@
     "fields": {
         "action_time": "2018-09-05T09:20:08.019Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "page_head_title",
         "object_repr": "page_head_title",
         "action_flag": 1,
@@ -571,7 +571,7 @@
     "fields": {
         "action_time": "2018-09-05T09:20:26.434Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "page_home_head_description",
         "object_repr": "page_home_head_description",
         "action_flag": 1,
@@ -584,7 +584,7 @@
     "fields": {
         "action_time": "2018-09-05T09:20:43.784Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "paginate_by",
         "object_repr": "paginate_by",
         "action_flag": 1,
@@ -597,7 +597,7 @@
     "fields": {
         "action_time": "2018-09-05T09:21:04.341Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "projects_title",
         "object_repr": "projects_title",
         "action_flag": 1,
@@ -610,7 +610,7 @@
     "fields": {
         "action_time": "2018-09-05T09:21:20.158Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "services_title",
         "object_repr": "services_title",
         "action_flag": 1,
@@ -623,7 +623,7 @@
     "fields": {
         "action_time": "2018-09-05T09:21:30.857Z",
         "user": 3,
-        "content_type": 75,
+        "content_type": 77,
         "object_id": "blog_title",
         "object_repr": "blog_title",
         "action_flag": 1,
@@ -636,7 +636,7 @@
     "fields": {
         "action_time": "2018-09-05T09:23:37.126Z",
         "user": 3,
-        "content_type": 70,
+        "content_type": 77,
         "object_id": "banner_title",
         "object_repr": "banner_title",
         "action_flag": 1,
@@ -649,7 +649,7 @@
     "fields": {
         "action_time": "2018-09-05T09:24:01.421Z",
         "user": 3,
-        "content_type": 70,
+        "content_type": 77,
         "object_id": "contact-banner",
         "object_repr": "contact-banner",
         "action_flag": 2,
@@ -662,7 +662,7 @@
     "fields": {
         "action_time": "2018-09-05T09:24:08.388Z",
         "user": 3,
-        "content_type": 70,
+        "content_type": 77,
         "object_id": "banner_title",
         "object_repr": "banner_title",
         "action_flag": 3,
@@ -675,7 +675,7 @@
     "fields": {
         "action_time": "2018-09-05T09:24:30.569Z",
         "user": 3,
-        "content_type": 70,
+        "content_type": 77,
         "object_id": "who-banner",
         "object_repr": "who-banner",
         "action_flag": 1,
@@ -688,7 +688,7 @@
     "fields": {
         "action_time": "2018-09-05T09:27:52.608Z",
         "user": 3,
-        "content_type": 69,
+        "content_type": 77,
         "object_id": "20",
         "object_repr": "Dise\u00f1o Web",
         "action_flag": 1,
@@ -701,7 +701,7 @@
     "fields": {
         "action_time": "2018-09-05T09:28:29.327Z",
         "user": 3,
-        "content_type": 69,
+        "content_type": 77,
         "object_id": "21",
         "object_repr": "Desarrollo Web",
         "action_flag": 1,
@@ -714,7 +714,7 @@
     "fields": {
         "action_time": "2018-09-05T09:32:16.163Z",
         "user": 3,
-        "content_type": 72,
+        "content_type": 77,
         "object_id": "8",
         "object_repr": "Desarrollo Web",
         "action_flag": 1,
@@ -727,7 +727,7 @@
     "fields": {
         "action_time": "2018-09-05T09:33:25.972Z",
         "user": 3,
-        "content_type": 72,
+        "content_type": 77,
         "object_id": "9",
         "object_repr": "Dise\u00f1o Web",
         "action_flag": 1,
@@ -740,7 +740,7 @@
     "fields": {
         "action_time": "2018-09-05T09:34:22.386Z",
         "user": 3,
-        "content_type": 72,
+        "content_type": 77,
         "object_id": "10",
         "object_repr": "Soporte Web",
         "action_flag": 1,
@@ -753,7 +753,7 @@
     "fields": {
         "action_time": "2018-09-05T09:35:18.964Z",
         "user": 3,
-        "content_type": 72,
+        "content_type": 77,
         "object_id": "11",
         "object_repr": "Marketing Online",
         "action_flag": 1,
@@ -766,7 +766,7 @@
     "fields": {
         "action_time": "2018-09-05T09:37:11.638Z",
         "user": 3,
-        "content_type": 73,
+        "content_type": 77,
         "object_id": "10",
         "object_repr": "Django Tutorial",
         "action_flag": 1,
@@ -779,7 +779,7 @@
     "fields": {
         "action_time": "2018-09-05T09:37:44.068Z",
         "user": 3,
-        "content_type": 73,
+        "content_type": 77,
         "object_id": "11",
         "object_repr": "NodeJS Tutorial",
         "action_flag": 1,
@@ -792,7 +792,7 @@
     "fields": {
         "action_time": "2018-09-05T09:38:09.729Z",
         "user": 3,
-        "content_type": 73,
+        "content_type": 77,
         "object_id": "12",
         "object_repr": "WordPress Tutorial",
         "action_flag": 1,
@@ -805,7 +805,7 @@
     "fields": {
         "action_time": "2018-09-05T09:38:56.016Z",
         "user": 3,
-        "content_type": 71,
+        "content_type": 77,
         "object_id": "6",
         "object_repr": "Buckets",
         "action_flag": 1,
@@ -818,7 +818,7 @@
     "fields": {
         "action_time": "2018-09-05T09:39:11.240Z",
         "user": 3,
-        "content_type": 71,
+        "content_type": 77,
         "object_id": "7",
         "object_repr": "CIMMA",
         "action_flag": 1,
@@ -831,7 +831,7 @@
     "fields": {
         "action_time": "2018-09-05T09:41:00.685Z",
         "user": 3,
-        "content_type": 71,
+        "content_type": 77,
         "object_id": "8",
         "object_repr": "PagHid",
         "action_flag": 1,
@@ -844,7 +844,7 @@
     "fields": {
         "action_time": "2018-09-05T09:42:24.441Z",
         "user": 3,
-        "content_type": 70,
+        "content_type": 77,
         "object_id": "who-banner",
         "object_repr": "who-banner",
         "action_flag": 2,
@@ -857,7 +857,7 @@
     "fields": {
         "action_time": "2018-09-05T09:44:04.066Z",
         "user": 3,
-        "content_type": 70,
+        "content_type": 77,
         "object_id": "contact-banner",
         "object_repr": "contact-banner",
         "action_flag": 2,
@@ -870,7 +870,7 @@
     "fields": {
         "action_time": "2018-09-05T09:46:11.408Z",
         "user": 3,
-        "content_type": 70,
+        "content_type": 77,
         "object_id": "who-banner",
         "object_repr": "who-banner",
         "action_flag": 2,
