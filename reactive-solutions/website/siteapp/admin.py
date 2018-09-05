@@ -8,8 +8,8 @@ from .models import ArchiveProject, HomeSlider, SiteOption, Banner, ArchiveServi
 
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('page_title', 'admin_display_page_slug', 'page_template', 'thumbnail_preview')
-    readonly_fields = ['page_slug', 'thumbnail_preview']
+    list_display = ('page_title', 'admin_display_page_slug', 'page_template', 'thumbnail_preview', 'page_created_at', 'page_updated_at')
+    readonly_fields = ['page_slug', 'thumbnail_preview', 'page_created_at', 'page_updated_at']
 
     def thumbnail_preview(self, obj):
         return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.page_thumbnail))
@@ -18,8 +18,8 @@ class PageAdmin(admin.ModelAdmin):
 
 @admin.register(ArchivePost)
 class ArchivePostAdmin(admin.ModelAdmin):
-    list_display = ('post_title', 'admin_display_post_slug', 'thumbnail_preview')
-    readonly_fields = ['post_slug', 'thumbnail_preview']
+    list_display = ('post_title', 'admin_display_post_slug', 'thumbnail_preview', 'post_created_at', 'post_updated_at')
+    readonly_fields = ['post_slug', 'thumbnail_preview', 'post_created_at', 'post_updated_at']
 
     def thumbnail_preview(self, obj):
         return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.post_thumbnail))
@@ -28,8 +28,8 @@ class ArchivePostAdmin(admin.ModelAdmin):
 
 @admin.register(ArchiveService)
 class ArchiveServiceAdmin(admin.ModelAdmin):
-    list_display = ('service_title', 'admin_display_service_slug', 'thumbnail_preview')
-    readonly_fields = ['service_slug', 'thumbnail_preview']
+    list_display = ('service_title', 'admin_display_service_slug', 'thumbnail_preview', 'service_created_at', 'service_updated_at')
+    readonly_fields = ['service_slug', 'thumbnail_preview', 'service_created_at', 'service_updated_at']
 
     def thumbnail_preview(self, obj):
         return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.service_thumbnail))
@@ -64,8 +64,8 @@ class HomeSliderAdmin(admin.ModelAdmin):
 
 @admin.register(ArchiveProject)
 class ArchiveProjectAdmin(admin.ModelAdmin):
-    list_display = ('project_title', 'project_slug', 'thumbnail_preview')
-    readonly_fields = ['project_slug', 'thumbnail_preview']
+    list_display = ('project_title', 'project_slug', 'thumbnail_preview', 'project_created_at', 'project_updated_at')
+    readonly_fields = ['project_slug', 'thumbnail_preview', 'project_created_at', 'project_updated_at']
 
     def thumbnail_preview(self, obj):
         return mark_safe('<img src="{0}" width="30" height="30"/>'.format(obj.project_thumbnail))
@@ -74,6 +74,6 @@ class ArchiveProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Prospect)
 class ProspectAdmin(admin.ModelAdmin):
-    list_display= ('prospect_name', 'prospect_email', 'prospect_phone')
-    readonly_fields = ['prospect_name', 'prospect_last_name', 'prospect_email', 'prospect_phone', 'prospect_website', 'prospect_message']
+    list_display= ('prospect_name', 'prospect_email', 'prospect_phone', 'prospect_created_at')
+    readonly_fields = ['prospect_name', 'prospect_last_name', 'prospect_email', 'prospect_phone', 'prospect_website', 'prospect_message', 'prospect_created_at']
     pass

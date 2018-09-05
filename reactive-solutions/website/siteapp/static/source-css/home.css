@@ -41,7 +41,7 @@
 
 .clouds-2 {
 	background-image: url(/static/img/clouds-2.png);
-	-webkit-animation-duration: 30s;
+	-webkit-animation-duration: 25s;
 	z-index: 2;
 }
 

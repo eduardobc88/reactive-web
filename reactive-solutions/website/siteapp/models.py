@@ -7,55 +7,33 @@ import uuid
 import os
 from tinymce.models import HTMLField
 from colorful.fields import RGBColorField
+from django.utils import timezone
 
 
-# Create your models here.
+# NOTE: functions to populate the file uploads
 
+def upload_thumbnail_image(instance, filename):
+    model_image_prop_name = instance.get_thumbnail_image_prop_name()
+    if not hasattr(instance, model_image_prop_name):
+        return
 
-# OPTIMIZE: it should to use only one function to upload files
-
-def upload_image_slider(instance, filename):
-    file_name = str(instance.slide_image).split('/')[-1]
+    file_name = str(getattr(instance, model_image_prop_name)).split('/')[-1]
     file_ext = file_name.split('.')[-1]
     instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
     return os.path.join('siteapp/static/uploads/', str(instance.slide_image))
 
-def upload_image_project(instance, filename):
-    file_name = str(instance.project_thumbnail).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.project_thumbnail = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.project_thumbnail))
+def upload_icon_image():
+    model_icon_prop_name = instance.get_icon_image_prop_name()
+    if not hasattr(instance, model_icon_prop_name):
+        return
 
-def upload_image_service(instance, filename):
-    file_name = str(instance.service_thumbnail).split('/')[-1]
+    file_name = str(getattr(instance, model_icon_prop_name)).split('/')[-1]
     file_ext = file_name.split('.')[-1]
-    instance.service_thumbnail = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.service_thumbnail))
+    instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
+    return os.path.join('siteapp/static/uploads/', str(instance.slide_image))
 
-def upload_icon_service(instance, filename):
-    file_name = str(instance.service_icon).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.service_icon = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.service_icon))
 
-def upload_image_post(instance, filename):
-    file_name = str(instance.post_thumbnail).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.post_thumbnail = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.post_thumbnail))
-
-def upload_image_banner(instance, filename):
-    file_name = str(instance.banner_thumbnail).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.banner_thumbnail = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.banner_thumbnail))
-
-def upload_image_page(instance, filename):
-    file_name = str(instance.page_thumbnail).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.page_thumbnail = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.page_thumbnail))
-
+# NOTE: function to read template file names from path
 
 def get_template_list():
     settings_dir = os.path.dirname(__file__)
@@ -71,8 +49,11 @@ def get_template_list():
 class HomeSlider(models.Model):
     slide_title = models.CharField(max_length=60, help_text='Enter the title')
     slide_content = models.TextField(max_length=150, help_text='Enter the descrition')
-    slide_image = models.ImageField(upload_to=upload_image_slider, default='no-img.jpg')
+    slide_image = models.ImageField(upload_to=upload_thumbnail_image, default='no-img.jpg')
 
+
+    def get_thumbnail_image_prop_name(self):
+        return 'slide_image'
 
     def class_name(self):
         return self.__class__.__name__
@@ -85,10 +66,13 @@ class Banner(models.Model):
     banner_name = models.CharField(max_length=100, primary_key=True, help_text='Enter unique banner name')
     banner_title = models.CharField(max_length=500, help_text='Enter the title for banner')
     banner_content = HTMLField()
-    banner_thumbnail = models.ImageField(upload_to=upload_image_banner, default='no-img.png')
+    banner_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='no-img.png')
     banner_button_name = models.CharField(max_length=100, help_text='Enter the button name')
     banner_button_url = models.CharField(max_length=500, help_text='Enter the button URL')
 
+
+    def get_thumbnail_image_prop_name(self):
+        return 'banner_thumbnail'
 
     def admin_display_banner_content(self):
         return '{0}: {1}'.format(self.banner_title, self.banner_content)
@@ -102,9 +86,14 @@ class ArchiveProject(models.Model):
     project_title = models.CharField(unique=True, max_length=150, help_text='Enter the project title')
     project_content = HTMLField()
     project_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the project excerpt')
-    project_thumbnail = models.ImageField(upload_to=upload_image_project, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
+    project_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
     project_slug = models.SlugField(max_length=200, null=True)
+    project_created_at = models.DateTimeField(auto_now_add=True)
+    project_updated_at = models.DateTimeField(auto_now=True)
 
+
+    def get_thumbnail_image_prop_name(self):
+        return 'project_thumbnail'
 
     def get_absolute_url(self):
         return reverse('project-detail', kwargs={'slug': self.project_slug})
@@ -121,11 +110,19 @@ class ArchiveService(models.Model):
     service_title = models.CharField(unique=True, max_length=200, help_text='Enter the service title')
     service_content = HTMLField()
     service_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the service excerpt')
-    service_thumbnail = models.ImageField(upload_to=upload_image_service, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
-    service_icon = models.ImageField(upload_to=upload_icon_service, default='http://placehold.it/500x500/bfbfbf/ffffff/?text=RW')
+    service_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
+    service_icon = models.ImageField(upload_to=upload_icon_image, default='http://placehold.it/500x500/bfbfbf/ffffff/?text=RW')
     service_slug = models.SlugField(max_length=200, null=True)
     service_background_color = RGBColorField(default='#FFFFFF')
+    service_created_at = models.DateTimeField(auto_now_add=True)
+    service_updated_at = models.DateTimeField(auto_now=True)
 
+
+    def get_thumbnail_image_prop_name(self):
+        return 'service_thumbnail'
+
+    def get_icon_image_prop_name(self):
+        return 'service_icon'
 
     def admin_display_service_slug(self):
         return '{0}'.format(self.service_slug)
@@ -145,10 +142,14 @@ class ArchivePost(models.Model):
     post_title = models.CharField(unique=True, max_length=500, help_text='Enter the post title')
     post_content = HTMLField()
     post_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the post excerpt')
-    post_thumbnail = models.ImageField(upload_to=upload_image_post, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
-    post_date = models.DateTimeField(auto_now_add=True)
+    post_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
     post_slug = models.SlugField(max_length=200, null=True)
+    post_created_at = models.DateTimeField(auto_now_add=True)
+    post_updated_at = models.DateTimeField(auto_now=True)
 
+
+    def get_thumbnail_image_prop_name(self):
+        return 'post_thumbnail'
 
     def admin_display_post_slug(self):
         return '{0}'.format(self.post_slug)
@@ -165,11 +166,15 @@ class Page(models.Model):
     page_title = models.CharField(unique=True, max_length=500, help_text='Enter the page title', null=False)
     page_content = HTMLField()
     page_excerpt = models.CharField(max_length=150, null=True, help_text='Enter the page excerpt')
-    page_thumbnail = models.ImageField(upload_to=upload_image_page, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
-    page_date = models.DateTimeField(auto_now_add=True)
+    page_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
     page_slug = models.SlugField(max_length=200, null=True)
     page_template = models.CharField(max_length=1000, choices=get_template_list(), default='default.html', help_text='Page template')
+    page_created_at = models.DateTimeField(auto_now_add=True)
+    page_updated_at = models.DateTimeField(auto_now=True)
 
+
+    def get_thumbnail_image_prop_name(self):
+        return 'page_thumbnail'
 
     def admin_display_page_slug(self):
         return '{0}'.format(self.page_slug)
@@ -200,6 +205,7 @@ class Prospect(models.Model):
     prospect_phone = models.CharField(max_length=15)
     prospect_website = models.CharField(max_length=200)
     prospect_message = models.TextField(max_length=5000)
+    prospect_created_at = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
