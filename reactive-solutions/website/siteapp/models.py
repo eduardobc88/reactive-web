@@ -23,7 +23,7 @@ def upload_thumbnail_image(instance, filename):
     instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
     return os.path.join('siteapp/static/uploads/', str(instance.slide_image))
 
-def upload_icon_image():
+def upload_icon_image(instance, filename):
     model_icon_prop_name = instance.get_icon_image_prop_name()
     if not hasattr(instance, model_icon_prop_name):
         return
