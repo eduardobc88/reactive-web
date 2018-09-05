@@ -32,9 +32,11 @@ body {
 }
 
 .menu-wrapper .menu-options .logo {
-    height: 60px;
-    position: relative;
     align-self: center;
+    height: 60px;
+    margin-left: 4px;
+    margin-right: 4px;
+    position: relative;
 }
 
 .menu-wrapper .menu-options .home-wrapper label {
@@ -268,6 +270,8 @@ body {
 }
 
 .footer-wrapper .home-wrapper .logo {
+    margin-left: 4px;
+    margin-right: 4px;
     max-height: 60px;
 }
 
@@ -329,10 +333,11 @@ body {
     color: #000;
     font-size: 12px;
     font-weight: 600;
-    margin-top: 20px;
-    text-align: center;
-    padding: 10px;
     letter-spacing: 1px;
+    margin-top: 20px;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
 }
 
 

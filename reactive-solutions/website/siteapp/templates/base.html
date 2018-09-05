@@ -25,9 +25,25 @@
         {% endblock %}
         {% block page_js %}
         {% endblock %}
+        <script>
+            function removeSplashScreen() {
+                setTimeout(function(){
+                    element = document.querySelector('.splash-screen');
+                    element.style.opacity = 0;
+                    element.style.zIndex = -1;
+                    setTimeout(function(){
+                        element = document.querySelector('.splash-screen');
+                        element.parentNode.removeChild(element);
+                    }, 500);
+                }, 500);
+            }
+        </script>
     </head>
-    <body>
+    <body onload="removeSplashScreen()">
         {% load options %}
+        <div class="splash-screen" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: auto; z-index: 99; background-color: #24a9e1; transition-duration: 300ms;">
+            <img alt="REACTIVE WEB" style="height: 150px; margin: auto; position: absolute; left: 0; right: 0; top: 0; bottom: 0;" src="{% static 'img/RW.gif' %}">
+        </div>
         <div class="page-wrapper">
             {% block page_header %}
                 <div class="menu-wrapper">
@@ -38,9 +54,9 @@
                                 <img alt="REACTIVE WEB" class="logo" src="{% static 'img/rw-icon.png' %}">
                                 <label>WEB</label>
                             </a>
-                            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
-                            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
                             <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+                            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+                            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
                             <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
                             <a class="option" href="{% contact_slug %}">CONTACTO</a>
                             <img alt="REACTIVE WEB" class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
@@ -60,9 +76,9 @@
                         </a>
                     </div>
                     <div class="mid">
-                        <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
-                        <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
                         <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+                        <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+                        <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
                         <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
                     </div>
                     <div class="mid">
@@ -100,9 +116,9 @@
                 <label>REACTIVE WEB</label>
             </a>
             <img alt="REACTIVE WEB" class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
-            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
-            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
             <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
             <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
             <a class="option" href="{% contact_slug %}">CONTACTO</a>
         </div>
