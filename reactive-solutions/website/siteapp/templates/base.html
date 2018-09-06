@@ -16,6 +16,12 @@
         <meta name="theme-color" content="{{ page_head_bar_color }}"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- end - meta tags for SEO -->
+        <!-- start - loadCSS -->
+        <script>
+        /*  loadCSS. [c]2017 Filament Group, Inc. MIT License  */
+        !function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+        </script>
+        <!-- end - loadCSS -->
         <link rel="icon" href="{% static 'img/rw-icon.png' %}">
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,400i,500,700" onload="this.onload=null;this.rel='stylesheet'">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
