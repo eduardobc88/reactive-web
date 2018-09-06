@@ -1,10 +1,10 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    -webkit-user-select: none;
     background: #666;
+    font-family: 'Roboto', sans-serif;
     height: 100%;
     margin: 0px;
     user-select: none;
-    -webkit-user-select: none;
 }
 
 .menu-wrapper {
@@ -13,8 +13,8 @@ body {
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 10;
     transition-duration: 200ms;
+    z-index: 10;
 }
 
 .menu-wrapper.page-scroll {
@@ -40,18 +40,21 @@ body {
 }
 
 .menu-wrapper .menu-options .home-wrapper label {
+    align-self: center;
     color: #000;
     cursor: pointer;
+    display: inline-block;
     font-size: 20px;
     font-weight: 400;
     line-height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
     padding-top: 2px;
     position: relative;
     text-align: center;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
     vertical-align: middle;
     word-wrap: break-word;
-    align-self: center;
-    display: inline-block;
 }
 
 .menu-wrapper .menu-options {
@@ -59,9 +62,10 @@ body {
 }
 
 .menu-wrapper .menu-options .home-wrapper {
-    flex-grow: 4;
-    text-decoration: none;
     display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .menu-wrapper .menu-options .option {
@@ -69,35 +73,42 @@ body {
     color: #000;
     flex-grow: 1;
     font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2px;
     position: relative;
     text-align: center;
     text-decoration: none;
-    font-weight: 500;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.5);
     transition-duration: 200ms;
-    letter-spacing: 2px;
+}
+
+.menu-wrapper.page-scroll .menu-options .option, .menu-wrapper.page-scroll .menu-options .home-wrapper label {
+    text-shadow: none;
 }
 
 .menu-wrapper .menu-options .option:before {
-    content: "[";
-    position: absolute;
-    color: transparent;
-    top: 0;
     bottom: 0;
-    left: 0px;
+    color: transparent;
+    content: "[";
     font-size: 20px;
+    left: 0px;
     line-height: 20px;
+    position: absolute;
+    text-shadow: none;
+    top: 0;
     transition-duration: 200ms;
 }
 
 .menu-wrapper .menu-options .option:after {
-    content: "]";
-    position: absolute;
-    color: transparent;
-    top: 0;
     bottom: 0;
-    right: 0px;
+    color: transparent;
+    content: "]";
     font-size: 20px;
     line-height: 20px;
+    position: absolute;
+    right: 0px;
+    text-shadow: none;
+    top: 0;
     transition-duration: 200ms;
 }
 
@@ -137,7 +148,7 @@ body {
     position: absolute;
     right: -125px;
     right: 15px;
-    top: 20px;
+    top: 15px;
 }
 
 .mobile-menu-wrapper .home-wrapper {
@@ -219,17 +230,15 @@ body {
 
 .background-color-white {
     background-color: #f4f4f4;
-    /* background-image: url(/static/img/general-texture-bkg.png); */
     background-position: center;
-    /* opacity: 1; */
 }
 
 
 .footer-wrapper {
     background-position: center;
-    position: relative;
-    padding-top: 100px;
     background-size: cover;
+    padding-top: 100px;
+    position: relative;
 }
 
 .footer-wrapper .left {
@@ -276,8 +285,10 @@ body {
 }
 
 .footer-wrapper .home-wrapper label {
+    align-self: center;
     color: #000;
     cursor: pointer;
+    display: inline-block;
     font-size: 20px;
     font-weight: 400;
     line-height: 20px;
@@ -286,8 +297,6 @@ body {
     text-align: center;
     vertical-align: middle;
     word-wrap: break-word;
-    align-self: center;
-    display: inline-block;
 }
 
 .footer-wrapper .option {
@@ -295,11 +304,11 @@ body {
     display: block;
     flex-grow: 1;
     font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
     margin-top: 15px;
     position: relative;
     text-decoration: none;
-    font-weight: 500;
-    letter-spacing: 1px;
 }
 
 .footer-wrapper .social-icon img {
@@ -310,11 +319,11 @@ body {
 .footer-wrapper .title {
     color: #000;
     font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
     margin-top: 50px;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 .footer-wrapper .phone {
@@ -322,11 +331,11 @@ body {
     display: block;
     font-size: 24px;
     font-weight: 600;
+    letter-spacing: 1px;
     text-align: center;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .footer-wrapper .reserved {
@@ -343,6 +352,7 @@ body {
 
 .button-effect {
     background-color: black;
+    border-radius: 5px;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     color: white !important;
     display: block;
@@ -357,23 +367,22 @@ body {
     text-align: center;
     text-decoration: none !important;
     text-transform: uppercase;
-    border-radius: 5px;
 }
 
 .button-effect:after {
-    content: "";
-    width: 0px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 1;
     background-color: rgba(255, 255, 255, 0.25);
-    transition-duration: 200ms;
+    bottom: 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    margin: auto;
     overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition-duration: 200ms;
+    width: 0px;
+    z-index: 1;
 }
 
 .button-effect:hover:after {
@@ -392,11 +401,11 @@ body {
 }
 
 .archive-pagination ul {
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     display: inline-flex;
     list-style: none;
     margin: auto;
     padding: 0;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 }
 
 .archive-pagination li {
@@ -476,12 +485,12 @@ body {
 
 
 .header-wrapper {
-    height: 450px;
-    background-color: #24a9e1;
-    position: relative;
-    overflow: hidden;
+    background-color: #fff;
     background-position: center;
     background-size: cover;
+    height: 450px;
+    overflow: hidden;
+    position: relative;
 }
 
 .header-wrapper h1 {
@@ -501,22 +510,22 @@ body {
     color: #000;
     font-size: 40px;
     font-weight: 400;
+    letter-spacing: 2px;
+    position: relative;
     position: relative;
     text-align: center;
-    letter-spacing: 2px;
+    text-shadow: 0 0 4px rgba(255,255,255,0.5);
     z-index: 1;
-    position: relative;
 }
 
 .header-wrapper:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.3);
     background-image: url(/static/img/texture-bkg.png);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 
@@ -636,6 +645,9 @@ body {
 
     .menu-wrapper .menu-options .menu-mobile {
         display: block;
+        position: absolute;
+        right: 0;
+        top: 15px;
     }
 
     .footer-wrapper .home-wrapper {
@@ -658,5 +670,11 @@ body {
 
     .footer-wrapper .home-wrapper label {
         height: 90px;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 992px) {
+    .menu-wrapper .menu-options .home-wrapper label {
+        display: none;
     }
 }

@@ -20,6 +20,10 @@ def terms_conditions_slug():
     return '/terminos-y-condiciones/'
 
 @register.simple_tag
+def quote_slug():
+    return '/cotizar/'
+
+@register.simple_tag
 def fb_url():
     return SiteOption.objects.filter(site_option_name='facebook_url').distinct().values_list('site_option_value', flat=True)[0]
 

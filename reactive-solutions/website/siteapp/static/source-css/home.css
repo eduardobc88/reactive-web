@@ -96,15 +96,16 @@
 
 .slider-wrapper #slides .slides-pagination {
     margin-top: 60px;
+	display: none;
 }
 
-.slider-wrapper #slides .slides-pagination a {
+/* .slider-wrapper #slides .slides-pagination a {
     margin-left: 4px;
     margin-right: 4px;
     width: 15px;
     height: 15px;
     border: 2px solid black !important;
-}
+} */
 
 .slides-pagination a.current {
     background: black !important;
@@ -148,7 +149,6 @@
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     cursor: pointer;
     margin: 10px 10px 20px 20px;
-    margin: auto;
     max-width: 300px;
     overflow: hidden;
     position: relative;

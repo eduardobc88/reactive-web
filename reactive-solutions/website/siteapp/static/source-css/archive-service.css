@@ -74,14 +74,14 @@
 
 .archive-service-wrapper .item .left img {
     position: absolute;
-    top: -110%;
+    top: -230px;
     z-index: 2;
     left: 0;
 }
 
 .archive-service-wrapper .item .right img {
     position: absolute;
-    top: -110%;
+    top: -200px;
     z-index: 2;
     right: 0;
 }
@@ -92,11 +92,11 @@
         max-width: 150px;
     }
 
-    .archive-service-wrapper .item .left img, .archive-service-wrapper .item .right img {
-        top: -95%;
+    .archive-service-wrapper .item .left img {
+        top: -225px;
     }
 
-    .archive-service-wrapper .right h2, .archive-service-wrapper .right p {
-        text-align: left;
+    .archive-service-wrapper .item .right img {
+        top: -185px;
     }
 }
