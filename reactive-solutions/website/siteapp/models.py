@@ -170,10 +170,15 @@ class Page(models.Model):
     page_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the page excerpt')
     page_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
     page_slug = models.SlugField(max_length=200, null=True)
-    page_template = models.CharField(max_length=1000, choices=get_template_list(), default='default.html', help_text='Page template')
+    page_template = models.CharField(max_length=1000, help_text='Page template')
     page_created_at = models.DateTimeField(auto_now_add=True)
     page_updated_at = models.DateTimeField(auto_now=True)
 
+
+    def __init__(self,  *args, **kwargs):
+        super(Page, self).__init__(*args, **kwargs)
+        self._meta.get_field('page_template').choices = get_template_list()
+        self._meta.get_field('page_template').default = 'page-template/template-default.html'
 
     def get_thumbnail_image_prop_name(self):
         return 'page_thumbnail'
