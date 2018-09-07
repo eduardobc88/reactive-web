@@ -33,6 +33,7 @@
             <div class="max-width-480">
                 <form action="{% url 'thankyou-page' %}" method="post" class="form-wrapper">
                     {% csrf_token %}
+                    <input type="hidden" name="contact_type" value="Contacto">
                     <div class="input-wrapper">
                         <label>Nombre:</label>
                         <input class="input-text name" name="contact_name" type="text">

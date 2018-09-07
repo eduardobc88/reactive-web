@@ -56,6 +56,9 @@ def thanks(request):
             prospect_phone = request.POST.get('contact_phone', ''),
             prospect_website = request.POST.get('contact_website', ''),
             prospect_message = request.POST.get('contact_message', ''),
+            prospect_type = request.POST.get('contact_type', ''),
+            prospect_total_pages = request.POST.get('contact_total_pages', ''),
+            prospect_design_required = request.POST.get('contact_design_required', ''),
             )
         prospect.save()
         page_slug = page.values('page_slug')[0]['page_slug']

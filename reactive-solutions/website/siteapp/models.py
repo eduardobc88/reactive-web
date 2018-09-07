@@ -212,6 +212,9 @@ class Prospect(models.Model):
     prospect_phone = models.CharField(max_length=15)
     prospect_website = models.CharField(max_length=200)
     prospect_message = models.TextField(max_length=5000)
+    prospect_type = models.CharField(max_length=50, default='Contacto')
+    prospect_design_required = models.CharField(max_length=3, default='No')
+    prospect_total_pages = models.CharField(max_length=100, default='')
     prospect_created_at = models.DateTimeField(auto_now_add=True)
 
 

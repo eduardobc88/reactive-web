@@ -74,6 +74,6 @@ class ArchiveProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Prospect)
 class ProspectAdmin(admin.ModelAdmin):
-    list_display= ('prospect_name', 'prospect_email', 'prospect_phone', 'prospect_created_at')
-    readonly_fields = ['prospect_name', 'prospect_last_name', 'prospect_email', 'prospect_phone', 'prospect_website', 'prospect_message', 'prospect_created_at']
+    list_display= ('prospect_name', 'prospect_email', 'prospect_phone', 'prospect_created_at', 'prospect_type')
+    readonly_fields = ['prospect_name', 'prospect_last_name', 'prospect_email', 'prospect_phone', 'prospect_website', 'prospect_type', 'prospect_design_required', 'prospect_total_pages', 'prospect_message', 'prospect_created_at']
     pass
