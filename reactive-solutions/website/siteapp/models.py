@@ -206,7 +206,7 @@ class Page(models.Model):
         return '{0}'.format(self.page_slug)
 
     def get_absolute_url(self):
-        return reverse('page-detail', kwargs={'slug': self.post_slug})
+        return reverse('page-detail', kwargs={'slug': self.page_slug})
 
     def __str__(self):
         return '{0}'.format(self.page_title)

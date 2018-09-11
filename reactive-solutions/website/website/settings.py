@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'siteapp.apps.SiteappConfig',
+    'django.contrib.sitemaps',
     'tinymce',
     'colorful',
 ]
