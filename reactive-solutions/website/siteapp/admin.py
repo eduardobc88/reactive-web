@@ -8,7 +8,7 @@ from .models import ArchiveProject, HomeSlider, SiteOption, Banner, ArchiveServi
 
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('page_title', 'admin_display_page_slug', 'page_template', 'thumbnail_preview', 'page_created_at', 'page_updated_at')
+    list_display = ('page_title', 'admin_display_page_slug', 'page_template', 'thumbnail_preview', 'page_status', 'page_updated_at')
     readonly_fields = ['page_slug', 'thumbnail_preview', 'page_created_at', 'page_updated_at']
 
     def thumbnail_preview(self, obj):
@@ -18,7 +18,7 @@ class PageAdmin(admin.ModelAdmin):
 
 @admin.register(ArchivePost)
 class ArchivePostAdmin(admin.ModelAdmin):
-    list_display = ('post_title', 'admin_display_post_slug', 'thumbnail_preview', 'post_created_at', 'post_updated_at')
+    list_display = ('post_title', 'admin_display_post_slug', 'thumbnail_preview', 'post_status', 'post_updated_at')
     readonly_fields = ['post_slug', 'thumbnail_preview', 'post_created_at', 'post_updated_at']
 
     def thumbnail_preview(self, obj):
@@ -28,7 +28,7 @@ class ArchivePostAdmin(admin.ModelAdmin):
 
 @admin.register(ArchiveService)
 class ArchiveServiceAdmin(admin.ModelAdmin):
-    list_display = ('service_title', 'admin_display_service_slug', 'thumbnail_preview', 'service_created_at', 'service_updated_at')
+    list_display = ('service_title', 'admin_display_service_slug', 'thumbnail_preview', 'service_status', 'service_updated_at')
     readonly_fields = ['service_slug', 'thumbnail_preview', 'service_created_at', 'service_updated_at']
 
     def thumbnail_preview(self, obj):
@@ -64,7 +64,7 @@ class HomeSliderAdmin(admin.ModelAdmin):
 
 @admin.register(ArchiveProject)
 class ArchiveProjectAdmin(admin.ModelAdmin):
-    list_display = ('project_title', 'project_slug', 'thumbnail_preview', 'project_created_at', 'project_updated_at')
+    list_display = ('project_title', 'project_slug', 'thumbnail_preview', 'project_status', 'project_updated_at')
     readonly_fields = ['project_slug', 'thumbnail_preview', 'project_created_at', 'project_updated_at']
 
     def thumbnail_preview(self, obj):

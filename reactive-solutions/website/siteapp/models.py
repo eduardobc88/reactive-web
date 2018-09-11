@@ -11,6 +11,13 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 
 
+STATUS_CHOICES = (
+    ('publish', 'Publish'),
+    ('pending', 'Pending'),
+    ('trash', 'Trash'),
+)
+
+
 # NOTE: functions to populate the file uploads
 
 def upload_thumbnail_image(instance, filename):
@@ -92,6 +99,9 @@ class ArchiveProject(models.Model):
     project_slug = models.SlugField(max_length=200, null=True)
     project_created_at = models.DateTimeField(auto_now_add=True)
     project_updated_at = models.DateTimeField(auto_now=True)
+    project_status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='publish', help_text='Chose the status')
+    project_author = models.CharField(max_length=200, blank=True, default='', help_text='Enter the author')
+    project_keywords = models.TextField(max_length=300, blank=True, default='', help_text='Enter the keywords, example: \'development, code, services\'')
 
 
     def get_thumbnail_image_prop_name(self):
@@ -118,6 +128,9 @@ class ArchiveService(models.Model):
     service_background_color = RGBColorField(default='#FFFFFF')
     service_created_at = models.DateTimeField(auto_now_add=True)
     service_updated_at = models.DateTimeField(auto_now=True)
+    service_status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='publish', help_text='Chose the status')
+    service_author = models.CharField(max_length=200, blank=True, default='', help_text='Enter the author')
+    service_keywords = models.TextField(max_length=300, blank=True, default='', help_text='Enter the keywords, example: \'development, code, services\'')
 
 
     def get_thumbnail_image_prop_name(self):
@@ -148,6 +161,9 @@ class ArchivePost(models.Model):
     post_slug = models.SlugField(max_length=200, null=True)
     post_created_at = models.DateTimeField(auto_now_add=True)
     post_updated_at = models.DateTimeField(auto_now=True)
+    post_status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='publish', help_text='Chose the status')
+    post_author = models.CharField(max_length=200, blank=True, default='', help_text='Enter the author')
+    post_keywords = models.TextField(max_length=300, blank=True, default='', help_text='Enter the keywords, example: \'development, code, services\'')
 
 
     def get_thumbnail_image_prop_name(self):
@@ -173,6 +189,9 @@ class Page(models.Model):
     page_template = models.CharField(max_length=1000, help_text='Page template')
     page_created_at = models.DateTimeField(auto_now_add=True)
     page_updated_at = models.DateTimeField(auto_now=True)
+    page_status = models.CharField(max_length=30, choices=STATUS_CHOICES, default='publish', help_text='Chose the status')
+    page_author = models.CharField(max_length=200, blank=True, default='', help_text='Enter the author')
+    page_keywords = models.TextField(max_length=300, blank=True, default='', help_text='Enter the keywords, example: \'development, code, services\'')
 
 
     def __init__(self,  *args, **kwargs):

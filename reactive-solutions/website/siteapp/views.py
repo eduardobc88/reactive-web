@@ -85,7 +85,7 @@ class PageDetailView(generic.DetailView):
 
 
     def get_queryset(self):
-        self.model = Page.objects.filter(page_slug=self.kwargs.get('slug'))
+        self.model = Page.objects.filter(page_slug=self.kwargs.get('slug'), page_status='publish')
         return self.model
 
     def get_context_data(self, **kwargs):
@@ -109,6 +109,9 @@ class ArchiveProjectListView(generic.ListView):
         self.paginate_by = int(get_site_option_value('paginate_by'))
         return self.paginate_by
 
+    def get_queryset(self):
+        return self.model.objects.filter(project_status='publish')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         projects_title = get_site_option_value('projects_title')
@@ -126,6 +129,9 @@ class ArchiveProjectDetailView(generic.DetailView):
     slug_field = 'project_slug'
     website_head_title = get_site_option_value('page_head_title')
 
+
+    def get_queryset(self):
+        return self.model.objects.filter(project_status='publish')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -147,6 +153,9 @@ class ArchiveServiceListView(generic.ListView):
         self.paginate_by = int(get_site_option_value('paginate_by'))
         return self.request.GET.get('paginate_by', self.paginate_by)
 
+    def get_queryset(self):
+        return self.model.objects.filter(service_status='publish')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         services_title = get_site_option_value('services_title')
@@ -164,6 +173,9 @@ class ArchiveServiceDetailView(generic.DetailView):
     slug_field = 'service_slug'
     website_head_title = get_site_option_value('page_head_title')
 
+
+    def get_queryset(self):
+        return self.model.objects.filter(service_status='publish')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -185,6 +197,9 @@ class ArchivePostListView(generic.ListView):
         self.paginate_by = int(get_site_option_value('paginate_by'))
         return self.request.GET.get('paginate_by', self.paginate_by)
 
+    def get_queryset(self):
+        return self.model.objects.filter(post_status='publish')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         blog_title = get_site_option_value('blog_title')
@@ -202,6 +217,9 @@ class ArchivePostDetailView(generic.DetailView):
     slug_field = 'post_slug'
     website_head_title = get_site_option_value('page_head_title')
 
+
+    def get_queryset(self):
+        return self.model.objects.filter(post_status='publish')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
