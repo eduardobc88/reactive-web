@@ -5,7 +5,7 @@
 
 .header-wrapper #map {
     height: 700px;
-    position: absolute;
+    position: fixed;
     top: -120px;
     width: 100%;
 }

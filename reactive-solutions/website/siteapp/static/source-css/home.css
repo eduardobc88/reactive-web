@@ -434,7 +434,10 @@
 }
 
 .tools-bkg {
-    background-image: url(/static/img/tools-bkg.png)
+    background-image: url(/static/img/tools-bkg.png);
+	background-attachment: fixed;
+	background-size: 600px;
+	background-repeat: repeat;
 }
 
 

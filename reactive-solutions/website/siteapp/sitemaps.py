@@ -9,7 +9,7 @@ class ArchiveProjectSitemap(Sitemap):
 
 
     def items(self):
-        return ArchiveProject.objects.all()
+        return ArchiveProject.objects.filter(project_status='publish')
 
     def lastmod(self, obj):
         return obj.project_updated_at
@@ -24,7 +24,7 @@ class ArchiveServiceSitemap(Sitemap):
 
 
     def items(self):
-        return ArchiveService.objects.all()
+        return ArchiveService.objects.filter(service_status='publish')
 
     def lastmod(self, obj):
         return obj.service_updated_at
@@ -39,7 +39,7 @@ class ArchiveBlogSitemap(Sitemap):
 
 
     def items(self):
-        return ArchivePost.objects.all()
+        return ArchivePost.objects.filter(post_status='publish')
 
     def lastmod(self, obj):
         return obj.post_updated_at
@@ -54,7 +54,7 @@ class PageSitemap(Sitemap):
 
 
     def items(self):
-        return Page.objects.all()
+        return Page.objects.filter(page_status='publish').exclude(page_slug='gracias')
 
     def lastmod(self, obj):
         return obj.page_updated_at

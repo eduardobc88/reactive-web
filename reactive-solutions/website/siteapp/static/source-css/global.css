@@ -499,6 +499,7 @@ body {
     height: 450px;
     overflow: hidden;
     position: relative;
+    background-attachment: fixed;
 }
 
 .header-wrapper h1 {
