@@ -7,7 +7,7 @@
     <div class="header-wrapper">
         <div class="container">
             <div class="max-width-720">
-                <h1>SERVICIOS</h1>
+                <h1 itemprop="name">SERVICIOS</h1>
             </div>
         </div>
     </div>
@@ -20,28 +20,28 @@
                     </svg>
                 </div>
                 {% if forloop.counter|divisibleby:2 %}
-                    <div class="flex-container">
+                    <div class="flex-container" itemid="{{ service.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                         <div class="max-width-720">
                             <div class="left">
-                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
+                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}" itemtype="thumbnail">
                             </div>
                             <div class="right">
-                                <h2>{{ service.service_title }}</h2>
-                                <p>{{ service.service_excerpt }}</p>
+                                <h2 itemtype="name">{{ service.service_title }}</h2>
+                                <p itemtype="description">{{ service.service_excerpt }}</p>
                                 <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
                             </div>
                         </div>
                     </div>
                 {% else %}
-                    <div class="flex-container">
+                    <div class="flex-container" itemid="{{ service.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                         <div class="max-width-720">
                             <div class="left">
-                                <h2>{{ service.service_title }}</h2>
-                                <p>{{ service.service_excerpt }}</p>
+                                <h2 itemtype="name">{{ service.service_title }}</h2>
+                                <p itemtype="description">{{ service.service_excerpt }}</p>
                                 <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
                             </div>
                             <div class="right">
-                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
+                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}" itemtype="thumbnail">
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@
     <div class="header-wrapper">
         <div class="container">
             <div class="max-width-720">
-                <h1>PROYECTOS</h1>
+                <h1 itemprop="name">PROYECTOS</h1>
             </div>
         </div>
     </div>
@@ -20,18 +20,18 @@
         </div>
         <div class="container">
             <div class="max-width-720">
-                <p class="archive-description">{{ page_head_description }}</p>
+                <p class="archive-description" itemprop="description">{{ page_head_description }}</p>
             </div>
         </div>
         <div class="flex-container">
             {% for project in projects %}
-                <div class="max-width-320">
+                <div class="max-width-320" itemid="{{ project.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                     <a href="{{ project.get_absolute_url }}">
                         <div class="item">
                             <img alt="REACTIVE WEB" class="image" src="{{ project.project_thumbnail }}">
                             <div class="cover">
-                                <h3>{{ project.project_title }}</h3>
-                                <p>{{ project.project_excerpt }}</p>
+                                <h3 itemprop="headline">{{ project.project_title }}</h3>
+                                <p itemprop="description">{{ project.project_excerpt }}</p>
                             </div>
                         </div>
                     </a>

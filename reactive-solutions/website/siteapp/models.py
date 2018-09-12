@@ -57,7 +57,7 @@ def get_template_list():
 class HomeSlider(models.Model):
     slide_title = models.CharField(max_length=60, help_text='Enter the title')
     slide_content = models.TextField(max_length=150, help_text='Enter the descrition')
-    slide_image = models.ImageField(upload_to=upload_thumbnail_image, default='no-img.jpg')
+    slide_image = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x350/bfbfbf/bfbfbf/?text=RW')
 
 
     def get_thumbnail_image_prop_name(self):
@@ -74,7 +74,7 @@ class Banner(models.Model):
     banner_name = models.CharField(max_length=100, primary_key=True, help_text='Enter unique banner name')
     banner_title = models.CharField(max_length=500, help_text='Enter the title for banner')
     banner_content = models.TextField(max_length=1000, help_text='Enter the description')
-    banner_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/450x350/bfbfbf/ffffff/?text=RW')
+    banner_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/450x350/bfbfbf/bfbfbf/?text=RW')
     banner_button_name = models.CharField(max_length=100, help_text='Enter the button name')
     banner_button_url = models.CharField(max_length=500, help_text='Enter the button URL')
 
@@ -94,7 +94,7 @@ class ArchiveProject(models.Model):
     project_title = models.CharField(unique=True, max_length=150, help_text='Enter the project title')
     project_content = HTMLField()
     project_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the project excerpt')
-    project_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
+    project_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/bfbfbf/?text=RW')
     project_url = models.CharField(max_length=300, null=True, blank=True, help_text='Enter the project URL')
     project_slug = models.SlugField(max_length=200, null=True)
     project_created_at = models.DateTimeField(auto_now_add=True)
@@ -122,8 +122,8 @@ class ArchiveService(models.Model):
     service_title = models.CharField(unique=True, max_length=200, help_text='Enter the service title')
     service_content = HTMLField()
     service_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the service excerpt')
-    service_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
-    service_icon = models.ImageField(upload_to=upload_icon_image, default='http://placehold.it/500x500/bfbfbf/ffffff/?text=RW')
+    service_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/bfbfbf/?text=RW')
+    service_icon = models.ImageField(upload_to=upload_icon_image, default='http://placehold.it/500x500/bfbfbf/bfbfbf/?text=RW')
     service_slug = models.SlugField(max_length=200, null=True)
     service_background_color = RGBColorField(default='#FFFFFF')
     service_created_at = models.DateTimeField(auto_now_add=True)
@@ -157,7 +157,7 @@ class ArchivePost(models.Model):
     post_title = models.CharField(unique=True, max_length=500, help_text='Enter the post title')
     post_content = HTMLField()
     post_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the post excerpt')
-    post_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/ffffff/?text=RW')
+    post_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/bfbfbf/?text=RW')
     post_slug = models.SlugField(max_length=200, null=True)
     post_created_at = models.DateTimeField(auto_now_add=True)
     post_updated_at = models.DateTimeField(auto_now=True)
@@ -184,7 +184,7 @@ class Page(models.Model):
     page_title = models.CharField(unique=True, max_length=500, help_text='Enter the page title', null=False)
     page_content = HTMLField()
     page_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the page excerpt')
-    page_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/ffffff/?text=RW')
+    page_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/bfbfbf/?text=RW')
     page_slug = models.SlugField(max_length=200, null=True)
     page_template = models.CharField(max_length=1000, help_text='Page template')
     page_created_at = models.DateTimeField(auto_now_add=True)

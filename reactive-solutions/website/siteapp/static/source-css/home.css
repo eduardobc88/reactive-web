@@ -72,7 +72,7 @@
     min-height: 300px;
 }
 
-.slider-wrapper #slides .slides-container h2 {
+.slider-wrapper #slides .slides-container h1, .slider-wrapper #slides .slides-container h2 {
     color: black;
     font-size: 50px;
     font-weight: 400;

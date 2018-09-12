@@ -8,7 +8,7 @@ var windowLoad = function() {
 
 
 var initSlider = function() {
-    var miliseccondsBeforeNextSlide = 10000;
+    var miliseccondsBeforeNextSlide = 15000;
     $('#slides').superslides({
         play: miliseccondsBeforeNextSlide
     });

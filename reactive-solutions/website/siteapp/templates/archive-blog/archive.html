@@ -10,7 +10,7 @@
     <div class="header-wrapper">
         <div class="container">
             <div class="max-width-720">
-                <h1>BLOG</h1>
+                <h1 itemprop="name">BLOG</h1>
             </div>
         </div>
     </div>
@@ -22,20 +22,20 @@
         </div>
         <div class="container">
             <div class="max-width-720">
-                <p class="archive-description">{{ page_head_description }}</p>
+                <p class="archive-description" itemprop="description">{{ page_head_description }}</p>
             </div>
         </div>
         <div class="flex-container">
                 {% for post in posts %}
-                    <div class="max-width-320">
+                    <div class="max-width-320" itemid="{{ post.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                         <a href="{{ post.get_absolute_url }}">
                             <div class="item">
-                                <img alt="REACTIVE WEB" class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450">
+                                <img alt="REACTIVE WEB" class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450" itemprop="thumbnail">
                                 <div class="cover">
                                     <div class="title-wrapper">
-                                        <h3>{{ post.post_title }}</h3>
+                                        <h3 itemprop="headline">{{ post.post_title }}</h3>
                                     </div>
-                                    <p>{{ post.post_excerpt }}</p>
+                                    <p itemprop="description">{{ post.post_excerpt }}</p>
                                 </div>
                             </div>
                         </a>

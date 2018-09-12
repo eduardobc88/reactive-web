@@ -11,7 +11,7 @@
     <div class="header-wrapper" style="background-image: url({{ page.page_thumbnail }}); background-size:cover;">
         <div class="container">
             <div class="max-width-720">
-                <h1>{{ page.page_title }}</h1>
+                <h1 itemprop="name">{{ page.page_title }}</h1>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="container">
             <div class="max-width-720">
-                <div class="center-text">{{ page.page_content | safe }}</div>
+                <div class="center-text" itemprop="description">{{ page.page_content | safe }}</div>
             </div>
         </div>
         <div class="container">

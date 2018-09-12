@@ -16,7 +16,7 @@ def get_site_option_value(option_name):
 
 
 def home(request):
-    slides = HomeSlider.objects.all()
+    slides = HomeSlider.objects.all().order_by('-id')
     posts = ArchivePost.objects.all().order_by('-id')[:3]
     projects = ArchiveProject.objects.all().order_by('-id')[:3]
     services = ArchiveService.objects.all().order_by('-id')
