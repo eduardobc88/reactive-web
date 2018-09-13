@@ -162,6 +162,7 @@
 
 .accordion-wrapper {
     border-radius: 5px;
+    margin-bottom: 100px;
     overflow: hidden;
     position: relative;
 }
@@ -214,4 +215,10 @@
 .accordion-wrapper .item.open .content {
     height: auto;
     padding: 15px 15px 100px 15px;
+}
+
+
+.over-footer {
+    bottom: 0;
+    top: auto;
 }

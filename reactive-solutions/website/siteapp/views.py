@@ -19,7 +19,7 @@ def home(request):
     slides = HomeSlider.objects.all().order_by('-id')
     posts = ArchivePost.objects.filter(post_status='publish').order_by('-id')[:3]
     projects = ArchiveProject.objects.filter(project_status='publish').order_by('-id')[:3]
-    services = ArchiveService.objects.filter(service_status='publish').order_by('-id')
+    services = ArchiveService.objects.filter(service_status='publish')
     website_head_title = get_site_option_value('page_head_title')
     page_head_description = get_site_option_value('page_home_head_description')
 

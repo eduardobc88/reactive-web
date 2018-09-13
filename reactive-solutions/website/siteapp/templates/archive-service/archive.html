@@ -14,43 +14,43 @@
     <div class="custom-wrapper background-color-white archive-service-wrapper">
         {% for service in services %}
             <div class="item" style="background-color: {{ service.service_background_color }}">
-                <div class="decor-top">
-                    <svg class="decor background-fill-white" style="fill: {{ service.service_background_color }}" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
-                    </svg>
-                </div>
-                {% if forloop.counter|divisibleby:2 %}
-                    <div class="flex-container" itemid="{{ service.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
-                        <div class="max-width-720">
-                            <div class="left">
-                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}" itemtype="thumbnail">
-                            </div>
-                            <div class="right">
-                                <h2 itemtype="name">{{ service.service_title }}</h2>
-                                <p itemtype="description">{{ service.service_excerpt }}</p>
-                                <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
+                <a class="link" href="{{ service.get_absolute_url }}" itemid="{{ service.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
+                    <div class="decor-top">
+                        <svg class="decor background-fill-white" style="fill: {{ service.service_background_color }}" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+                        </svg>
+                    </div>
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="flex-container">
+                            <div class="max-width-992">
+                                <div class="left">
+                                    <img alt="REACTIVE WEB" src="{{ service.service_icon }}" itemtype="thumbnail" style="background-color: {{ service.service_background_color }}" class="thumbnail">
+                                </div>
+                                <div class="right">
+                                    <h2 itemtype="name">{{ service.service_title }}</h2>
+                                    <p itemtype="description">{{ service.service_excerpt }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% else %}
-                    <div class="flex-container" itemid="{{ service.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
-                        <div class="max-width-720">
-                            <div class="left">
-                                <h2 itemtype="name">{{ service.service_title }}</h2>
-                                <p itemtype="description">{{ service.service_excerpt }}</p>
-                                <a class="more-button button-effect" href="{{ service.get_absolute_url }}">Ver</a>
-                            </div>
-                            <div class="right">
-                                <img alt="REACTIVE WEB" src="{{ service.service_icon }}" itemtype="thumbnail">
+                    {% else %}
+                        <div class="flex-container" itemid="{{ service.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
+                            <div class="max-width-992">
+                                <div class="left">
+                                    <h2 itemtype="name">{{ service.service_title }}</h2>
+                                    <p itemtype="description">{{ service.service_excerpt }}</p>
+                                </div>
+                                <div class="right">
+                                    <img alt="REACTIVE WEB" src="{{ service.service_icon }}" itemtype="thumbnail" style="background-color: {{ service.service_background_color }}"  class="thumbnail">
+                                </div>
                             </div>
                         </div>
+                    {% endif %}
+                    <div class="decor-bottom">
+                        <svg class="decor background-fill-white" style="fill: {{ service.service_background_color }}" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+                        </svg>
                     </div>
-                {% endif %}
-                <div class="decor-bottom">
-                    <svg class="decor background-fill-white" style="fill: {{ service.service_background_color }}" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
-                    </svg>
-                </div>
+                </a>
             </div>
         {% endfor %}
     </div>

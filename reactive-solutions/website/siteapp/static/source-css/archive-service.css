@@ -1,9 +1,9 @@
 .header-wrapper {
-    background-image: url(/static/img/services-bkg.png);
+    background-image: url(/static/img/services-bkg.jpg);
 }
 
 .archive-service-wrapper {
-    margin-top: 60px;
+    margin-top: 0px;
     padding-bottom: 0px;
 }
 
@@ -16,20 +16,6 @@
     z-index: 1;
 }
 
-.archive-service-wrapper .item:first-child .decor-top {
-    top: -120px;
-}
-
-.archive-service-wrapper .item:first-child:before {
-    position: absolute;
-    background-color: inherit;
-    width: 100%;
-    height: 100%;
-    top: -60px;
-    bottom: 0;
-    content: "";
-}
-
 .archive-service-wrapper .item:last-child .decor-bottom {
     position: absolute;
     z-index: 1;
@@ -38,12 +24,13 @@
 .archive-service-wrapper .item {
     width: 100%;
     position: relative;
-    padding-bottom: 70px;
-    padding-top: 50px;
+    padding-bottom: 90px;
+    padding-top: 90px;
 }
 
-.archive-service-wrapper .item:first-child {
-    padding-top: 0px;
+.archive-service-wrapper .item .link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .archive-service-wrapper .item h2 {
@@ -57,46 +44,40 @@
     font-weight: 400;
 }
 
-.archive-service-wrapper .item img {
-    border-radius: 100%;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    max-width: 200px;
-    margin: auto;
-    display: flex;
+.archive-service-wrapper .item .thumbnail {
     align-self: center;
-    vertical-align: middle;
+    display: flex;
     margin: 30px;
+    margin: auto;
+    padding: 15px;
+    position: absolute;
+    vertical-align: middle;
+    width: 150px;
 }
 
 .archive-service-wrapper .right h2, .archive-service-wrapper .right p {
     text-align: right;
 }
 
-.archive-service-wrapper .item .left img {
-    position: absolute;
-    top: -230px;
-    z-index: 2;
+.archive-service-wrapper .item .left .thumbnail {
+    bottom: 0;
     left: 0;
+    margin: auto;
+    top: 0;
+    z-index: 2;
 }
 
-.archive-service-wrapper .item .right img {
-    position: absolute;
-    top: -200px;
-    z-index: 2;
+.archive-service-wrapper .item .right .thumbnail {
+    bottom: 0;
+    margin: auto;
     right: 0;
+    top: 0;
+    z-index: 2;
 }
 
 
 @media all and (max-width: 768px) {
-    .archive-service-wrapper .item img {
-        max-width: 150px;
-    }
-
-    .archive-service-wrapper .item .left img {
-        top: -225px;
-    }
-
-    .archive-service-wrapper .item .right img {
-        top: -185px;
+    .archive-service-wrapper .item .thumbnail {
+        display: none;
     }
 }

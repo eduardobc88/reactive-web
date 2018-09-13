@@ -7,6 +7,7 @@
 <script src="{% static 'js/share-this.js' %}" defer></script>
 <script src="{% static 'js/quote.js' %}" defer></script>
 {% endblock %}
+{% load options %}
 {% block page_content %}
     <div class="header-wrapper" style="background-image: url({{ page.page_thumbnail }}); background-size:cover;">
         <div class="container">
@@ -14,9 +15,6 @@
                 <h1 itemprop="name">{{ page.page_title }}</h1>
             </div>
         </div>
-        <video style="position: fixed;top: 0;bottom: 0;left: 0;right: 0;margin: auto;height: 200%;" loop="" muted="" autoplay="" class="section-background-video" <source="" type="video/mp4" preload="none">
-            <source type="video/webm" src="{% static 'img/movie-bkg.webm' %}">
-        </video>
     </div>
     <div class="custom-wrapper background-color-white quote-wrapper">
         <div class="decor-top">
@@ -281,9 +279,29 @@
                 </div>
             </div>
         </div>
-        <div class="decor-bottom over-footer">
-            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+        {% get_who_banner_data as who_banner %}
+        <div class="custom-wrapper background-color-white banner-wrapper tools-bkg">
+            <div class="decor-into-top">
+                <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+                </svg>
+            </div>
+            <div class="banner-bkg-color"></div>
+            <div class="container">
+                <div class="max-width-720">
+                    <h2>{{ who_banner.banner_title }}</h2>
+                    <p>{{ who_banner.banner_content }}</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="max-width-320">
+                    <a href="{{ who_banner.banner_button_url }}" class="more-button button-effect">{{ who_banner.banner_button_name }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="decor-top over-footer">
+            <svg class="decor background-fill-blue" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
             </svg>
         </div>
     </div>
