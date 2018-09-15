@@ -342,6 +342,7 @@
 .services-wrapper .item .content {
     z-index: 1;
     position: relative;
+	margin-right: 100px;
 }
 
 .services-wrapper .item h3 {
