@@ -47,10 +47,16 @@
     text-transform: uppercase;
 }
 
-.archive-service-wrapper .item p {
+.archive-service-wrapper .item .left p {
     font-size: 16px;
     font-weight: 400;
     margin-right: 200px;
+}
+
+.archive-service-wrapper .item .right p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 200px;
 }
 
 .archive-service-wrapper .item .thumbnail {
