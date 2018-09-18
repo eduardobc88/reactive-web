@@ -110,7 +110,7 @@ class ArchiveProjectListView(generic.ListView):
         return self.paginate_by
 
     def get_queryset(self):
-        return self.model.objects.filter(project_status='publish')
+        return self.model.objects.filter(project_status='publish').order_by('-id')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -198,7 +198,7 @@ class ArchivePostListView(generic.ListView):
         return self.request.GET.get('paginate_by', self.paginate_by)
 
     def get_queryset(self):
-        return self.model.objects.filter(post_status='publish')
+        return self.model.objects.filter(post_status='publish').order_by('-id')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
