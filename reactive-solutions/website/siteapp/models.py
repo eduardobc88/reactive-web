@@ -22,7 +22,7 @@ STATUS_CHOICES = (
 # NOTE: functions to populate the file uploads
 
 def upload_thumbnail_image(instance, filename):
-    upload_path = 'static/uploads/'
+    upload_path = 'website/static/uploads/'
     if settings.DEBUG:
         upload_path = 'siteapp/static/uploads/'
     model_image_prop_name = instance.get_thumbnail_image_prop_name()
@@ -35,7 +35,7 @@ def upload_thumbnail_image(instance, filename):
     return os.path.join(upload_path, str(instance.slide_image))
 
 def upload_icon_image(instance, filename):
-    upload_path = '/static/uploads/'
+    upload_path = 'website/static/uploads/'
     if settings.DEBUG:
         upload_path = 'siteapp/static/uploads/'
     model_icon_prop_name = instance.get_icon_image_prop_name()
@@ -319,19 +319,32 @@ def banner_pre_save(sender, instance, **kwargs):
 # NOTE: start post save
 
 
+def get_path_for_new_file(file_path):
+    remove_from_path = 'website'
+    if settings.DEBUG:
+        remove_from_path = 'siteapp'
+    if remove_from_path in file_path:
+        return file_path.replace(remove_from_path, '')
+
+
 def delete_file_uploaded(instance, attrname):
     if not hasattr(instance, attrname):
         return
 
-    old_file_path = 'siteapp{0}'.format(getattr(instance, attrname))
+    root_path = 'website'
+    if settings.DEBUG:
+        root_path = 'siteapp'
+
+    old_file_path = '{0}{1}'.format(root_path, getattr(instance, attrname))
     if os.path.isfile(old_file_path):
         os.remove(old_file_path)
 
 
 @receiver(post_save, sender=HomeSlider)
 def home_slider_post_save(sender, instance, created, **kwargs):
+    new_file_path = get_path_for_new_file(str(instance.slide_image))
     if 'siteapp' in str(instance.slide_image):
-        instance.slide_image = str(instance.slide_image).replace('siteapp', '')
+        instance.slide_image = new_file_path
         instance.save()
 
 
@@ -344,9 +357,10 @@ def archive_project_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_title[:180], instance.id))
             save = True
-    if 'siteapp' in str(instance.project_thumbnail):
+    new_file_path = get_path_for_new_file(str(instance.project_thumbnail))
+    if new_file_path:
         delete_file_uploaded(instance, 'project_thumbnail_remove')
-        instance.project_thumbnail = str(instance.project_thumbnail).replace('siteapp', '')
+        instance.project_thumbnail = new_file_path
         save = True
     if save:
         instance.save()
@@ -361,13 +375,15 @@ def archive_service_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
             save = True
-    if 'siteapp' in str(instance.service_icon):
+    new_icon_file_path = get_path_for_new_file(str(instance.service_icon))
+    new_thumbnail_file_path = get_path_for_new_file(str(instance.service_thumbnail))
+    if new_icon_file_path:
         delete_file_uploaded(instance, 'service_icon_remove')
-        instance.service_icon = str(instance.service_icon).replace('siteapp', '')
+        instance.service_icon = new_icon_file_path
         save = True
-    if 'siteapp' in str(instance.service_thumbnail):
+    if new_thumbnail_file_path:
         delete_file_uploaded(instance, 'service_thumbnail_remove')
-        instance.service_thumbnail = str(instance.service_thumbnail).replace('siteapp', '')
+        instance.service_thumbnail = new_thumbnail_file_path
         save = True
     if save:
         instance.save()
@@ -382,9 +398,10 @@ def archive_post_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
             save = True
-    if 'siteapp' in str(instance.post_thumbnail):
+    new_file_path = get_path_for_new_file(str(instance.post_thumbnail))
+    if new_file_path:
         delete_file_uploaded(instance, 'post_thumbnail_remove')
-        instance.post_thumbnail = str(instance.post_thumbnail).replace('siteapp', '')
+        instance.post_thumbnail = new_file_path
         save = True
     if save:
         instance.save()
@@ -399,9 +416,10 @@ def page_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
             save = True
-    if 'siteapp' in str(instance.page_thumbnail):
+    new_file_path = get_path_for_new_file(str(instance.page_thumbnail))
+    if new_file_path:
         delete_file_uploaded(instance, 'page_thumbnail_remove')
-        instance.page_thumbnail = str(instance.page_thumbnail).replace('siteapp', '')
+        instance.page_thumbnail = new_file_path
         save = True
     if save:
         instance.save()
@@ -410,9 +428,10 @@ def page_post_save(sender, instance, created, **kwargs):
 @receiver(post_save, sender=Banner)
 def banner_post_save(sender, instance, created, **kwargs):
     save = False
-    if 'siteapp' in str(instance.banner_thumbnail):
+    new_file_path = get_path_for_new_file(str(instance.banner_thumbnail))
+    if new_file_path:
         delete_file_uploaded(instance, 'banner_thumbnail_remove')
-        instance.banner_thumbnail = str(instance.banner_thumbnail).replace('siteapp', '')
+        instance.banner_thumbnail = new_file_path
         save = True
     if save:
         instance.save()
