@@ -1,4 +1,4 @@
-#!/usr/share/nginx/html/reactive-solutions/venv/bin/python36
+#!/home/Python/reactive-solutions/venv/bin/python3.6
 
 # -*- coding: utf-8 -*-
 import re

@@ -1,4 +1,4 @@
-#!/usr/share/nginx/html/reactive-solutions/venv/bin/python
+#!/home/Python/reactive-solutions/venv/bin/python
 
 import sys
 import getopt
