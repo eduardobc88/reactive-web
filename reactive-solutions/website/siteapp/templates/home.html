@@ -58,7 +58,7 @@
                 <a href="{{ post.get_absolute_url }}" class="max-width-320" itemid="{{ post.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                     <div class="item">
                         <!-- <img alt="REACTIVE WEB" class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450"> -->
-                        <img alt="REACTIVE WEB" class="image" src="{{ post.post_thumbnail }}" itemprop="thumbnail">
+                        <img alt="REACTIVE WEB" class="image" src="{{ post.post_archive_thumbnail }}" itemprop="thumbnail">
                         <div class="cover">
                             <div class="title-wrapper">
                                 <h3 itemprop="headline">{{ post.post_title }}</h3>
@@ -97,7 +97,7 @@
     <div class="custom-wrapper background-color-white project-wrapper">
         <div class="decor-top">
             <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+               <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
             </svg>
         </div>
         <div class="container">
@@ -113,7 +113,7 @@
                 <div class="max-width-320">
                     <a href="{{ project.get_absolute_url }}" itemid="{{ project.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                         <div class="item">
-                            <img alt="REACTIVE WEB" class="image" src="{{ project.project_thumbnail }}" itemprop="thumbnail">
+                            <img alt="REACTIVE WEB" class="image" src="{{ project.project_archive_thumbnail }}" itemprop="thumbnail">
                             <div class="cover">
                                 <h3 itemprop="headline">{{ project.project_title }}</h3>
                                 <p itemprop="description">{{ project.project_excerpt }}</p>
