@@ -346,6 +346,7 @@ def get_path_for_new_file(file_path):
         remove_from_path = 'siteapp'
     if remove_from_path in file_path:
         return file_path.replace(remove_from_path, '')
+    return ''
 
 
 def delete_file_uploaded(instance, attrname):
@@ -386,7 +387,7 @@ def archive_project_post_save(sender, instance, created, **kwargs):
         save = True
     if new_file_archive_thumbnail_path:
         delete_file_uploaded(instance, 'project_archive_thumbnail')
-        instance.project_thumbnail = new_file_archive_thumbnail_path
+        instance.project_archive_thumbnail = new_file_archive_thumbnail_path
         save = True
     if save:
         instance.save()
@@ -432,7 +433,7 @@ def archive_post_post_save(sender, instance, created, **kwargs):
         save = True
     if new_file_archive_thumbnail_path:
         delete_file_uploaded(instance, 'post_archive_thumbnail')
-        instance.post_thumbnail = new_file_archive_thumbnail_path
+        instance.post_archive_thumbnail = new_file_archive_thumbnail_path
         save = True
     if save:
         instance.save()
