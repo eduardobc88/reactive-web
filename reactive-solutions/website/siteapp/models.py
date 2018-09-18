@@ -9,6 +9,7 @@ from tinymce.models import HTMLField
 from colorful.fields import RGBColorField
 from django.utils import timezone
 from django.utils.safestring import mark_safe
+from django.conf import settings
 
 
 STATUS_CHOICES = (
@@ -21,6 +22,9 @@ STATUS_CHOICES = (
 # NOTE: functions to populate the file uploads
 
 def upload_thumbnail_image(instance, filename):
+    upload_path = 'static/uploads/'
+    if settings.DEBUG:
+        upload_path = 'siteapp/static/uploads/'
     model_image_prop_name = instance.get_thumbnail_image_prop_name()
     if not hasattr(instance, model_image_prop_name):
         return
@@ -28,9 +32,12 @@ def upload_thumbnail_image(instance, filename):
     file_name = str(getattr(instance, model_image_prop_name)).split('/')[-1]
     file_ext = file_name.split('.')[-1]
     instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.slide_image))
+    return os.path.join(upload_path, str(instance.slide_image))
 
 def upload_icon_image(instance, filename):
+    upload_path = '/static/uploads/'
+    if settings.DEBUG:
+        upload_path = 'siteapp/static/uploads/'
     model_icon_prop_name = instance.get_icon_image_prop_name()
     if not hasattr(instance, model_icon_prop_name):
         return
@@ -38,7 +45,7 @@ def upload_icon_image(instance, filename):
     file_name = str(getattr(instance, model_icon_prop_name)).split('/')[-1]
     file_ext = file_name.split('.')[-1]
     instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join('siteapp/static/uploads/', str(instance.slide_image))
+    return os.path.join(upload_path, str(instance.slide_image))
 
 
 # NOTE: function to read template file names from path
