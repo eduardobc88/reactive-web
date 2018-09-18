@@ -25,6 +25,10 @@
     text-align: center;
 }
 
+.archive-project-wrapper .wrapper-items {
+    flex-wrap: wrap;
+}
+
 .archive-project-wrapper .item {
     position: relative;
     overflow: hidden;

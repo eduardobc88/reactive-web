@@ -23,7 +23,7 @@
                 <p class="archive-description" itemprop="description">{{ page_head_description }}</p>
             </div>
         </div>
-        <div class="flex-container">
+        <div class="flex-container wrapper-items">
             {% for project in projects %}
                 <div class="max-width-320" itemid="{{ project.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                     <a href="{{ project.get_absolute_url }}">
