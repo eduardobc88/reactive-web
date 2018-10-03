@@ -4,6 +4,8 @@ from . import views
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import ArchiveBlogSitemap, PageSitemap, ArchiveProjectSitemap, ArchiveServiceSitemap
 from django.urls import path
+from filebrowser.sites import site
+from django.conf import settings
 
 
 sitemaps = {
@@ -16,6 +18,7 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
+    url(r'^admin/filebrowser/', site.urls),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^proyectos/$', views.ArchiveProjectListView.as_view(), name='project-archive'),
     url(r'^proyectos/(?P<page>\d+)/$', views.ArchiveProjectListView.as_view(), name='project-archive'),

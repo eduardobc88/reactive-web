@@ -30,7 +30,7 @@
                     <div class="max-width-320" itemid="{{ post.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                         <a href="{{ post.get_absolute_url }}">
                             <div class="item">
-                                <img alt="REACTIVE WEB" class="image" src="{{ post.post_archive_thumbnail }}" itemprop="thumbnail">
+                                <img alt="REACTIVE WEB" class="image" src="{{ MEDIA_URL }}{{ post.post_archive_thumbnail }}" itemprop="thumbnail">
                                 <div class="cover">
                                     <div class="title-wrapper">
                                         <h3 itemprop="headline">{{ post.post_title }}</h3>

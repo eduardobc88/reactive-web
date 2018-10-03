@@ -22,7 +22,7 @@
                     <li>
                         <div class="flex-container">
                             <div class="left">
-                                <img alt="REACTIVE WEB" class="icon" src="{{ slide.slide_image }}">
+                                <img alt="REACTIVE WEB" class="icon" src="{{ MEDIA_URL }}{{ slide.slide_image }}">
                             </div>
                             <div class="right">
                                 {% if forloop.counter == 1 %}
@@ -58,7 +58,7 @@
                 <a href="{{ post.get_absolute_url }}" class="max-width-320" itemid="{{ post.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                     <div class="item">
                         <!-- <img alt="REACTIVE WEB" class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450"> -->
-                        <img alt="REACTIVE WEB" class="image" src="{{ post.post_archive_thumbnail }}" itemprop="thumbnail">
+                        <img alt="REACTIVE WEB" class="image" src="{{ MEDIA_URL }}{{ post.post_archive_thumbnail }}" itemprop="thumbnail">
                         <div class="cover">
                             <div class="title-wrapper">
                                 <h3 itemprop="headline">{{ post.post_title }}</h3>
@@ -113,7 +113,7 @@
                 <div class="max-width-320">
                     <a href="{{ project.get_absolute_url }}" itemid="{{ project.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                         <div class="item">
-                            <img alt="REACTIVE WEB" class="image" src="{{ project.project_archive_thumbnail }}" itemprop="thumbnail">
+                            <img alt="REACTIVE WEB" class="image" src="{{ MEDIA_URL }}{{ project.project_archive_thumbnail }}" itemprop="thumbnail">
                             <div class="cover">
                                 <h3 itemprop="headline">{{ project.project_title }}</h3>
                                 <p itemprop="description">{{ project.project_excerpt }}</p>
@@ -171,7 +171,7 @@
                                 <h3 itemprop="headline">{{ service.service_title }}</h3>
                                 <p itemprop="description">{{ service.service_excerpt | safe }}</p>
                             </div>
-                            <img alt="REACTIVE WEB" src="{{ service.service_icon }}">
+                            <img alt="REACTIVE WEB" src="{{ MEDIA_URL }}{{ service.service_icon }}">
                         </div>
                     </a>
                 {% endfor %}
