@@ -24,7 +24,7 @@
         <div class="item">
             <div class="container">
                 <div class="max-width-720">
-                    <img alt="REACTIVE WEB" class="service-icon" src="{{ service.service_icon }}" style="background-color: {{ service.service_background_color }}">
+                    <img alt="REACTIVE WEB" class="service-icon" src="{{ MEDIA_URL }}{{ service.service_icon }}" style="background-color: {{ service.service_background_color }}">
                     <div itemprop="description">{{ service.service_content | safe }}</div>
                 </div>
                 <div class="max-width-480">
