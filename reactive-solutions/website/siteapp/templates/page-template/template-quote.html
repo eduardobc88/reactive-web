@@ -9,7 +9,7 @@
 {% endblock %}
 {% load options %}
 {% block page_content %}
-    <div class="header-wrapper" style="background-image: url({{ page.page_thumbnail }}); background-size:cover;">
+    <div class="header-wrapper" style="background-image: url({{ MEDIA_URL }}{{ page.page_thumbnail }}); background-size:cover;">
         <div class="container">
             <div class="max-width-720">
                 <h1 itemprop="name">{{ page.page_title }}</h1>

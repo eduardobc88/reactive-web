@@ -8,8 +8,9 @@ import os
 from tinymce.models import HTMLField
 from colorful.fields import RGBColorField
 from django.utils import timezone
-from django.utils.safestring import mark_safe
 from django.conf import settings
+from filebrowser.fields import FileBrowseField
+from filebrowser import signals
 
 
 STATUS_CHOICES = (
@@ -17,48 +18,6 @@ STATUS_CHOICES = (
     ('pending', 'Pending'),
     ('trash', 'Trash'),
 )
-
-
-# NOTE: functions to populate the file uploads
-
-def upload_thumbnail_image(instance, filename):
-    upload_path = 'website/static/uploads/'
-    if settings.DEBUG:
-        upload_path = 'siteapp/static/uploads/'
-    model_image_prop_name = instance.get_thumbnail_image_prop_name()
-    if not hasattr(instance, model_image_prop_name):
-        return
-
-    file_name = str(getattr(instance, model_image_prop_name)).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join(upload_path, str(instance.slide_image))
-
-def upload_archive_thumbnail_image(instance, filename):
-    upload_path = 'website/static/uploads/'
-    if settings.DEBUG:
-        upload_path = 'siteapp/static/uploads/'
-    model_image_prop_name = instance.get_archive_thumbnail_image_prop_name()
-    if not hasattr(instance, model_image_prop_name):
-        return
-
-    file_name = str(getattr(instance, model_image_prop_name)).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join(upload_path, str(instance.slide_image))
-
-def upload_icon_image(instance, filename):
-    upload_path = 'website/static/uploads/'
-    if settings.DEBUG:
-        upload_path = 'siteapp/static/uploads/'
-    model_icon_prop_name = instance.get_icon_image_prop_name()
-    if not hasattr(instance, model_icon_prop_name):
-        return
-
-    file_name = str(getattr(instance, model_icon_prop_name)).split('/')[-1]
-    file_ext = file_name.split('.')[-1]
-    instance.slide_image = '{0}.{1}'.format(str(uuid.uuid4()), file_ext)
-    return os.path.join(upload_path, str(instance.slide_image))
 
 
 # NOTE: function to read template file names from path
@@ -77,11 +36,8 @@ def get_template_list():
 class HomeSlider(models.Model):
     slide_title = models.CharField(max_length=60, help_text='Enter the title')
     slide_content = models.TextField(max_length=150, help_text='Enter the descrition')
-    slide_image = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/350x350/bfbfbf/bfbfbf/?text=RW')
+    slide_image = FileBrowseField('Slide image (350x350)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
 
-
-    def get_thumbnail_image_prop_name(self):
-        return 'slide_image'
 
     def class_name(self):
         return self.__class__.__name__
@@ -94,13 +50,10 @@ class Banner(models.Model):
     banner_name = models.CharField(max_length=100, primary_key=True, help_text='Enter unique banner name')
     banner_title = models.CharField(max_length=500, help_text='Enter the title for banner')
     banner_content = models.TextField(max_length=1000, help_text='Enter the description')
-    banner_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/450x350/bfbfbf/bfbfbf/?text=RW')
+    banner_thumbnail = FileBrowseField('Banner image (450x450)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
     banner_button_name = models.CharField(max_length=100, help_text='Enter the button name')
     banner_button_url = models.CharField(max_length=500, help_text='Enter the button URL')
 
-
-    def get_thumbnail_image_prop_name(self):
-        return 'banner_thumbnail'
 
     def admin_display_banner_content(self):
         return self.banner_title
@@ -114,8 +67,8 @@ class ArchiveProject(models.Model):
     project_title = models.CharField(unique=True, max_length=150, help_text='Enter the project title')
     project_content = HTMLField()
     project_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the project excerpt')
-    project_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x333/bfbfbf/bfbfbf/?text=RW')
-    project_archive_thumbnail = models.ImageField(upload_to=upload_archive_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/bfbfbf/?text=RW')
+    project_thumbnail = FileBrowseField('Thumbnail (1000x400)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
+    project_archive_thumbnail = FileBrowseField('Thumbnail (350x450)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
     project_url = models.CharField(max_length=300, null=True, blank=True, help_text='Enter the project URL')
     project_slug = models.SlugField(max_length=200, null=True)
     project_created_at = models.DateTimeField(auto_now_add=True)
@@ -124,9 +77,6 @@ class ArchiveProject(models.Model):
     project_author = models.CharField(max_length=200, blank=True, default='', help_text='Enter the author')
     project_keywords = models.TextField(max_length=300, blank=True, default='', help_text='Enter the keywords, example: \'development, code, services\'')
 
-
-    def get_thumbnail_image_prop_name(self):
-        return 'project_thumbnail'
 
     def get_archive_thumbnail_image_prop_name(self):
         return 'project_archive_thumbnail'
@@ -146,8 +96,8 @@ class ArchiveService(models.Model):
     service_title = models.CharField(unique=True, max_length=200, help_text='Enter the service title')
     service_content = HTMLField()
     service_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the service excerpt')
-    service_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/bfbfbf/?text=RW')
-    service_icon = models.ImageField(upload_to=upload_icon_image, default='http://placehold.it/500x500/bfbfbf/bfbfbf/?text=RW')
+    service_thumbnail = FileBrowseField('Thumbnail (1000x400)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
+    service_icon = FileBrowseField('Thumbnail (350x350)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
     service_slug = models.SlugField(max_length=200, null=True)
     service_background_color = RGBColorField(default='#FFFFFF')
     service_created_at = models.DateTimeField(auto_now_add=True)
@@ -156,9 +106,6 @@ class ArchiveService(models.Model):
     service_author = models.CharField(max_length=200, blank=True, default='', help_text='Enter the author')
     service_keywords = models.TextField(max_length=300, blank=True, default='', help_text='Enter the keywords, example: \'development, code, services\'')
 
-
-    def get_thumbnail_image_prop_name(self):
-        return 'service_thumbnail'
 
     def get_icon_image_prop_name(self):
         return 'service_icon'
@@ -181,8 +128,8 @@ class ArchivePost(models.Model):
     post_title = models.CharField(unique=True, max_length=500, help_text='Enter the post title')
     post_content = HTMLField()
     post_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the post excerpt')
-    post_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x333/bfbfbf/bfbfbf/?text=RW')
-    post_archive_thumbnail = models.ImageField(upload_to=upload_archive_thumbnail_image, default='http://placehold.it/350x450/bfbfbf/bfbfbf/?text=RW')
+    post_thumbnail = FileBrowseField('Thumbnail (1000x400)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
+    post_archive_thumbnail = FileBrowseField('Archive thumbnail (350x450)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
     post_slug = models.SlugField(max_length=200, null=True)
     post_created_at = models.DateTimeField(auto_now_add=True)
     post_updated_at = models.DateTimeField(auto_now=True)
@@ -190,9 +137,6 @@ class ArchivePost(models.Model):
     post_author = models.CharField(max_length=200, blank=True, default='', help_text='Enter the author')
     post_keywords = models.TextField(max_length=300, blank=True, default='', help_text='Enter the keywords, example: \'development, code, services\'')
 
-
-    def get_thumbnail_image_prop_name(self):
-        return 'post_thumbnail'
 
     def get_archive_thumbnail_image_prop_name(self):
         return 'post_archive_thumbnail'
@@ -212,7 +156,7 @@ class Page(models.Model):
     page_title = models.CharField(unique=True, max_length=500, help_text='Enter the page title', null=False)
     page_content = HTMLField()
     page_excerpt = models.TextField(max_length=150, null=True, help_text='Enter the page excerpt')
-    page_thumbnail = models.ImageField(upload_to=upload_thumbnail_image, default='http://placehold.it/1000x600/bfbfbf/bfbfbf/?text=RW')
+    page_thumbnail = FileBrowseField('Thumbnail (1000x400)', max_length=500, directory='', extensions=['.jpg', '.png', '.gif'], blank=True, null=True)
     page_slug = models.SlugField(max_length=200, null=True)
     page_template = models.CharField(max_length=1000, help_text='Page template')
     page_created_at = models.DateTimeField(auto_now_add=True)
@@ -227,8 +171,6 @@ class Page(models.Model):
         self._meta.get_field('page_template').choices = get_template_list()
         self._meta.get_field('page_template').default = 'page-template/template-default.html'
 
-    def get_thumbnail_image_prop_name(self):
-        return 'page_thumbnail'
 
     def admin_display_page_slug(self):
         return '{0}'.format(self.page_slug)
@@ -277,12 +219,6 @@ def archive_post_pre_save(sender, instance, **kwargs):
     slug_exists = ArchivePost.objects.filter(post_slug=str(instance.post_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
-    if instance.id:
-        original_post = ArchivePost.objects.filter(id=instance.id)
-        if not original_post:
-            return
-
-        instance.post_thumbnail_remove = original_post.values_list('post_thumbnail', flat=True)[0]
 
 
 @receiver(pre_save, sender=ArchiveProject)
@@ -291,12 +227,6 @@ def archive_project_pre_save(sender, instance, **kwargs):
     slug_exists = ArchiveProject.objects.filter(project_slug=str(instance.project_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_slug[:180], instance.id))
-    if instance.id:
-        original_project = ArchiveProject.objects.filter(id=instance.id)
-        if not original_project:
-            return
-
-        instance.project_thumbnail_remove = original_project.values_list('project_thumbnail', flat=True)[0]
 
 
 @receiver(pre_save, sender=ArchiveService)
@@ -305,13 +235,6 @@ def archive_service_pre_save(sender, instance, **kwargs):
     slug_exists = ArchiveService.objects.filter(service_slug=str(instance.service_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
-    if instance.id:
-        original_service = ArchiveService.objects.filter(id=instance.id)
-        if not original_service:
-            return
-
-        instance.service_thumbnail_remove = original_service.values_list('service_thumbnail', flat=True)[0]
-        instance.service_icon_remove = original_service.values_list('service_icon', flat=True)[0]
 
 
 @receiver(pre_save, sender=Page)
@@ -320,21 +243,6 @@ def page_pre_save(sender, instance, **kwargs):
     slug_exists = Page.objects.filter(page_slug=str(instance.page_slug))
     if instance.id and slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
         instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
-    if instance.id:
-        original_page = Page.objects.filter(id=instance.id)
-        if not original_page:
-            return
-
-        instance.page_thumbnail_remove = original_page.values_list('page_thumbnail', flat=True)[0]
-
-
-@receiver(pre_save, sender=Banner)
-def banner_pre_save(sender, instance, **kwargs):
-    original_banner = Banner.objects.filter(banner_name=instance.banner_name)
-    if not original_banner:
-        return
-
-    instance.banner_thumbnail_remove = original_banner.values_list('banner_thumbnail', flat=True)[0]
 
 
 # NOTE: start post save
@@ -379,16 +287,6 @@ def archive_project_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.project_slug = defaultfilters.slugify('{0}-{1}'.format(instance.project_title[:180], instance.id))
             save = True
-    new_file_thumbnail_path = get_path_for_new_file(str(instance.project_thumbnail))
-    new_file_archive_thumbnail_path = get_path_for_new_file(str(instance.project_archive_thumbnail))
-    if new_file_thumbnail_path:
-        delete_file_uploaded(instance, 'project_thumbnail_remove')
-        instance.project_thumbnail = new_file_thumbnail_path
-        save = True
-    if new_file_archive_thumbnail_path:
-        delete_file_uploaded(instance, 'project_archive_thumbnail')
-        instance.project_archive_thumbnail = new_file_archive_thumbnail_path
-        save = True
     if save:
         instance.save()
 
@@ -402,16 +300,6 @@ def archive_service_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.service_slug = defaultfilters.slugify('{0}-{1}'.format(instance.service_title[:180], instance.id))
             save = True
-    new_icon_file_path = get_path_for_new_file(str(instance.service_icon))
-    new_thumbnail_file_path = get_path_for_new_file(str(instance.service_thumbnail))
-    if new_icon_file_path:
-        delete_file_uploaded(instance, 'service_icon_remove')
-        instance.service_icon = new_icon_file_path
-        save = True
-    if new_thumbnail_file_path:
-        delete_file_uploaded(instance, 'service_thumbnail_remove')
-        instance.service_thumbnail = new_thumbnail_file_path
-        save = True
     if save:
         instance.save()
 
@@ -425,16 +313,6 @@ def archive_post_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.post_slug = defaultfilters.slugify('{0}-{1}'.format(instance.post_title[:180], instance.id))
             save = True
-    new_file_thumbnail_path = get_path_for_new_file(str(instance.post_thumbnail))
-    new_file_archive_thumbnail_path = get_path_for_new_file(str(instance.post_archive_thumbnail))
-    if new_file_thumbnail_path:
-        delete_file_uploaded(instance, 'post_thumbnail_remove')
-        instance.post_thumbnail = new_file_thumbnail_path
-        save = True
-    if new_file_archive_thumbnail_path:
-        delete_file_uploaded(instance, 'post_archive_thumbnail')
-        instance.post_archive_thumbnail = new_file_archive_thumbnail_path
-        save = True
     if save:
         instance.save()
 
@@ -448,22 +326,5 @@ def page_post_save(sender, instance, created, **kwargs):
         if slug_exists.count() and slug_exists.values_list('id', flat=True)[0] != instance.id:
             instance.page_slug = defaultfilters.slugify('{0}-{1}'.format(instance.page_title[:180], instance.id))
             save = True
-    new_file_path = get_path_for_new_file(str(instance.page_thumbnail))
-    if new_file_path:
-        delete_file_uploaded(instance, 'page_thumbnail_remove')
-        instance.page_thumbnail = new_file_path
-        save = True
-    if save:
-        instance.save()
-
-
-@receiver(post_save, sender=Banner)
-def banner_post_save(sender, instance, created, **kwargs):
-    save = False
-    new_file_path = get_path_for_new_file(str(instance.banner_thumbnail))
-    if new_file_path:
-        delete_file_uploaded(instance, 'banner_thumbnail_remove')
-        instance.banner_thumbnail = new_file_path
-        save = True
     if save:
         instance.save()

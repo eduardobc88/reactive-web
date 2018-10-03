@@ -28,7 +28,7 @@
                 <div class="max-width-320" itemid="{{ project.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
                     <a href="{{ project.get_absolute_url }}">
                         <div class="item">
-                            <img alt="REACTIVE WEB" class="image" src="{{ project.project_archive_thumbnail }}">
+                            <img alt="REACTIVE WEB" class="image" src="{{ MEDIA_URL }}{{ project.project_archive_thumbnail }}">
                             <div class="cover">
                                 <h3 itemprop="headline">{{ project.project_title }}</h3>
                                 <p itemprop="description">{{ project.project_excerpt }}</p>

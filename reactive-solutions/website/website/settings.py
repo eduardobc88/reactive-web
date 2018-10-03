@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     'localhost', # lookup
     '192.168.1.69', # local machine ip
     '185.166.213.7', # server ip
+    'www.reactive-web.com', # domain google
     'reactive-web.com', # domain google
     'www.reactive-web.com',
 ]
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'tinymce',
     'colorful',
+    'filebrowser',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -129,10 +132,18 @@ USE_TZ = True
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
+MEDIA_URL = '/static/uploads/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static/uploads')
+if DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'siteapp/static/uploads')
 
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 
 SECURE_SSL_REDIRECT = False
+
+# for filebrowser
+FILEBROWSER_DIRECTORY = ''
+DIRECTORY = ''
