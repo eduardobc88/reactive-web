@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     '192.168.1.69', # local machine ip
     '185.166.213.7', # server ip
     'reactive-web.com', # domain google
+    'www.reactive-web.com',
 ]
 
 
