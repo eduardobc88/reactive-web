@@ -1,4 +1,4 @@
-#!/home/Python/reactive-solutions/venv/bin/python3.6
+#!/usr/share/nginx/html/reactive-solutions/venv/bin/python3.6
 from django.core import management
 
 if __name__ == "__main__":

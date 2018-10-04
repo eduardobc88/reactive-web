@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Horizon';
+  src: url('../fonts/horizon.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+
 body {
     -webkit-user-select: none;
     background: #666;
@@ -54,6 +60,7 @@ body {
     text-shadow: 0px 0px 2px #fff;
     vertical-align: middle;
     word-wrap: break-word;
+    font-family: 'Horizon', Fallback, sans-serif;
 }
 
 .menu-wrapper .menu-options {
@@ -305,6 +312,7 @@ body {
     text-align: center;
     vertical-align: middle;
     word-wrap: break-word;
+    font-family: 'Horizon', Fallback, sans-serif;
 }
 
 .footer-wrapper .option {
