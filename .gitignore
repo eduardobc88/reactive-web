@@ -88,13 +88,19 @@ local_settings.py
 db.sqlite3
 
 reactive-solutions/venv
-reactive-solutions/venv/
-reactive-solutions/venv/**/*
-reactive-solutions/venv/bin
-reactive-solutions/venv/bin/
-reactive-solutions/venv/bin/**/*
 reactive-solutions/website/website/static/
 reactive-solutions/website/website/static/**/*
+
+# Virtualenv
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
 
 
 # node modules
