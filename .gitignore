@@ -92,15 +92,15 @@ reactive-solutions/website/website/static/
 reactive-solutions/website/website/static/**/*
 
 # Virtualenv
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
+reactive-solutions/[Bb]in
+reactive-solutions/[Ii]nclude
+reactive-solutions/[Ll]ib
+reactive-solutions/[Ll]ib64
+reactive-solutions/[Ll]ocal
+reactive-solutions/[Ss]cripts
+reactive-solutions/pyvenv.cfg
 .venv
-pip-selfcheck.json
+reactive-solutions/pip-selfcheck.json
 
 
 # node modules
