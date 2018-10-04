@@ -89,6 +89,7 @@ db.sqlite3
 
 reactive-solutions/venv/
 reactive-solutions/venv/**/*
+reactive-solutions/venv/**/**/*
 reactive-solutions/website/website/static/
 reactive-solutions/website/website/static/**/*
 
