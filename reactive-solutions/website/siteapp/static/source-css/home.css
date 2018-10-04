@@ -62,7 +62,7 @@
 .slider-wrapper #slides .slides-container .icon {
     height: auto !important;
     left: auto !important;
-    max-height: 300px !important;
+    max-height: 100% !important;
     max-width: 300px !important;
     padding: 10px !important;
     position: relative !important;

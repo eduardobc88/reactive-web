@@ -1,6 +1,10 @@
 @font-face {
   font-family: 'Horizon';
-  src: url('../fonts/horizon.ttf')  format('truetype'), /* Safari, Android, iOS */
+  src:
+    url('../fonts/horizon.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/horizon.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/horizon.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/horizon.woff') format('woff'); /* Pretty Modern Browsers */
 }
 
 
