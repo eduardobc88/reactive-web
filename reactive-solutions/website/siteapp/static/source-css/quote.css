@@ -78,16 +78,16 @@
 }
 
 .form-wrapper .input-wrapper.active:before {
-    background-color: #24a9e1;
+    background-color: #0478af;
 }
 
 .form-wrapper .input-wrapper.active label {
     top: -10px;
-    color: #24a9e1;
+    color: #0478af;
 }
 
 .form-wrapper button {
-    background-color: #24a9e1;
+    background-color: #0478af;
     background-image: url(/static/img/send-icon.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -144,7 +144,7 @@
     z-index: 1;
     bottom: 0;
     right: 0;
-    color: #24a9e1;
+    color: #0478af;
     pointer-events: none;
 }
 
