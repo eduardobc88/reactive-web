@@ -33,7 +33,7 @@ def home(request):
             'services': services,
             'page_head_title': website_head_title,
             'page_head_description': page_head_description,
-            'page_head_bar_color': '#0478af',
+            'page_head_bar_color': '#0080bc',
         }
     )
 
@@ -71,7 +71,7 @@ def thanks(request):
             'page': page_data,
             'page_head_title': '{0} - {1}'.format(website_head_title, page_title),
             'page_head_description': page_excerpt,
-            'page_head_bar_color': '#0478af',
+            'page_head_bar_color': '#0080bc',
         }
     )
 
@@ -93,7 +93,7 @@ class PageDetailView(generic.DetailView):
         self.template_name = self.object.page_template
         context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, self.object.page_title)
         context['page_head_description'] = self.object.page_excerpt
-        context['page_head_bar_color'] = '#0478af'
+        context['page_head_bar_color'] = '#0080bc'
         return context
 
 
@@ -118,7 +118,7 @@ class ArchiveProjectListView(generic.ListView):
         projects_description = get_site_option_value('projects_description')
         context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, projects_title)
         context['page_head_description'] = projects_description
-        context['page_head_bar_color'] = '#0478af'
+        context['page_head_bar_color'] = '#0080bc'
         return context
 
 
@@ -137,7 +137,7 @@ class ArchiveProjectDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, self.object.project_title)
         context['page_head_description'] = self.object.project_excerpt
-        context['page_head_bar_color'] = '#0478af'
+        context['page_head_bar_color'] = '#0080bc'
         return context
 
 
@@ -162,7 +162,7 @@ class ArchiveServiceListView(generic.ListView):
         services_description = get_site_option_value('services_description')
         context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, services_title)
         context['page_head_description'] = services_description
-        context['page_head_bar_color'] = '#0478af'
+        context['page_head_bar_color'] = '#0080bc'
         return context
 
 
@@ -181,7 +181,7 @@ class ArchiveServiceDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, self.object.service_title)
         context['page_head_description'] = self.object.service_excerpt
-        context['page_head_bar_color'] = '#0478af'
+        context['page_head_bar_color'] = '#0080bc'
         return context
 
 
@@ -206,7 +206,7 @@ class ArchivePostListView(generic.ListView):
         blog_description = get_site_option_value('blog_description')
         context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, blog_title)
         context['page_head_description'] = blog_description
-        context['page_head_bar_color'] = '#0478af'
+        context['page_head_bar_color'] = '#0080bc'
         return context
 
 
@@ -225,5 +225,5 @@ class ArchivePostDetailView(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['page_head_title'] = '{0} - {1}'.format(self.website_head_title, self.object.post_title)
         context['page_head_description'] = self.object.post_excerpt
-        context['page_head_bar_color'] = '#0478af'
+        context['page_head_bar_color'] = '#0080bc'
         return context

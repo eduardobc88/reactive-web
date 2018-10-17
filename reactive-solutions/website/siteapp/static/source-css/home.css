@@ -140,7 +140,7 @@
 }
 
 .blog-wrapper .more-button {
-    background-color: #0478af !important;
+    background-color: #0080bc !important;
 }
 
 .blog-wrapper .item {
@@ -170,7 +170,7 @@
 }
 
 .blog-wrapper .item:hover .cover {
-    background-color: #0478af;
+    background-color: #0080bc;
 }
 
 .blog-wrapper .item:hover .cover h3 {
@@ -268,7 +268,7 @@
 }
 
 .project-wrapper .item:hover .cover {
-    background-color: rgba(4, 120, 175, 0.85);
+    background-color: rgba(0, 134, 197, 0.85);
 }
 
 .project-wrapper .item:hover .cover h3 {
@@ -280,7 +280,7 @@
 }
 
 .project-wrapper .more-button {
-    background-color: #0478af !important;
+    background-color: #0080bc !important;
 }
 
 
@@ -336,7 +336,7 @@
 }
 
 .services-wrapper .item:hover:after {
-    background-color: rgba(4, 120, 175, 0.85);
+    background-color: rgba(0, 134, 197, 0.85);
 }
 
 .services-wrapper .item .content {
@@ -384,7 +384,7 @@
 }
 
 .services-wrapper .more-button {
-    background-color: #0478af !important;
+    background-color: #0080bc !important;
 }
 
 

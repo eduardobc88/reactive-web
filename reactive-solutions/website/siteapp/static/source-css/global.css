@@ -29,7 +29,7 @@ body {
 }
 
 .menu-wrapper.page-scroll {
-    background-color: rgba(4, 120, 175, 0.85);
+    background-color: rgba(0, 134, 197, 0.85);
     box-shadow: 0 0 2px rgba(0,0,0,.14), 0 2px 3px rgba(0,0,0,.18);
 }
 
@@ -136,7 +136,7 @@ body {
 
 
 .mobile-menu-wrapper {
-    background-color: #0478af;
+    background-color: #0080bc;
     bottom: 0;
     box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
     height: 100%;
@@ -228,11 +228,11 @@ body {
 }
 
 .background-fill-blue {
-    fill: #0478af;
+    fill: #0080bc;
 }
 
 .background-color-blue {
-    background-color: #0478af;
+    background-color: #0080bc;
 }
 
 .background-fill-white {
@@ -422,7 +422,7 @@ body {
 
 .archive-pagination li {
     align-self: center;
-    background-color: #0478af;
+    background-color: #0080bc;
     font-size: 14px;
     font-weight: 400;
     line-height: 30px;
@@ -542,7 +542,7 @@ body {
 
 
 .social-share-title {
-    border-top: 3px solid #0478af;
+    border-top: 3px solid #0080bc;
     display: block;
     font-size: 24px;
     font-weight: 400;
