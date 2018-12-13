@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_css %}
+<link rel="preload" as="style" href="{% static 'css/default.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+{% endblock %}
+{% block page_content %}
+    <div class="header-wrapper" style="background-image: url({{ page.page_thumbnail }}); background-size:cover;">
+        <div class="container">
+            <div class="max-width-720">
+                <h1>Error 404</h1>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white default-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="max-width-720">
+                <div class="center-text">Página no encontrada</div>
+            </div>
+        </div>
+        <div class="decor-bottom over-footer">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_css %}
+<link rel="preload" as="style" href="{% static 'css/default.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+{% endblock %}
+{% block page_js %}
+<script src="{% static 'js/share-this.js' %}" defer></script>
+{% endblock %}
+{% load options %}
+{% block page_content %}
+    <div class="header-wrapper" style="background-image: url({{ MEDIA_URL }}{{ page.page_thumbnail }}); background-size:cover;">
+        <div class="container">
+            <div class="max-width-720">
+                <h1 itemprop="name">{{ page.page_title }}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white default-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="max-width-720">
+                <div class="description" itemprop="description">{{ page.page_content | safe }}</div>
+            </div>
+        </div>
+    </div>
+    {% get_contact_banner_data as contact_banner %}
+    <div class="custom-wrapper background-color-white banner-wrapper">
+        <div class="decor-into-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="banner-bkg-color"></div>
+        <div class="container">
+            <div class="max-width-720">
+                <h2>{{ contact_banner.banner_title }}</h2>
+                <p>{{ contact_banner.banner_content }}</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="max-width-320">
+                <a href="{{ contact_banner.banner_button_url }}" class="more-button button-effect">{{ contact_banner.banner_button_name }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white default-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="max-width-480">
+                <h3 class="social-share-title">COMPARTIR<h3>
+                <div class="social-buttons-wrapper">
+                    <div class="button share-fb" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-gp" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-tw" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-wa" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                    <div class="button share-t" attr-permalink="{{ request.build_absolute_uri }}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="decor-bottom over-footer">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+    </div>
+{% endblock %}

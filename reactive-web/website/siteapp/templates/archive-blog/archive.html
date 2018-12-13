@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_css %}
+<link rel="preload" as="style" href="{% static 'css/archive-blog.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+{% endblock %}
+{% block page_js %}
+{% endblock %}
+
+{% block page_content %}
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="max-width-720">
+                <h1 itemprop="name">BLOG</h1>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white archive-blog-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="max-width-720">
+                <p class="archive-description" itemprop="description">{{ page_head_description }}</p>
+            </div>
+        </div>
+        <div class="flex-container wrapper-items">
+                {% for post in posts %}
+                    <div class="max-width-320" itemid="{{ post.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
+                        <a href="{{ post.get_absolute_url }}">
+                            <div class="item">
+                                <img alt="REACTIVE WEB" class="image" src="{{ MEDIA_URL }}{{ post.post_archive_thumbnail }}" itemprop="thumbnail">
+                                <div class="cover">
+                                    <div class="title-wrapper">
+                                        <h3 itemprop="headline">{{ post.post_title }}</h3>
+                                    </div>
+                                    <p itemprop="description">{{ post.post_excerpt }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+        </div>
+        <div class="container">
+            <div class="max-width-720">
+                {% if is_paginated %}
+                    <div class="archive-pagination">
+                        <ul>
+                            {% if page_obj.has_previous %}
+                              <li><a href="{% url 'blog-archive' %}{{ page_obj.previous_page_number }}/">‹</a></li>
+                            {% else %}
+                              <li class="disabled"><span>‹</span></li>
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                              {% if page_obj.number == i %}
+                                <li class="active"><span>{{ i }}</span></li>
+                              {% else %}
+                                <li><a href="{% url 'blog-archive' %}{{ i }}/">{{ i }}</a></li>
+                              {% endif %}
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                              <li><a href="{% url 'blog-archive' %}{{ page_obj.next_page_number }}/">›</a></li>
+                            {% else %}
+                              <li class="disabled"><span>›</span></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="decor-bottom over-footer">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+    </div>
+{% endblock %}

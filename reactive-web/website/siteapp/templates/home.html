@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_css %}
+<link rel="preload" as="style" href="{% static 'libs/superslides/superslides.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="{% static 'css/home.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+{% endblock %}
+{% block page_js %}
+<script src="{% static 'libs/superslides/superslides-min.js' %}" defer></script>
+<script src="{% static 'js/home.js' %}" defer></script>
+{% endblock %}
+{% load options %}
+{% block page_content %}
+    {% get_contact_banner_data as contact_banner %}
+    {% get_who_banner_data as who_banner %}
+    <div class="slider-wrapper custom-wrapper background-color-blue">
+        <div class="clouds-1 clouds"></div>
+        <div class="clouds-2 clouds"></div>
+        <div class="clouds-3 clouds"></div>
+        <div id="slides">
+            <ul class="slides-container">
+                {% for slide in slides %}
+                    <li>
+                        <div class="flex-container">
+                            <div class="left">
+                                <img alt="REACTIVE WEB" class="icon" src="{{ MEDIA_URL }}{{ slide.slide_image }}">
+                            </div>
+                            <div class="right">
+                                {% if forloop.counter == 1 %}
+                                    <h1 itemprop="name">{{ slide.slide_title }}</h1>
+                                    <p itemprop="description">{{ slide.slide_content }}</p>
+                                {% else %}
+                                    <h2>{{ slide.slide_title }}</h2>
+                                    <p>{{ slide.slide_content }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white blog-wrapper">
+        <!-- <div class="decor-top over-slider">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div> -->
+        <div class="container">
+            <div class="max-width-720">
+                <h2>BLOG</h2>
+                <p class="description">
+                    {% get_blog_description %}
+                </p>
+            </div>
+        </div>
+        <div class="flex-container">
+            {% for post in posts %}
+                <a href="{{ post.get_absolute_url }}" class="max-width-320" itemid="{{ post.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
+                    <div class="item">
+                        <!-- <img alt="REACTIVE WEB" class="image" src="http://placehold.it/350x450/7b7b7b/DADADA/?text=350x450"> -->
+                        <img alt="REACTIVE WEB" class="image" src="{{ MEDIA_URL }}{{ post.post_archive_thumbnail }}" itemprop="thumbnail">
+                        <div class="cover">
+                            <div class="title-wrapper">
+                                <h3 itemprop="headline">{{ post.post_title }}</h3>
+                            </div>
+                            <p itemprop="description">{{ post.post_excerpt | safe }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <div class="max-width-320">
+                <a href="{% url 'blog-archive' %}" class="more-button button-effect">Más</a>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white banner-wrapper">
+        <div class="decor-into-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="banner-bkg-color"></div>
+        <div class="container">
+            <div class="max-width-720">
+                <h2>{{ contact_banner.banner_title }}</h2>
+                <p>{{ contact_banner.banner_content }}</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="max-width-320">
+                <a href="{{ contact_banner.banner_button_url }}" class="more-button button-effect">{{ contact_banner.banner_button_name }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white project-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+               <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="max-width-720">
+                <h2>PROYECTOS</h2>
+                <p class="description">
+                    {% get_projects_description %}
+                </p>
+            </div>
+        </div>
+        <div class="flex-container">
+            {% for project in projects %}
+                <div class="max-width-320">
+                    <a href="{{ project.get_absolute_url }}" itemid="{{ project.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
+                        <div class="item">
+                            <img alt="REACTIVE WEB" class="image" src="{{ MEDIA_URL }}{{ project.project_archive_thumbnail }}" itemprop="thumbnail">
+                            <div class="cover">
+                                <h3 itemprop="headline">{{ project.project_title }}</h3>
+                                <p itemprop="description">{{ project.project_excerpt }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <div class="max-width-320">
+                <a href="{% url 'project-archive' %}" class="more-button button-effect">Más</a>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white banner-wrapper tools-bkg">
+        <div class="decor-into-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="banner-bkg-color"></div>
+        <div class="container">
+            <div class="max-width-720">
+                <h2>{{ who_banner.banner_title }}</h2>
+                <p>{{ who_banner.banner_content }}</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="max-width-320">
+                <a href="{{ who_banner.banner_button_url }}" class="more-button button-effect">{{ who_banner.banner_button_name }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="custom-wrapper background-color-white services-wrapper">
+        <div class="decor-top">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 100 L0 100" stroke-width="0"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="max-width-720">
+                <h2>SERVICIOS</h2>
+                <p class="description">
+                    {% get_services_description %}
+                </p>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="max-width-720">
+                {% for service in services %}
+                    <a href="{{ service.get_absolute_url }}" itemid="{{ service.get_absolute_url }}" itemscope itemtype="http://schema.org/LiveBlogPosting">
+                        <div class="item" style="background-color: {{ service.service_background_color }}">
+                            <div class="content">
+                                <h3 itemprop="headline">{{ service.service_title }}</h3>
+                                <p itemprop="description">{{ service.service_excerpt | safe }}</p>
+                            </div>
+                            <img alt="REACTIVE WEB" src="{{ MEDIA_URL }}{{ service.service_icon }}">
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container">
+            <div class="max-width-320">
+                <a href="{% url 'service-archive' %}" class="more-button button-effect">Más</a>
+            </div>
+        </div>
+        <div class="decor-bottom over-footer">
+            <svg class="decor background-fill-white" height="100%" preserveAspectRatio="none" version="1.1" viewBox="0 0 100 100" width="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0 L100 0 L100 100" stroke-width="0"></path>
+            </svg>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,102 @@
+.header-wrapper {
+    background-image: url(/static/img/services-bkg.jpg);
+}
+
+.archive-service-wrapper {
+    margin-top: 0px;
+    padding-bottom: 0px;
+}
+
+.archive-service-wrapper a {
+    text-decoration: none;
+}
+
+.archive-service-wrapper .decor-top {
+    position: absolute;
+    z-index: 1;
+}
+
+.archive-description {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.archive-service-wrapper .item:last-child .decor-bottom {
+    position: absolute;
+    z-index: 1;
+}
+
+.archive-service-wrapper .item {
+    width: 100%;
+    position: relative;
+    padding-bottom: 90px;
+    padding-top: 90px;
+}
+
+.archive-service-wrapper .item .link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.archive-service-wrapper .item h2 {
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.archive-service-wrapper .item .left p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 200px;
+}
+
+.archive-service-wrapper .item .right p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 200px;
+}
+
+.archive-service-wrapper .item .thumbnail {
+    align-self: center;
+    display: flex;
+    margin: 30px;
+    margin: auto;
+    padding: 15px;
+    position: absolute;
+    vertical-align: middle;
+    width: 150px;
+}
+
+.archive-service-wrapper .right h2, .archive-service-wrapper .right p {
+    text-align: right;
+}
+
+.archive-service-wrapper .item .left .thumbnail {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    top: 0;
+    z-index: 2;
+}
+
+.archive-service-wrapper .item .right .thumbnail {
+    bottom: 0;
+    margin: auto;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
+
+@media all and (max-width: 768px) {
+    .archive-service-wrapper .item .thumbnail {
+        display: none;
+    }
+
+    .archive-service-wrapper .item p {
+        margin: auto !important;
+    }
+}

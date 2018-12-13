@@ -33,6 +33,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+venv/
 build/
 develop-eggs/
 dist/
@@ -86,4 +87,22 @@ local_settings.py
 .env
 db.sqlite3
 
-venv/
+reactive-solutions/venv/
+reactive-solutions/website/website/static/
+reactive-solutions/website/website/static/**/*
+
+# Virtualenv
+reactive-solutions/venv/[Bb]in
+reactive-solutions/venv/[Ii]nclude
+reactive-solutions/venv/[Ll]ib
+reactive-solutions/venv/[Ll]ib64
+reactive-solutions/venv/[Ll]ocal
+reactive-solutions/venv/[Ss]cripts
+reactive-solutions/venv/pyvenv.cfg
+.venv
+reactive-solutions/venv/pip-selfcheck.json
+
+
+# node modules
+reactive-solutions/website/siteapp/node_modules/
+node_modules/

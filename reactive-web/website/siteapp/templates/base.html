@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=UA-125073695-1" defer></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'UA-125073695-1');
+        </script>
+        {% load static %}
+        <meta charset="utf-8">
+        <!-- start - meta tags for SEO -->
+        {% block title %}<title>{{ page_head_title }}</title>{% endblock %}
+        <meta name="Description" content="{{ page_head_description }}">
+        <meta name="theme-color" content="{{ page_head_bar_color }}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- end - meta tags for SEO -->
+        <!-- start - loadCSS -->
+        <script>
+        /*  loadCSS. [c]2017 Filament Group, Inc. MIT License  */
+        !function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+        </script>
+        <!-- end - loadCSS -->
+        <link rel="icon" href="{% static 'img/rw-icon.png' %}">
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,400i,500,700" onload="this.onload=null;this.rel='stylesheet'">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+        <script src="{% static 'js/global.js' %}" defer></script>
+        <link rel="preload" as="style" href="{% static 'css/global.css' %}" onload="this.onload=null;this.rel='stylesheet'">
+        {% block page_css %}
+        {% endblock %}
+        {% block page_js %}
+        {% endblock %}
+        <script>
+            function removeSplashScreen() {
+                setTimeout(function(){
+                    element = document.querySelector('.splash-screen');
+                    element.style.opacity = 0;
+                    element.style.zIndex = -1;
+                    setTimeout(function(){
+                        element = document.querySelector('.splash-screen');
+                        element.parentNode.removeChild(element);
+                    }, 400);
+                }, 300);
+            }
+        </script>
+    </head>
+    <body onload="removeSplashScreen()" itemscope itemtype="http://schema.org/WebPage">
+        {% load options %}
+        <div class="splash-screen" style="position: fixed; top: 0; bottom: 0; left: 0; right: 0; margin: auto; z-index: 99; background-color: #0080bc; transition-duration: 300ms;">
+            <img alt="REACTIVE WEB" style="height: 80px; margin: auto; position: absolute; left: 0; right: 0; top: 0; bottom: 0;" src="{% static 'img/Reactive-Web-Logo.png' %}">
+        </div>
+        <div class="page-wrapper">
+            {% block page_header %}
+                <div class="menu-wrapper">
+                    <div class="container">
+                        <div class="menu-options">
+                            <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+                            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+                            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
+                            <a href="{% url 'home' %}" class="home-wrapper">
+                                <label>REACTIVE</label>
+                                <img alt="REACTIVE WEB" class="logo" src="{% static 'img/rw-icon.png' %}">
+                                <label>WEB</label>
+                            </a>
+                            <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
+                            <a class="option" href="{% quote_slug %}">COTIZAR</a>
+                            <a class="option" href="{% contact_slug %}">CONTACTO</a>
+                            <img alt="REACTIVE WEB" class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            {% block page_content %}
+            {% endblock %}
+            <div class="footer-wrapper background-color-blue">
+                <div class="flex-container">
+                    <div class="left">
+                        <a href="{% url 'home' %}" class="home-wrapper">
+                            <label>REACTIVE</label>
+                            <img alt="REACTIVE WEB" class="logo" src="{% static 'img/rw-icon.png' %}">
+                            <label>WEB</label>
+                        </a>
+                    </div>
+                    <div class="mid">
+                        <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+                        <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+                        <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
+                        <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
+                    </div>
+                    <div class="mid">
+                        <a class="option" href="{% quote_slug %}">COTIZAR</a>
+                        <a class="option" href="{% contact_slug %}">CONTACTO</a>
+                        <a class="option" href="{% privacy_slug %}">AVISO DE PRIVACIDAD</a>
+                        <a class="option" href="{% terms_conditions_slug %}">TERMINOS Y CONDICIONES</a>
+                    </div>
+                    <div class="right">
+                        <a class="social-icon" href="{% gp_url %}">
+                            <img alt="REACTIVE WEB" src="{% static 'img/gp-icon.png' %}">
+                        </a>
+                        <a class="social-icon" href="{% fb_url %}">
+                            <img alt="REACTIVE WEB" src="{% static 'img/fb-icon.png' %}">
+                        </a>
+                        <a class="social-icon" href="{% tw_url %}">
+                            <img alt="REACTIVE WEB" src="{% static 'img/tw-icon.png' %}">
+                        </a>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="max-width-720">
+                        <h4 class="title">COMUNÍCATE Y HAGAMOS EQUIPO.</h4>
+                        <a href="tel:4431049977" class="phone">443-1049977</a>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="max-width-720">
+                        <p class="reserved">REACTIVE WEB 2018 TODOS LOS DERECHOS RESERVADOS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-wrapper">
+            <a href="{% url 'home' %}" class="home-wrapper">
+                <label>REACTIVE WEB</label>
+            </a>
+            <img alt="REACTIVE WEB" class="menu-mobile" onClick="openMenuMobile(this)" src="{% static 'img/menu-icon.png' %}">
+            <a class="option" href="{% who_we_are_slug %}">QUIÉNES SOMOS</a>
+            <a class="option" href="{% url 'service-archive' %}">SERVICIOS</a>
+            <a class="option" href="{% url 'project-archive' %}">PROYECTOS</a>
+            <a class="option" href="{% url 'blog-archive' %}">BLOG</a>
+            <a class="option" href="{% quote_slug %}">COTIZAR</a>
+            <a class="option" href="{% contact_slug %}">CONTACTO</a>
+        </div>
+    </body>
+</html>
